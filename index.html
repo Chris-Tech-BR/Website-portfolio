@@ -48,7 +48,23 @@
     .dark { background:#020617; color:white; }
 
     /* GRID */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: stretch; gap:20px; margin-top:50px; }
+    /* GRID CORRIGIDO */
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  align-items: stretch; 
+  gap: 20px; 
+  margin-top: 50px; 
+}
+
+/* AJUSTE PARA OS CARDS DENTRO DO GRID */
+.card-link {
+  display: flex; /* Faz o link ocupar o tamanho total do grid box */
+}
+
+.card-link .card {
+  width: 100%; /* Garante que o card use toda a largura do link */
+}
 
     /* CARDS */
     .card, .project { background:white; padding:30px; border-radius:10px; box-shadow:0 10px 20px rgba(0,0,0,0.08); transition:transform 0.3s ease; }
