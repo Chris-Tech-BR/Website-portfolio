@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio | Desenvolvedor</title>
   <style>
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card-link .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card-link:hover .card {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
     /* RESET */
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family: Arial, Helvetica, sans-serif; color:#1f2937; line-height:1.6; background:#ffffff; }
