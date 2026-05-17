@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Phone & Laptop Repair</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        background:#f4f4f4;
+        color:#333;
+    }
+
+    header{
+        background:#0d6efd;
+        color:white;
+        padding:40px 20px;
+        text-align:center;
+    }
+
+    header h1{
+        font-size:40px;
+        margin-bottom:10px;
+    }
+
+    header p{
+        font-size:18px;
+    }
+
+    .services{
+        padding:50px 20px;
+        text-align:center;
+    }
+
+    .services h2{
+        margin-bottom:30px;
+        font-size:32px;
+        color:#0d6efd;
+    }
+
+    .service-box{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .card{
+        background:white;
+        width:280px;
+        padding:25px;
+        border-radius:10px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card h3{
+        margin-bottom:15px;
+        color:#0d6efd;
+    }
+
+    .contact{
+        background:#222;
+        color:white;
+        padding:50px 20px;
+        text-align:center;
+    }
+
+    .contact h2{
+        margin-bottom:20px;
+        font-size:30px;
+    }
+
+    .contact p{
+        margin:10px 0;
+        font-size:18px;
+    }
+
+    footer{
+        background:#111;
+        color:white;
+        text-align:center;
+        padding:15px;
+    }
+
+    @media(max-width:768px){
+        header h1{
+            font-size:30px;
+        }
+
+        .card{
+            width:100%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Phone & Laptop Repair</h1>
+    <p>Fast & Reliable Repair Services</p>
+</header>
+
+<section class="services">
+    <h2>Our Services</h2>
+
+    <div class="service-box">
+
+        <div class="card">
+            <h3>Phone Repair</h3>
+            <p>Screen replacement, battery issues, charging problems and more.</p>
+        </div>
+
+        <div class="card">
+            <h3>Laptop Repair</h3>
+            <p>Keyboard repair, software installation, hardware fixes and upgrades.</p>
+        </div>
+
+        <div class="card">
+            <h3>Quick Support</h3>
+            <p>Affordable and professional repair services for all devices.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact">
+    <h2>Contact Us</h2>
+
+    <p><strong>Phone:</strong> 55996689852</p>
+    <p><strong>Email:</strong> nzubeikechukwu25@gmail.com</p>
+    <p><strong>Address:</strong> Avenida Roiama 1000</p>
+</section>
+
+<footer>
+    <p>&copy; 2026 Phone & Laptop Repair. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
