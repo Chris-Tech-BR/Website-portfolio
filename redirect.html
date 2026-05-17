@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando para o WhatsApp...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .redirect-box {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 450px;
+            width: 90%;
+        }
+
+        /* ANIMAÇÃO DO SPINNER */
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #25D366; /* Verde do WhatsApp */
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .target-info {
+            display: inline-block;
+            background: #e6f7ed;
+            color: #128C7E;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="redirect-box">
+        <div class="spinner"></div>
+        <h1>Conectando ao WhatsApp</h1>
+        <p>Aguarde um instante. Estamos redirecionando você para o atendimento seguro da <strong>Chris Tech</strong>...</p>
+        <div class="target-info">⚡ Conexão Direta Protegida</div>
+    </div>
+
+    <script>
+        // Executa assim que a página carrega completamente
+        window.onload = function() {
+            // Aguarda 3000 milissegundos (3 segundos) e redireciona
+            setTimeout(function() {
+                window.location.href = "https://wa.me/5555996689852";
+            }, 3000);
+        };
+    </script>
+
+</body>
+</html>
