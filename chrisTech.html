@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
@@ -7,492 +6,442 @@
 <title>Chris Tech Repair</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f5f7fb;
-    color:#222;
-}
-
-/* TOP BAR */
-
-.top-bar{
-    background:#111827;
-    color:white;
-    padding:12px 40px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    font-size:14px;
-}
-
-.top-bar span{
-    margin:5px 0;
-}
-
-/* NAVBAR */
-
-nav{
-    background:white;
-    padding:18px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    color:#0d6efd;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:#333;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.nav-links a:hover{
-    color:#0d6efd;
-}
-
-/* HERO */
-
-.hero{
-    min-height:90vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:80px 40px;
-    background:linear-gradient(to right,#0d6efd,#2563eb);
-    color:white;
-}
-
-.hero-container{
-    max-width:1200px;
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:50px;
-    flex-wrap:wrap;
-}
-
-.hero-text{
-    flex:1;
-}
-
-.hero-text h1{
-    font-size:55px;
-    margin-bottom:20px;
-    line-height:1.1;
-}
-
-.hero-text p{
-    font-size:20px;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:15px 28px;
-    border-radius:40px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.btn-primary{
-    background:white;
-    color:#0d6efd;
-}
-
-.btn-primary:hover{
-    transform:translateY(-4px);
-}
-
-.btn-secondary{
-    border:2px solid white;
-    color:white;
-}
-
-.btn-secondary:hover{
-    background:white;
-    color:#0d6efd;
-}
-
-.hero-image{
-    flex:1;
-    text-align:center;
-}
-
-.hero-image img{
-    width:100%;
-    max-width:500px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
-}
-
-/* SERVICES */
-
-.services{
-    padding:100px 40px;
-    text-align:center;
-}
-
-.section-title{
-    font-size:42px;
-    margin-bottom:15px;
-    color:#111827;
-}
-
-.section-subtitle{
-    color:#666;
-    margin-bottom:60px;
-    font-size:18px;
-}
-
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:white;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    border-radius:15px;
-    margin-bottom:20px;
-}
-
-.card h3{
-    margin-bottom:15px;
-    color:#0d6efd;
-    font-size:24px;
-}
-
-.card p{
-    color:#555;
-    line-height:1.6;
-}
-
-/* ABOUT */
-
-.about{
-    padding:100px 40px;
-    background:#111827;
-    color:white;
-}
-
-.about-container{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:50px;
-    flex-wrap:wrap;
-}
-
-.about-text{
-    flex:1;
-}
-
-.about-text h2{
-    font-size:42px;
-    margin-bottom:20px;
-}
-
-.about-text p{
-    line-height:1.8;
-    font-size:18px;
-}
-
-.about-image{
-    flex:1;
-}
-
-.about-image img{
-    width:100%;
-    border-radius:20px;
-}
-
-/* CONTACT */
-
-.contact{
-    padding:100px 40px;
-    text-align:center;
-}
-
-.contact-box{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    padding:50px;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-}
-
-.contact-box h2{
-    margin-bottom:25px;
-    font-size:38px;
-}
-
-.contact-box p{
-    margin:15px 0;
-    font-size:18px;
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#25D366;
-    color:white;
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:32px;
-    text-decoration:none;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* FOOTER */
-
-footer{
-    background:#0f172a;
-    color:white;
-    text-align:center;
-    padding:25px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .hero-text h1{
-        font-size:40px;
+    /* RESET */
+    * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
     }
 
-    .hero{
+    html {
+        scroll-behavior:smooth;
+    }
+
+    body {
+        background:#f5f7fb;
+        color:#222;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+        background:#111827;
+        color:white;
+        padding:12px 40px;
+        display:flex;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        font-size:14px;
+    }
+
+    .top-bar span {
+        margin:5px 0;
+    }
+
+    /* NAVBAR */
+    nav {
+        background:white;
+        padding:18px 40px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        box-shadow:0 2px 10px rgba(0,0,0,0.08);
+        position:sticky;
+        top:0;
+        z-index:1000;
+    }
+
+    .logo {
+        font-size:28px;
+        font-weight:bold;
+        color:#0d6efd;
+    }
+
+    .nav-links {
+        display:flex;
+        gap:25px;
+    }
+
+    .nav-links a {
+        text-decoration:none;
+        color:#333;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .nav-links a:hover {
+        color:#0d6efd;
+    }
+
+    /* HERO */
+    .hero {
+        min-height:90vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:80px 40px;
+        background:linear-gradient(to right,#0d6efd,#2563eb);
+        color:white;
+    }
+
+    .hero-container {
+        max-width:1200px;
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:50px;
+        flex-wrap:wrap;
+    }
+
+    .hero-text {
+        flex:1;
+    }
+
+    .hero-text h1 {
+        font-size:55px;
+        margin-bottom:20px;
+        line-height:1.1;
+    }
+
+    .hero-text p {
+        font-size:20px;
+        margin-bottom:30px;
+        line-height:1.6;
+    }
+
+    .hero-buttons {
+        display:flex;
+        gap:15px;
+        flex-wrap:wrap;
+    }
+
+    .btn {
+        padding:15px 28px;
+        border-radius:40px;
+        text-decoration:none;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .btn-primary {
+        background:white;
+        color:#0d6efd;
+    }
+
+    .btn-primary:hover {
+        transform:translateY(-4px);
+        box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary {
+        border:2px solid white;
+        color:white;
+    }
+
+    .btn-secondary:hover {
+        background:white;
+        color:#0d6efd;
+    }
+
+    .hero-image {
+        flex:1;
         text-align:center;
     }
 
-    .nav-links{
-        display:none;
+    .hero-image img {
+        width:100%;
+        max-width:500px;
+        border-radius:20px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.25);
     }
 
-    .top-bar{
-        flex-direction:column;
+    /* SERVICES */
+    .services {
+        padding:100px 40px;
         text-align:center;
     }
-}
-    /* ESTILIZAÇÃO DO BOTÃO DE VOLTAR */
-.about-actions {
-  margin-top: 30px;
-  text-align: left;
-}
 
-.btn-back {
-  display: inline-block;
-  background: #00d1b2; /* Cor padrão que você usou no portfólio */
-  color: #fff;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 209, 178, 0.2);
-}
+    .section-title {
+        font-size:42px;
+        margin-bottom:15px;
+        color:#111827;
+    }
 
-.btn-back:hover {
-  background: #00b89c;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 209, 178, 0.4);
-}
+    .section-subtitle {
+        color:#666;
+        margin-bottom:60px;
+        font-size:18px;
+    }
 
-/* Ajuste fino de espaçamento no texto do Sobre */
-.about-text p {
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-  color: #4b5563;
-}
+    .service-grid {
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:30px;
+    }
 
+    .card {
+        background:white;
+        padding:35px;
+        border-radius:20px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.08);
+        transition:0.3s;
+    }
+
+    .card:hover {
+        transform:translateY(-10px);
+        box-shadow:0 12px 25px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+        width:100%;
+        height:200px;
+        object-fit:cover;
+        border-radius:15px;
+        margin-bottom:20px;
+    }
+
+    .card h3 {
+        margin-bottom:15px;
+        color:#0d6efd;
+        font-size:24px;
+    }
+
+    .card p {
+        color:#555;
+        line-height:1.6;
+    }
+
+    /* ABOUT */
+    .about {
+        padding:100px 40px;
+        background:#111827;
+        color:white;
+    }
+
+    .about-container {
+        max-width:1200px;
+        margin:auto;
+        display:flex;
+        align-items:center;
+        gap:50px;
+        flex-wrap:wrap;
+    }
+
+    .about-text {
+        flex:1;
+        text-align:left;
+    }
+
+    .about-text h2 {
+        font-size:42px;
+        margin-bottom:20px;
+        color:#ffffff;
+    }
+
+    .about-text p {
+        line-height:1.8;
+        font-size:1.1rem;
+        margin-bottom:20px;
+        color:#e5e7eb; /* Cor de texto mais suave para o fundo escuro */
+    }
+
+    .about-image {
+        flex:1;
+    }
+
+    .about-image img {
+        width:100%;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* ACTIONS & BACK BUTTON */
+    .about-actions {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .btn-back {
+        display: inline-block;
+        background: #0d6efd; /* Ajustado para combinar com a identidade visual azul */
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 40px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+    }
+
+    .btn-back:hover {
+        background: #0b5ed7;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(13, 110, 253, 0.5);
+    }
+
+    /* CONTACT */
+    .contact {
+        padding:100px 40px;
+        text-align:center;
+    }
+
+    .contact-box {
+        max-width:700px;
+        margin:auto;
+        background:white;
+        padding:50px;
+        border-radius:20px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-box h2 {
+        margin-bottom:25px;
+        font-size:38px;
+    }
+
+    .contact-box p {
+        margin:15px 0;
+        font-size:18px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+        position:fixed;
+        bottom:25px;
+        right:25px;
+        background:#25D366;
+        color:white;
+        width:65px;
+        height:65px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:32px;
+        text-decoration:none;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+        transition: 0.3s ease;
+        z-index: 999;
+    }
+
+    .whatsapp:hover {
+        transform: scale(1.1);
+    }
+
+    /* FOOTER */
+    footer {
+        background:#0f172a;
+        color:white;
+        text-align:center;
+        padding:25px;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media(max-width:900px){
+        .hero-text h1{
+            font-size:40px;
+        }
+
+        .hero{
+            text-align:center;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+        .nav-links{
+            display:none;
+        }
+
+        .top-bar{
+            flex-direction:column;
+            text-align:center;
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-actions {
+            text-align: center;
+        }
+    }
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-
 <div class="top-bar">
-
     <span>📍 Avenida Roraima 1000 - Santa Maria</span>
-
     <span>📞 +55 55 99668-9852</span>
-
     <span>📧 nzubeikechukwu25@gmail.com</span>
-
 </div>
 
-<!-- NAVBAR -->
-
 <nav>
-
     <div class="logo">ChrisTech</div>
-
     <div class="nav-links">
         <a href="#">Home</a>
         <a href="#services">Serviços</a>
         <a href="#about">Sobre</a>
         <a href="#contact">Contato</a>
     </div>
-
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
-
     <div class="hero-container">
-
         <div class="hero-text">
-
             <h1>Seu Celular Quebrou? Relaxa, Eu Resolvo.</h1>
-
             <p>
                 Reparos rápidos, baratos e profissionais para celulares,
                 notebooks e computadores.
             </p>
-
             <div class="hero-buttons">
-
-                <a href="#contact" class="btn btn-primary">
-                    Falar Agora
-                </a>
-
-                <a href="#services" class="btn btn-secondary">
-                    Ver Serviços
-                </a>
-
+                <a href="#contact" class="btn btn-primary">Falar Agora</a>
+                <a href="#services" class="btn btn-secondary">Ver Serviços</a>
             </div>
-
         </div>
-
         <div class="hero-image">
-
-            <!-- ADD YOUR MAIN IMAGE HERE -->
-
             <img src="repair.jpg" alt="Repair">
-
         </div>
-
     </div>
-
 </section>
 
-<!-- SERVICES -->
-
 <section class="services" id="services">
-
     <h2 class="section-title">Nossos Serviços</h2>
-
     <p class="section-subtitle">
         Reparos profissionais e suporte técnico completo
     </p>
 
     <div class="service-grid">
-
         <div class="card">
-
-            <!-- ADD PHONE IMAGE -->
-
             <img src="phone-repair.jpg" alt="Phone Repair">
-
             <h3>📱 Reparo de Celular</h3>
-
             <p>
                 Troca de tela, bateria, entrada de carregador,
                 desbloqueio e muito mais.
             </p>
-
         </div>
 
         <div class="card">
-
-            <!-- ADD LAPTOP IMAGE -->
-
             <img src="laptop-repair.jpg" alt="Laptop Repair">
-
             <h3>💻 Reparo de Notebook</h3>
-
             <p>
                 Formatação, upgrades, limpeza,
                 reparos e otimização completa.
             </p>
-
         </div>
 
         <div class="card">
-
-            <!-- ADD SUPPORT IMAGE -->
-
             <img src="support.jpg" alt="Support">
-
             <h3>⚡ Suporte Rápido</h3>
-
             <p>
                 Atendimento rápido, preço de estudante
                 e suporte confiável.
             </p>
-
         </div>
-
     </div>
-
 </section>
 
 <section class="about" id="about">
@@ -518,41 +467,19 @@ footer{
     </div>
 </section>
 
-<!-- CONTACT -->
-
 <section class="contact" id="contact">
-
     <div class="contact-box">
-
         <h2>Entre em Contato</h2>
-
         <p>📞 +55 55 99668-9852</p>
-
         <p>📧 nzubeikechukwu25@gmail.com</p>
-
         <p>📍 Avenida Roraima 1000</p>
-
     </div>
-
 </section>
 
-<!-- WHATSAPP -->
-
-<a class="whatsapp"
-href="https://wa.me/5555996689852">
-
-💬
-
-</a>
-
-<!-- FOOTER -->
+<a class="whatsapp" href="https://wa.me/5555996689852">💬</a>
 
 <footer>
-
-    <p>
-        © 2026 Chris Tech Repair • Todos os direitos reservados
-    </p>
-
+    <p>© 2026 Chris Tech Repair • Todos os direitos reservados</p>
 </footer>
 
 </body>
