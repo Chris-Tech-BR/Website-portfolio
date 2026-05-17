@@ -34,12 +34,21 @@
     .dark { background:#020617; color:white; }
 
     /* THE FIXED RESPONSIVE GRID */
+    /* THE FIXED RESPONSIVE GRID */
     .grid { 
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      grid-template-columns: repeat(3, 1fr); /* Força exatamente 3 colunas por linha */
       align-items: stretch; 
       gap: 25px; 
       margin-top: 50px; 
+      text-align: left; /* Corrige o alinhamento do texto herdado da seção */
+    }
+
+    /* RESPONSIVIDADE PARA TELAS MENORES (TABLETS E CELULARES) */
+    @media screen and (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Quebra linha em telas pequenas */
+      }
     }
 
     /* CARD-LINKS FOR BLOCK WRAPPERS */
