@@ -251,9 +251,9 @@ body {
 </head>
 <body>
 <header class="store-header">
-    <h1>My Store</h1>
+    <h1>Chris Tech & Acessórios</h1>
     <p>
-        Choose the products you want
+        Escolha os produtos que você quer, Entrega no mesmo dia.
     </p>
 </header>
 <main>
@@ -268,7 +268,7 @@ body {
     class="floating-buy-button"
     onclick="openOrderForm()">
 
-    🛒 Buy
+    🛒 Comprar
 
     <span id="cartCount">
         0
@@ -287,14 +287,14 @@ body {
         </button>
 
         <h2>
-            Delivery Information
+           Informações de Entrega
+
         </h2>
         <p>
-            Enter your information and we'll
-            send your order to WhatsApp.
+            Insira suas informações e enviaremos seu pedido pelo WhatsApp.
         </p>
         <label for="customerName">
-            Name
+            Nome
         </label>
         <input
             type="text"
@@ -302,7 +302,7 @@ body {
             placeholder="Your name"
         >
         <label for="customerAddress">
-            Address
+            Endereço
         </label>
         <textarea
             id="customerAddress"
@@ -311,7 +311,7 @@ body {
         <button
             class="whatsapp-button"
             onclick="sendToWhatsApp()">
-            💬 Continue to WhatsApp
+            💬 Continuar para o WhatsApp
         </button>
     </div>
 </div>
@@ -381,8 +381,8 @@ function displayProducts() {
                     class="add-button"
                     onclick="addProduct(${product.id})">
                     ${quantity > 0
-                        ? "✓ Added"
-                        : "Add to order"}
+                        ? "✓ Adicionado"
+                        : "Adicionar ao Pedido"}
                 </button>
                 <div class="quantity">
                     <button
@@ -477,18 +477,18 @@ function sendToWhatsApp() {
         .trim();
      if (!customerName) {
         alert(
-            "Please enter your name."
+            "Por favor, insira seu nome."
         );
         return;
     }
     if (!customerAddress) {
         alert(
-            "Please enter your delivery address."
+            "Por favor, insira seu endereço de entrega."
         );
         return;
     }
     let message =
-        "Hello! I would like to place an order.\n\n";
+        "Olá! Gostaria de fazer um pedido.\n\n";
     message +=
         "*Customer:* " +
         customerName +
