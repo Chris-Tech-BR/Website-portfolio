@@ -1,59 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>My Online Store</title>
-
-
 <style>
-
-/* =========================
-   GENERAL
-========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f5f5f5;
     color: #222;
 }
-
-
-/* =========================
-   HEADER
-========================= */
-
 .store-header {
     background: #111;
     color: white;
     text-align: center;
     padding: 35px 20px;
 }
-
 .store-header h1 {
     font-size: 32px;
     margin-bottom: 8px;
 }
-
 .store-header p {
     color: #ccc;
 }
-
-
-/* =========================
-   PRODUCTS
-========================= */
-
 .products-grid {
     max-width: 1200px;
     margin: 40px auto;
@@ -65,134 +39,78 @@ body {
 
     gap: 25px;
 }
-
-
 .product-card {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-
     box-shadow:
         0 5px 20px rgba(0,0,0,0.08);
-
     transition: 0.2s;
-
     position: relative;
 }
-
 .product-card:hover {
     transform: translateY(-4px);
 }
-
-
 .product-card.selected {
     border: 3px solid #25D366;
 }
-
-
-/* =========================
-   PRODUCT IMAGE
-========================= */
-
 .product-image {
     width: 100%;
     height: 220px;
-
     object-fit: cover;
-
     display: block;
 }
-
-
-/* =========================
-   PRODUCT INFO
-========================= */
-
 .product-info {
     padding: 18px;
 }
-
 .product-name {
     font-size: 20px;
     margin-bottom: 8px;
 }
-
 .product-description {
     font-size: 14px;
     color: #777;
-
     min-height: 40px;
-
     margin-bottom: 12px;
 }
-
 .product-price {
     font-size: 20px;
     font-weight: bold;
-
     margin-bottom: 15px;
 }
-
-
-/* =========================
-   ADD BUTTON
-========================= */
-
 .add-button {
     width: 100%;
-
     border: none;
     border-radius: 10px;
-
     padding: 13px;
-
     background: #111;
     color: white;
-
     font-size: 16px;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
-
 .add-button:hover {
     background: #333;
 }
-
 .product-card.selected .add-button {
     background: #25D366;
 }
-
-
-/* =========================
-   QUANTITY
-========================= */
-
 .quantity {
     display: none;
-
     align-items: center;
     justify-content: space-between;
-
     margin-top: 10px;
 }
-
 .product-card.selected .quantity {
     display: flex;
 }
-
 .quantity button {
     width: 38px;
     height: 38px;
-
     border: none;
     border-radius: 8px;
-
     background: #eee;
-
     font-size: 20px;
-
     cursor: pointer;
 }
 
@@ -200,39 +118,24 @@ body {
     font-weight: bold;
     font-size: 18px;
 }
-
-
-/* =========================
-   FLOATING BUY BUTTON
-========================= */
-
 .floating-buy-button {
     position: fixed;
 
     right: 25px;
     bottom: 25px;
-
     z-index: 1000;
-
     border: none;
     border-radius: 50px;
-
     padding: 16px 22px;
-
     background: #25D366;
     color: white;
-
     font-size: 17px;
     font-weight: bold;
-
     cursor: pointer;
-
     box-shadow:
         0 5px 20px rgba(0,0,0,0.25);
-
     transition: 0.2s;
 }
-
 .floating-buy-button:hover {
     transform: scale(1.05);
 }
@@ -240,233 +143,125 @@ body {
 #cartCount {
     background: white;
     color: #111;
-
     border-radius: 50%;
-
     padding: 3px 8px;
-
     margin-left: 5px;
 }
-
-
-/* =========================
-   MODAL
-========================= */
-
 .modal {
     display: none;
-
     position: fixed;
-
     z-index: 2000;
-
     left: 0;
     top: 0;
-
     width: 100%;
     height: 100%;
-
     background:
         rgba(0,0,0,0.65);
-
     align-items: center;
     justify-content: center;
-
     padding: 20px;
 }
 
 .modal.show {
     display: flex;
 }
-
-
-.modal-content {
+   .modal-content {
     background: white;
-
     width: 100%;
     max-width: 500px;
-
     border-radius: 15px;
-
     padding: 30px;
-
     position: relative;
 }
-
 .modal-content h2 {
     margin-bottom: 10px;
 }
-
 .modal-content p {
     color: #666;
     margin-bottom: 20px;
 }
-
-
-/* =========================
-   CLOSE BUTTON
-========================= */
-
 .close-button {
     position: absolute;
-
     right: 15px;
     top: 10px;
-
     border: none;
-
     background: none;
-
     font-size: 30px;
-
     cursor: pointer;
 }
-
-
-/* =========================
-   FORM
-========================= */
-
 .modal-content label {
-    display: block;
-
+    display: block
     margin-top: 15px;
     margin-bottom: 7px;
-
     font-weight: bold;
 }
-
 .modal-content input,
 .modal-content textarea {
     width: 100%;
-
     border: 1px solid #ddd;
-
     border-radius: 8px;
-
     padding: 13px;
-
     font-size: 16px;
 }
-
 .modal-content textarea {
     height: 100px;
 
     resize: vertical;
 }
-
-
-/* =========================
-   WHATSAPP BUTTON
-========================= */
-
 .whatsapp-button {
     width: 100%;
-
     margin-top: 20px;
-
     padding: 15px;
-
     border: none;
-
     border-radius: 10px;
-
     background: #25D366;
-
     color: white;
-
     font-size: 17px;
-
     font-weight: bold;
-
     cursor: pointer;
 }
-
 .whatsapp-button:hover {
     background: #1ebe5d;
 }
-
-
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 600px) {
-
     .products-grid {
         grid-template-columns:
             repeat(2, 1fr);
-
         gap: 12px;
-
-        padding: 10px;
+       padding: 10px;
     }
-
     .product-image {
         height: 160px;
     }
-
     .product-info {
         padding: 12px;
     }
-
     .product-name {
         font-size: 16px;
     }
-
     .product-price {
         font-size: 17px;
     }
-
     .add-button {
         font-size: 14px;
         padding: 10px;
     }
-
 }
-
 </style>
-
 </head>
-
-
 <body>
-
-
-<!-- =========================
-     STORE HEADER
-========================= -->
-
 <header class="store-header">
-
     <h1>My Store</h1>
-
     <p>
         Choose the products you want
     </p>
-
 </header>
-
-
-
-<!-- =========================
-     PRODUCTS
-========================= -->
-
 <main>
-
     <section
         id="products"
         class="products-grid">
     </section>
-
 </main>
-
-
-
-<!-- =========================
-     FLOATING BUY BUTTON
-========================= -->
 
 <button
     id="buyButton"
@@ -481,440 +276,170 @@ body {
 
 </button>
 
-
-
-<!-- =========================
-     ORDER MODAL
-========================= -->
-
 <div
     id="orderModal"
     class="modal">
-
-
     <div class="modal-content">
-
-
         <button
             class="close-button"
             onclick="closeOrderForm()">
-
             ×
-
         </button>
-
 
         <h2>
             Delivery Information
         </h2>
-
-
         <p>
             Enter your information and we'll
             send your order to WhatsApp.
         </p>
-
-
-
         <label for="customerName">
-
             Name
-
         </label>
-
-
         <input
             type="text"
             id="customerName"
             placeholder="Your name"
         >
-
-
-
         <label for="customerAddress">
-
             Address
-
         </label>
-
-
         <textarea
             id="customerAddress"
             placeholder="Your delivery address"
         ></textarea>
-
-
-
         <button
             class="whatsapp-button"
             onclick="sendToWhatsApp()">
-
             💬 Continue to WhatsApp
-
         </button>
-
-
     </div>
-
 </div>
-
-
-
 <script>
-
-
-/* =====================================================
-   WHATSAPP SETTINGS
-===================================================== */
-
-
-/*
-
-    CHANGE THIS TO YOUR WHATSAPP NUMBER.
-
-    IMPORTANT:
-    Include the country code.
-
-    Brazil example:
-
-    5599999999999
-
-    Do NOT use:
-
-    +
-    spaces
-    ()
-    -
-
-*/
-
-const WHATSAPP_NUMBER = "5555999999999";
-
-
-
-/* =====================================================
-   PRODUCT OBJECT BLUEPRINT
-===================================================== */
-
-
-/*
-
-    THIS IS WHERE YOU ADD YOUR PRODUCTS.
-
-    To create another product,
-    simply copy one of these objects
-    and change its information.
-
-*/
-
-
+const WHATSAPP_NUMBER = "5555996687852";
 const products = [
-
     {
         id: 1,
-
         name: "Black T-Shirt",
-
         description:
             "Comfortable black cotton t-shirt.",
-
         price: 49.90,
-
         image:
             "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"
     },
-
-
     {
         id: 2,
-
         name: "White T-Shirt",
-
         description:
             "Classic white cotton t-shirt.",
-
         price: 49.90,
-
         image:
             "https://images.unsplash.com/photo-1583743814966-8936f37f4678?w=600"
     },
-
-
     {
         id: 3,
-
         name: "Blue Jeans",
-
         description:
             "Classic blue jeans.",
-
         price: 99.90,
-
         image:
             "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600"
     },
-
-
-    /*
-    =====================================================
-    COPY THIS TO ADD ANOTHER PRODUCT
-    =====================================================
-
-    {
-        id: 4,
-
-        name: "Red Shoes",
-
-        description:
-            "Comfortable red shoes.",
-
-        price: 149.90,
-
-        image:
-            "YOUR IMAGE URL HERE"
-    }
-
-    */
-
 ];
-
-
-
-/* =====================================================
-   CART
-===================================================== */
-
 let cart = {};
-
-
-
-/* =====================================================
-   DISPLAY PRODUCTS
-===================================================== */
-
 function displayProducts() {
-
     const container =
         document.getElementById("products");
-
-
     container.innerHTML = "";
-
-
     products.forEach(product => {
-
-
         const quantity =
             cart[product.id] || 0;
-
-
         const card =
             document.createElement("div");
-
-
         card.className =
             "product-card";
-
-
         if (quantity > 0) {
-
             card.classList.add("selected");
-
         }
-
-
         card.innerHTML = `
-
             <img
                 class="product-image"
                 src="${product.image}"
                 alt="${product.name}"
             >
-
-
             <div class="product-info">
-
-
                 <h2 class="product-name">
-
                     ${product.name}
-
                 </h2>
-
-
                 <p class="product-description">
-
                     ${product.description}
-
                 </p>
-
-
                 <div class="product-price">
-
                     R$ ${product.price.toFixed(2)}
-
                 </div>
-
-
                 <button
                     class="add-button"
                     onclick="addProduct(${product.id})">
-
                     ${quantity > 0
                         ? "✓ Added"
                         : "Add to order"}
-
                 </button>
-
-
                 <div class="quantity">
-
-
                     <button
                         onclick="
                             changeQuantity(
                                 ${product.id},
-                                -1
-                            )
-                        ">
-
-                        −
-
+                                -1)"> −
                     </button>
-
-
                     <span>
-
                         ${quantity}
-
                     </span>
-
-
                     <button
                         onclick="
                             changeQuantity(
-                                ${product.id},
-                                1
-                            )
-                        ">
-
-                        +
-
-                    </button>
-
-
+                                ${product.id},1)+ 
+                                </button>
                 </div>
-
-
             </div>
-
         `;
-
-
         container.appendChild(card);
-
     });
-
-
     updateCartCount();
-
 }
-
-
-
-/* =====================================================
-   ADD PRODUCT
-===================================================== */
-
 function addProduct(productId) {
-
-
     if (!cart[productId]) {
-
         cart[productId] = 1;
-
     }
-
     else {
-
         cart[productId]++;
-
     }
-
-
     displayProducts();
-
 }
-
-
-
-/* =====================================================
-   CHANGE QUANTITY
-===================================================== */
-
 function changeQuantity(
     productId,
     amount
 ) {
-
-
     if (!cart[productId]) {
-
         cart[productId] = 0;
-
     }
-
-
     cart[productId] += amount;
-
-
     if (cart[productId] <= 0) {
-
         delete cart[productId];
-
     }
-
-
     displayProducts();
-
 }
-
-
-
-/* =====================================================
-   UPDATE CART COUNT
-===================================================== */
-
 function updateCartCount() {
-
-
     let total = 0;
-
-
     Object.values(cart).forEach(
         quantity => {
-
             total += quantity;
-
         }
     );
-
-
     document
         .getElementById("cartCount")
         .textContent = total;
-
 }
-
-
-
-/* =====================================================
-   OPEN ORDER FORM
-===================================================== */
-
 function openOrderForm() {
-
-
     const totalItems =
         Object.values(cart)
         .reduce(
@@ -922,146 +447,70 @@ function openOrderForm() {
                 sum + quantity,
             0
         );
-
-
     if (totalItems === 0) {
-
         alert(
             "Please select at least one product."
         );
-
         return;
-
     }
-
-
     document
         .getElementById("orderModal")
         .classList
         .add("show");
-
 }
-
-
-
-/* =====================================================
-   CLOSE ORDER FORM
-===================================================== */
-
 function closeOrderForm() {
-
-
     document
         .getElementById("orderModal")
         .classList
         .remove("show");
-
 }
-
-
-
-/* =====================================================
-   SEND ORDER TO WHATSAPP
-===================================================== */
-
 function sendToWhatsApp() {
-
-
     const customerName =
         document
         .getElementById("customerName")
         .value
         .trim();
-
-
     const customerAddress =
         document
         .getElementById("customerAddress")
         .value
         .trim();
-
-
-
-    /* Check name */
-
-    if (!customerName) {
-
+     if (!customerName) {
         alert(
             "Please enter your name."
         );
-
         return;
-
     }
-
-
-
-    /* Check address */
-
     if (!customerAddress) {
-
         alert(
             "Please enter your delivery address."
         );
-
         return;
-
     }
-
-
-
-    /* =================================================
-       CREATE WHATSAPP MESSAGE
-    ================================================= */
-
-
     let message =
         "Hello! I would like to place an order.\n\n";
-
-
     message +=
         "*Customer:* " +
         customerName +
         "\n";
-
-
     message +=
         "*Address:* " +
         customerAddress +
         "\n\n";
-
-
     message +=
         "*ORDER:*\n";
-
-
     let total = 0;
-
-
-
-    /* Add selected products */
-
     products.forEach(product => {
-
-
         const quantity =
             cart[product.id];
-
-
         if (
             quantity &&
             quantity > 0
         ) {
-
-
             const productTotal =
                 product.price *
                 quantity;
-
-
             total += productTotal;
-
-
             message +=
                 "• " +
                 quantity +
@@ -1070,55 +519,23 @@ function sendToWhatsApp() {
                 " - R$ " +
                 productTotal.toFixed(2) +
                 "\n";
-
         }
-
     });
-
-
-
-    /* Add total */
 
     message +=
         "\n*Total:* R$ " +
         total.toFixed(2);
-
-
-
-    /* =================================================
-       CREATE WHATSAPP URL
-    ================================================= */
-
-
     const whatsappURL =
         "https://wa.me/" +
         WHATSAPP_NUMBER +
         "?text=" +
         encodeURIComponent(message);
-
-
-
-    /* Open WhatsApp */
-
     window.open(
         whatsappURL,
         "_blank"
     );
-
 }
-
-
-
-/* =====================================================
-   START STORE
-===================================================== */
-
 displayProducts();
-
-
 </script>
-
-
 </body>
-
 </html>
