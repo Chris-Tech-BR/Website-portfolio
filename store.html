@@ -485,15 +485,15 @@ function sendToWhatsApp() {
     let message =
         "Olá! Gostaria de fazer um pedido.\n\n";
     message +=
-        "*Customer:* " +
+        "*Cliente:* " +
         customerName +
         "\n";
     message +=
-        "*Address:* " +
+        "*Endereço de entrega:* " +
         customerAddress +
         "\n\n";
     message +=
-        "*ORDER:*\n";
+        "*PEDIDO:*\n";
     let total = 0;
     products.forEach(product => {
         const quantity =
