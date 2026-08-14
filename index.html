@@ -1,269 +1,494 @@
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio | Desenvolvedor</title>
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Chris Tech Repair</title>
+
+<style>
     /* RESET */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, Helvetica, sans-serif; color:#1f2937; line-height:1.6; background:#ffffff; }
-    a { text-decoration: none; }
-    .container { width:90%; max-width:1100px; margin:auto; }
+    * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    html {
+        scroll-behavior:smooth;
+    }
+
+    body {
+        background:#f5f7fb;
+        color:#222;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+        background:#111827;
+        color:white;
+        padding:12px 40px;
+        display:flex;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        font-size:14px;
+    }
+
+    .top-bar span {
+        margin:5px 0;
+    }
+
+    /* NAVBAR */
+    nav {
+        background:white;
+        padding:18px 40px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        box-shadow:0 2px 10px rgba(0,0,0,0.08);
+        position:sticky;
+        top:0;
+        z-index:1000;
+    }
+
+    .logo {
+        font-size:28px;
+        font-weight:bold;
+        color:#0d6efd;
+    }
+
+    .nav-links {
+        display:flex;
+        gap:25px;
+    }
+
+    .nav-links a {
+        text-decoration:none;
+        color:#333;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .nav-links a:hover {
+        color:#0d6efd;
+    }
 
     /* HERO */
-    .hero { padding:80px 20px; background: linear-gradient(135deg,#1f1f1f,#3b3b3b); color:#fff; }
-    .hero-content { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; max-width:1200px; margin:auto; }
-    .hero-text { flex:1 1 500px; margin-right:20px; }
-    .hero-text h1 { font-size:2.8rem; margin-bottom:15px; }
-    .hero-text h1 span { color:#00d1b2; }
-    .hero-text h2 { font-size:1.8rem; margin-bottom:15px; color:#fff; font-weight:400; }
-    .hero-text p { font-size:1.1rem; margin-bottom:20px; line-height:1.6; }
-    .hero-skills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
-    .hero-skills span { background:#00d1b2; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.9rem; }
-    .btn { display:inline-block; background:#ff6b6b; color:#fff; padding:12px 25px; border-radius:30px; font-weight:bold; transition:all 0.3s ease; }
-    .btn:hover { background:#ff4757; }
-
-    .hero-image { flex:1 1 400px; text-align:center; max-width:400px; margin:auto; }
-    .hero-image img { width:100%; height:auto; border-radius:15px; box-shadow:0 12px 25px rgba(0,0,0,0.3); object-fit:cover; }
-
-    /* SECTIONS */
-    .section { padding:80px 0; text-align:center; }
-    .section h2 { font-size:2.2rem; margin-bottom:25px; }
-    .section p { max-width:700px; margin:auto; }
-    .light { background:#f8fafc; }
-    .dark { background:#020617; color:white; }
-
-    /* THE FIXED RESPONSIVE GRID */
-    /* THE FIXED RESPONSIVE GRID */
-    .grid { 
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* Força exatamente 3 colunas por linha */
-      align-items: stretch; 
-      gap: 25px; 
-      margin-top: 50px; 
-      text-align: left; /* Corrige o alinhamento do texto herdado da seção */
+    .hero {
+        min-height:90vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:80px 40px;
+        background:linear-gradient(to right,#0d6efd,#2563eb);
+        color:white;
     }
 
-    /* RESPONSIVIDADE PARA TELAS MENORES (TABLETS E CELULARES) */
-    @media screen and (max-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Quebra linha em telas pequenas */
-      }
+    .hero-container {
+        max-width:1200px;
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:50px;
+        flex-wrap:wrap;
     }
 
-    /* CARD-LINKS FOR BLOCK WRAPPERS */
-    .card-link {
-      text-decoration: none;
-      color: inherit;
-      display: flex; /* Forces the link container to take the full grid height */
-    }
-    
-    .card-link .card, .card-link .project {
-      width: 100%; /* Ensures inner blocks stretch perfectly inside clickable anchors */
+    .hero-text {
+        flex:1;
     }
 
-    /* BLOCKS (CARDS & PROJECTS) */
-    .card, .project { 
-      background: white; 
-      padding: 35px 25px; 
-      border-radius: 10px; 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.06); 
-      transition: transform 0.3s ease, box-shadow 0.3s ease; 
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
-    
-    .card h3, .project h3 { 
-      margin-bottom: 12px; 
-      color: #0f172a; 
-      font-size: 1.4rem;
+    .hero-text h1 {
+        font-size:55px;
+        margin-bottom:20px;
+        line-height:1.1;
     }
 
-    .card p, .project p {
-      color: #4b5563;
-      font-size: 1rem;
-      margin-bottom: 15px;
+    .hero-text p {
+        font-size:20px;
+        margin-bottom:30px;
+        line-height:1.6;
     }
 
-    /* HOVER INTERACTIONS EFFECTS */
-    .card:hover, .project:hover, .card-link:hover .card, .card-link:hover .project { 
-      transform: translateY(-8px); 
-      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    .hero-buttons {
+        display:flex;
+        gap:15px;
+        flex-wrap:wrap;
     }
-    
-    .link { 
-      display: inline-block; 
-      margin-top: auto; /* Pushes links neatly to the bottom of the block */
-      color: #0284c7; 
-      font-weight: bold; 
-      transition: color 0.2s ease;
+
+    .btn {
+        padding:15px 28px;
+        border-radius:40px;
+        text-decoration:none;
+        font-weight:bold;
+        transition:0.3s;
     }
-    .link:hover { color: #0369a1; }
 
-    /* FORM */
-    .form-container { max-width:500px; margin:40px auto; position:relative; background:#1f2937; padding:30px; border-radius:15px; box-shadow:0 12px 25px rgba(0,0,0,0.2); }
-    .form-container input, .form-container textarea { width:100%; padding:14px 18px; margin-bottom:15px; border-radius:8px; border:none; outline:none; font-size:1rem; background:#f8fafc; transition:all 0.3s ease; }
-    .form-container input:focus, .form-container textarea:focus { box-shadow:0 0 0 3px #00d1b2; }
-    .form-container textarea { resize:none; min-height:120px; }
-    .form-container button { width:100%; padding:14px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; background:#00d1b2; color:white; font-size:1rem; transition:all 0.3s ease; }
-    .form-container button:hover { background:#00b89c; }
+    .btn-primary {
+        background:white;
+        color:#0d6efd;
+    }
 
-    /* Popup */
-    #form-popup { text-align:center; font-weight:bold; font-size:14px; padding:10px 15px; border-radius:8px; box-shadow:0 6px 15px rgba(0,0,0,0.2); position:absolute; top:-60px; left:50%; transform:translateX(-50%); opacity:0; transition:all 0.5s ease; z-index:10; }
+    .btn-primary:hover {
+        transform:translateY(-4px);
+        box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary {
+        border:2px solid white;
+        color:white;
+    }
+
+    .btn-secondary:hover {
+        background:white;
+        color:#0d6efd;
+    }
+
+    .hero-image {
+        flex:1;
+        text-align:center;
+    }
+
+    .hero-image img {
+        width:100%;
+        max-width:500px;
+        border-radius:20px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    /* SERVICES */
+    .services {
+        padding:100px 40px;
+        text-align:center;
+    }
+
+    .section-title {
+        font-size:42px;
+        margin-bottom:15px;
+        color:#111827;
+    }
+
+    .section-subtitle {
+        color:#666;
+        margin-bottom:60px;
+        font-size:18px;
+    }
+
+    .service-grid {
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:30px;
+    }
+
+    .card {
+        background:white;
+        padding:35px;
+        border-radius:20px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.08);
+        transition:0.3s;
+    }
+
+    .card:hover {
+        transform:translateY(-10px);
+        box-shadow:0 12px 25px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+        width:100%;
+        height:200px;
+        object-fit:cover;
+        border-radius:15px;
+        margin-bottom:20px;
+    }
+
+    .card h3 {
+        margin-bottom:15px;
+        color:#0d6efd;
+        font-size:24px;
+    }
+
+    .card p {
+        color:#555;
+        line-height:1.6;
+    }
+
+    /* ABOUT */
+    .about {
+        padding:100px 40px;
+        background:#111827;
+        color:white;
+    }
+
+    .about-container {
+        max-width:1200px;
+        margin:auto;
+        display:flex;
+        align-items:center;
+        gap:50px;
+        flex-wrap:wrap;
+    }
+
+    .about-text {
+        flex:1;
+        text-align:left;
+    }
+
+    .about-text h2 {
+        font-size:42px;
+        margin-bottom:20px;
+        color:#ffffff;
+    }
+
+    .about-text p {
+        line-height:1.8;
+        font-size:1.1rem;
+        margin-bottom:20px;
+        color:#e5e7eb;
+    }
+
+    .about-image {
+        flex:1;
+    }
+
+    .about-image img {
+        width:100%;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* ACTIONS & BACK BUTTON */
+    .about-actions {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .btn-back {
+        display: inline-block;
+        background: #0d6efd;
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 40px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+    }
+
+    .btn-back:hover {
+        background: #0b5ed7;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(13, 110, 253, 0.5);
+    }
+
+    /* CONTACT */
+    .contact {
+        padding:100px 40px;
+        text-align:center;
+    }
+
+    .contact-box {
+        max-width:700px;
+        margin:auto;
+        background:white;
+        padding:50px;
+        border-radius:20px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-box h2 {
+        margin-bottom:25px;
+        font-size:38px;
+    }
+
+    .contact-box p {
+        margin:15px 0;
+        font-size:18px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+        position:fixed;
+        bottom:25px;
+        right:25px;
+        background:#25D366;
+        color:white;
+        width:65px;
+        height:65px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:32px;
+        text-decoration:none;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+        transition: 0.3s ease;
+        z-index: 999;
+    }
+
+    .whatsapp:hover {
+        transform: scale(1.1);
+    }
 
     /* FOOTER */
-    .footer { background:#020617; color:#9ca3af; text-align:center; padding:20px 0; }
-    .info { margin-top:20px; font-size:0.9rem; }
-
-    /* RESPONSIVE */
-    @media screen and (max-width:900px) {
-      .hero-content { flex-direction:column; text-align:center; }
-      .hero-text { margin-right:0; }
-      .hero-image { margin-top:30px; }
+    footer {
+        background:#0f172a;
+        color:white;
+        text-align:center;
+        padding:25px;
     }
-  </style>
+
+    /* MOBILE RESPONSIVE */
+    @media(max-width:900px){
+        .hero-text h1{
+            font-size:40px;
+        }
+
+        .hero{
+            text-align:center;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+        .nav-links{
+            display:none;
+        }
+
+        .top-bar{
+            flex-direction:column;
+            text-align:center;
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-actions {
+            text-align: center;
+        }
+    }
+</style>
 </head>
+
 <body>
 
-  <header class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Olá, eu sou Nzube Ikechukwu <span>Desenvolvedor Web & App</span> 👋</h1>
-        <p>Ajudo empresas a crescer online, criar experiências incríveis para clientes e automatizar processos com inteligência artificial.</p>
-        <div class="hero-skills">
-          <span>🌐 Web Development</span>
-          <span>📱 Mobile Apps</span>
-          <span>🤖 AI Solutions</span>
+<div class="top-bar">
+    <span>📍 Avenida Roraima 1000 - Santa Maria</span>
+    <span><a href="redirect.html" style="color: inherit; text-decoration: none;">📞 +55 55 99668-9852</a></span>
+    <span>📧christech.sm@gmail.com</span>
+</div>
+
+<nav>
+    <div class="logo">ChrisTech</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#services">Serviços</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contato</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Seu Celular Quebrou? Relaxa, Eu Resolvo.</h1>
+            <p>
+                Reparos rápidos, baratos e profissionais para celulares,
+                notebooks e computadores.
+            </p>
+            <div class="hero-buttons">
+                <a href="redirect.html" class="btn btn-primary">Falar Agora</a>
+                <a href="#services" class="btn btn-secondary">Ver Serviços</a>
+            </div>
         </div>
-         <h2>Para Criação de sites, apps e soluções com IA</h2>
-        <a href="#contato" class="btn">Fale comigo</a>
-      </div>
-      <div class="hero-image">
-        <img src="profile.jpg" alt="Desenvolvedor Web e App" />
-      </div>
+        <div class="hero-image">
+            <img src="repair.jpg" alt="Repair">
+        </div>
     </div>
-  </header>
+</section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Sobre mim</h2>
-      <p>Desenvolvo sites modernos, aplicativos personalizados e soluções com Inteligência Artificial. 
-      Também gero resultados para empresas através de publicidade digital, ajudando a atrair clientes, 
-      aumentar vendas e impulsionar o crescimento do negócio.</p>
-    </div>
-  </section>
+<section class="services" id="services">
+    <h2 class="section-title">Nossos Serviços</h2>
+    <p class="section-subtitle">
+        Reparos profissionais e suporte técnico completo
+    </p>
 
-  <section class="section light">
-    <div class="container">
-      <h2>Serviços</h2>
-      <div class="grid">
-        <a href="chrisTech.html" class="card-link">
-          <div class="card">
-            <h3>🌐 Sites Profissionais</h3>
-            <p>Sites rápidos, responsivos e com design moderno.</p>
-          </div>
-        </a>
+    <a href="redirect.html"><div class="service-grid">
         <div class="card">
-          <h3>📱 Aplicativos</h3>
-          <p>Apps sob medida para negócios e startups.</p>
-        </div>
+            <img src="phone-repair.jpg" alt="Phone Repair">
+            <h3>📱 Reparo de Celular</h3>
+            <p>
+                Troca de tela, bateria, entrada de carregador,
+                desbloqueio e muito mais.
+            </p>
+        </div></a>
+
         <div class="card">
-          <h3>🤖 Inteligência Artificial</h3>
-          <p>Automação, chatbots e integração com IA.</p>
+            <img src="laptop-repair.jpg" alt="Laptop Repair">
+            <h3>💻 Reparo de Notebook</h3>
+            <p>
+                Formatação, upgrades, limpeza,
+                reparos e otimização completa.
+            </p>
         </div>
-      </div>
+
+        <a href="store.html"><div class="card">
+            <img src="loja.webp" alt="Loja">
+            <h3>🛒 Loja online</h3></h3>
+            <p>
+                Atendimento rápido, preço de estudante
+                e suporte confiável.
+            </p>
+        </div></a>
     </div>
-  </section>
+</section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Projetos</h2>
-      <div class="grid">
-        <div class="project">
-          <h3>Site Institucional</h3>
-          <p>Website profissional para empresas.</p>
-          <a href="#" class="link">Ver projeto</a>
+<section class="about" id="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>Sobre Chris Tech</h2>
+            <p>
+                A Chris Tech oferece serviços de manutenção para celulares, notebooks e computadores <br><br>
+                Além do desenvolvimento de sites, aplicativos e soluções com Inteligência Artificial.
+            <p>
+               Trabalhamos para entregar qualidade, praticidade e confiança, com soluções sob medida para cada necessidade garantindo que seus dispositivos funcionem perfeitamente, sem enrolação e com preço acessível.
+            </p>
+            </p>
+            
+            <div class="about-actions">
+                <a href="index.html" class="btn-back">⬅️ Ver o Currículo Principal</a>
+            </div>
         </div>
-        <div class="project">
-          <h3>Sistema com IA</h3>
-          <p>Automação e atendimento inteligente.</p>
-          <a href="#" class="link">Ver projeto</a>
-        </div>
-        <div class="project">
-          <h3>App de Negócios</h3>
-          <p>Aplicativo para gestão e vendas.</p>
-          <a href="#" class="link">Ver projeto</a>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section id="contato" class="section dark">
-    <div class="container">
-      <h2>Contato</h2>
-      <div class="form-container">
-        <form id="contact-form">
-          <input type="text" name="name" placeholder="Seu nome" required />
-          <input type="email" name="email" placeholder="Seu e-mail" required />
-          <textarea name="message" placeholder="Sua mensagem" required></textarea>
-          <button type="submit">Enviar mensagem</button>
-        </form>
-        <div id="form-popup"></div>
-      </div>
-      <p class="info">
-        📧 Email: nzubeikechukwu25@gmail.com <br>
-        📱 WhatsApp: +55 (55) 996689852
-      </p>
+<section class="contact" id="contact">
+    <div class="contact-box">
+        <h2>Entre em Contato</h2>
+        <p><a href="redirect.html" style="color: #0d6efd; text-decoration: none; font-weight: bold;">📞 +55 55 99668-9852</a></p>
+        <p>📧 christech.sm@gmail.com</p>
+        <p>📍 Avenida Roraima 1000</p>
     </div>
-  </section>
+</section>
 
-  <footer class="footer">
-    <p>© 2026 • Desenvolvedor Web & App</p>
-  </footer>
+<a class="whatsapp" href="redirect.html">💬</a>
 
-  <script>
-    const popup = document.getElementById("form-popup");
-    const form = document.getElementById("contact-form");
-
-    form.addEventListener("submit", async function(e){
-      e.preventDefault();
-      const data = new FormData(form);
-
-      try{
-        const response = await fetch("https://formspree.io/f/xeelzjkw", {
-          method:"POST",
-          body:data,
-          headers:{ Accept:"application/json" }
-        });
-
-        if(response.ok){
-          form.reset();
-          popup.innerText = "✅ Mensagem enviada com sucesso!";
-          popup.style.background = "#4CAF50";
-          popup.style.color = "#fff";
-          popup.style.opacity = "1";
-          popup.style.display = "block";
-
-          setTimeout(()=>{
-            popup.style.opacity="0";
-            setTimeout(()=>popup.style.display="none",500);
-          },3000);
-        }else{
-          popup.innerText="❌ Erro ao enviar. Tente novamente.";
-          popup.style.background="#f44336";
-          popup.style.display="block";
-          popup.style.opacity="1";
-          setTimeout(()=>{popup.style.opacity="0"; setTimeout(()=>popup.style.display="none",500);},3000);
-        }
-      }catch(error){
-        alert("❌ Erro de conexão. Tente novamente.");
-      }
-    });
-  </script>
+<footer>
+    <p>© 2026 Chris Tech Repair • Todos os direitos reservados</p>
+</footer>
 
 </body>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8LWKJB76ZL">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8LWKJB76ZL');
+</script>
+</body>
+    
 </html>
