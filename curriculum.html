@@ -1,0 +1,269 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio | Desenvolvedor</title>
+  <style>
+    /* RESET */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; color:#1f2937; line-height:1.6; background:#ffffff; }
+    a { text-decoration: none; }
+    .container { width:90%; max-width:1100px; margin:auto; }
+
+    /* HERO */
+    .hero { padding:80px 20px; background: linear-gradient(135deg,#1f1f1f,#3b3b3b); color:#fff; }
+    .hero-content { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; max-width:1200px; margin:auto; }
+    .hero-text { flex:1 1 500px; margin-right:20px; }
+    .hero-text h1 { font-size:2.8rem; margin-bottom:15px; }
+    .hero-text h1 span { color:#00d1b2; }
+    .hero-text h2 { font-size:1.8rem; margin-bottom:15px; color:#fff; font-weight:400; }
+    .hero-text p { font-size:1.1rem; margin-bottom:20px; line-height:1.6; }
+    .hero-skills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+    .hero-skills span { background:#00d1b2; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.9rem; }
+    .btn { display:inline-block; background:#ff6b6b; color:#fff; padding:12px 25px; border-radius:30px; font-weight:bold; transition:all 0.3s ease; }
+    .btn:hover { background:#ff4757; }
+
+    .hero-image { flex:1 1 400px; text-align:center; max-width:400px; margin:auto; }
+    .hero-image img { width:100%; height:auto; border-radius:15px; box-shadow:0 12px 25px rgba(0,0,0,0.3); object-fit:cover; }
+
+    /* SECTIONS */
+    .section { padding:80px 0; text-align:center; }
+    .section h2 { font-size:2.2rem; margin-bottom:25px; }
+    .section p { max-width:700px; margin:auto; }
+    .light { background:#f8fafc; }
+    .dark { background:#020617; color:white; }
+
+    /* THE FIXED RESPONSIVE GRID */
+    /* THE FIXED RESPONSIVE GRID */
+    .grid { 
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Força exatamente 3 colunas por linha */
+      align-items: stretch; 
+      gap: 25px; 
+      margin-top: 50px; 
+      text-align: left; /* Corrige o alinhamento do texto herdado da seção */
+    }
+
+    /* RESPONSIVIDADE PARA TELAS MENORES (TABLETS E CELULARES) */
+    @media screen and (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Quebra linha em telas pequenas */
+      }
+    }
+
+    /* CARD-LINKS FOR BLOCK WRAPPERS */
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex; /* Forces the link container to take the full grid height */
+    }
+    
+    .card-link .card, .card-link .project {
+      width: 100%; /* Ensures inner blocks stretch perfectly inside clickable anchors */
+    }
+
+    /* BLOCKS (CARDS & PROJECTS) */
+    .card, .project { 
+      background: white; 
+      padding: 35px 25px; 
+      border-radius: 10px; 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .card h3, .project h3 { 
+      margin-bottom: 12px; 
+      color: #0f172a; 
+      font-size: 1.4rem;
+    }
+
+    .card p, .project p {
+      color: #4b5563;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    /* HOVER INTERACTIONS EFFECTS */
+    .card:hover, .project:hover, .card-link:hover .card, .card-link:hover .project { 
+      transform: translateY(-8px); 
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+    
+    .link { 
+      display: inline-block; 
+      margin-top: auto; /* Pushes links neatly to the bottom of the block */
+      color: #0284c7; 
+      font-weight: bold; 
+      transition: color 0.2s ease;
+    }
+    .link:hover { color: #0369a1; }
+
+    /* FORM */
+    .form-container { max-width:500px; margin:40px auto; position:relative; background:#1f2937; padding:30px; border-radius:15px; box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+    .form-container input, .form-container textarea { width:100%; padding:14px 18px; margin-bottom:15px; border-radius:8px; border:none; outline:none; font-size:1rem; background:#f8fafc; transition:all 0.3s ease; }
+    .form-container input:focus, .form-container textarea:focus { box-shadow:0 0 0 3px #00d1b2; }
+    .form-container textarea { resize:none; min-height:120px; }
+    .form-container button { width:100%; padding:14px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; background:#00d1b2; color:white; font-size:1rem; transition:all 0.3s ease; }
+    .form-container button:hover { background:#00b89c; }
+
+    /* Popup */
+    #form-popup { text-align:center; font-weight:bold; font-size:14px; padding:10px 15px; border-radius:8px; box-shadow:0 6px 15px rgba(0,0,0,0.2); position:absolute; top:-60px; left:50%; transform:translateX(-50%); opacity:0; transition:all 0.5s ease; z-index:10; }
+
+    /* FOOTER */
+    .footer { background:#020617; color:#9ca3af; text-align:center; padding:20px 0; }
+    .info { margin-top:20px; font-size:0.9rem; }
+
+    /* RESPONSIVE */
+    @media screen and (max-width:900px) {
+      .hero-content { flex-direction:column; text-align:center; }
+      .hero-text { margin-right:0; }
+      .hero-image { margin-top:30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Olá, eu sou Nzube Ikechukwu <span>Desenvolvedor Web & App</span> 👋</h1>
+        <p>Ajudo empresas a crescer online, criar experiências incríveis para clientes e automatizar processos com inteligência artificial.</p>
+        <div class="hero-skills">
+          <span>🌐 Web Development</span>
+          <span>📱 Mobile Apps</span>
+          <span>🤖 AI Solutions</span>
+        </div>
+         <h2>Para Criação de sites, apps e soluções com IA</h2>
+        <a href="#contato" class="btn">Fale comigo</a>
+      </div>
+      <div class="hero-image">
+        <img src="profile.jpg" alt="Desenvolvedor Web e App" />
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h2>Sobre mim</h2>
+      <p>Desenvolvo sites modernos, aplicativos personalizados e soluções com Inteligência Artificial. 
+      Também gero resultados para empresas através de publicidade digital, ajudando a atrair clientes, 
+      aumentar vendas e impulsionar o crescimento do negócio.</p>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <h2>Serviços</h2>
+      <div class="grid">
+        <a href="chrisTech.html" class="card-link">
+          <div class="card">
+            <h3>🌐 Sites Profissionais</h3>
+            <p>Sites rápidos, responsivos e com design moderno.</p>
+          </div>
+        </a>
+        <div class="card">
+          <h3>📱 Aplicativos</h3>
+          <p>Apps sob medida para negócios e startups.</p>
+        </div>
+        <div class="card">
+          <h3>🤖 Inteligência Artificial</h3>
+          <p>Automação, chatbots e integração com IA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Projetos</h2>
+      <div class="grid">
+        <div class="project">
+          <h3>Site Institucional</h3>
+          <p>Website profissional para empresas.</p>
+          <a href="#" class="link">Ver projeto</a>
+        </div>
+        <div class="project">
+          <h3>Sistema com IA</h3>
+          <p>Automação e atendimento inteligente.</p>
+          <a href="#" class="link">Ver projeto</a>
+        </div>
+        <div class="project">
+          <h3>App de Negócios</h3>
+          <p>Aplicativo para gestão e vendas.</p>
+          <a href="#" class="link">Ver projeto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="section dark">
+    <div class="container">
+      <h2>Contato</h2>
+      <div class="form-container">
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Seu nome" required />
+          <input type="email" name="email" placeholder="Seu e-mail" required />
+          <textarea name="message" placeholder="Sua mensagem" required></textarea>
+          <button type="submit">Enviar mensagem</button>
+        </form>
+        <div id="form-popup"></div>
+      </div>
+      <p class="info">
+        📧 Email: nzubeikechukwu25@gmail.com <br>
+        📱 WhatsApp: +55 (55) 996689852
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 • Desenvolvedor Web & App</p>
+  </footer>
+
+  <script>
+    const popup = document.getElementById("form-popup");
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+
+      try{
+        const response = await fetch("https://formspree.io/f/xeelzjkw", {
+          method:"POST",
+          body:data,
+          headers:{ Accept:"application/json" }
+        });
+
+        if(response.ok){
+          form.reset();
+          popup.innerText = "✅ Mensagem enviada com sucesso!";
+          popup.style.background = "#4CAF50";
+          popup.style.color = "#fff";
+          popup.style.opacity = "1";
+          popup.style.display = "block";
+
+          setTimeout(()=>{
+            popup.style.opacity="0";
+            setTimeout(()=>popup.style.display="none",500);
+          },3000);
+        }else{
+          popup.innerText="❌ Erro ao enviar. Tente novamente.";
+          popup.style.background="#f44336";
+          popup.style.display="block";
+          popup.style.opacity="1";
+          setTimeout(()=>{popup.style.opacity="0"; setTimeout(()=>popup.style.display="none",500);},3000);
+        }
+      }catch(error){
+        alert("❌ Erro de conexão. Tente novamente.");
+      }
+    });
+  </script>
+
+</body>
+</html>
