@@ -71,7 +71,36 @@ nav {
         color:#0d6efd;
     }
 
-    
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.left-arrow {
+    left: 15px;
+}
+
+.right-arrow {
+    right: 15px;
+}    
 .store-header {
     background: #111;
     color: white;
@@ -310,7 +339,9 @@ nav {
 </head>
 <body>
 <header class="top-bar">
+    <button class="arrow left-arrow" onclick="previousImage()">&#10094;</button>
     <img src="images/adschristech.png" alt="Phone Repair">
+    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button>
 </header>
 <nav>
     <div class="logo">Chris Tech & Acessórios </div>
@@ -406,6 +437,37 @@ const products = [
     },
 ];
 let cart = {};
+    const images = [
+        "images/header1.jpg",
+        "images/header2.jpg",
+        "images/header3.jpg"
+    ];
+
+    let currentImage = 0;
+
+    function showImage() {
+        document.getElementById("headerImage").src = images[currentImage];
+    }
+
+    function nextImage() {
+        currentImage++;
+
+        if (currentImage >= images.length) {
+            currentImage = 0;
+        }
+
+        showImage();
+    }
+
+    function previousImage() {
+        currentImage--;
+
+        if (currentImage < 0) {
+            currentImage = images.length - 1;
+        }
+
+        showImage();
+    }
 function displayProducts() {
     const container =
         document.getElementById("products");
