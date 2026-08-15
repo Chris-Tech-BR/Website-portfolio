@@ -15,6 +15,56 @@ body {
     background: #f5f5f5;
     color: #222;
 }
+    .top-bar {
+        background:#111827;
+        color:white;
+        padding:12px 40px;
+        display:flex;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        font-size:14px;
+    }
+
+    .top-bar span {
+        margin:5px 0;
+    }
+
+    /* NAVBAR */
+    nav {
+        background:white;
+        padding:18px 40px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        box-shadow:0 2px 10px rgba(0,0,0,0.08);
+        position:sticky;
+        top:0;
+        z-index:1000;
+    }
+
+    .logo {
+        font-size:28px;
+        font-weight:bold;
+        color:#0d6efd;
+    }
+
+    .nav-links {
+        display:flex;
+        gap:25px;
+    }
+
+    .nav-links a {
+        text-decoration:none;
+        color:#333;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .nav-links a:hover {
+        color:#0d6efd;
+    }
+
+    
 .store-header {
     background: #111;
     color: white;
@@ -257,17 +307,22 @@ body {
 </style>
 </head>
 <body>
-<header class="store-header">
-    <div class="top-bar">
+<header class="top-bar">
     <span>📍 Avenida Roraima 1000 - Santa Maria</span>
     <span><a href="redirect.html" style="color: inherit; text-decoration: none;">📞 +55 55 99668-9852</a></span>
     <span>📧christech.sm@gmail.com</span>
-</div>
-    <h1>Chris Tech & Acessórios</h1>
-    <p>
-        Escolha os produtos que você quer, Entrega no mesmo dia.
-    </p>
 </header>
+<nav>
+    <div class="">Chris Tech & Acessórios <p>
+        Escolha os produtos que você quer, Entrega no mesmo dia.
+    </p>div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#services">Serviços</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contato</a>
+    </div>
+</nav>
 <main>
     <section
         id="products"
