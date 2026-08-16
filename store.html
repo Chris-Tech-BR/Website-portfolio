@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chris Tech & Assesorios</title>
-<link rel="icon" href="images/christechlogo.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Chris Tech | Assistência Técnica e Acessórios em Camobi, Santa Maria RS
+    </title>
+    <meta
+        name="description"
+        content="Chris Tech em Camobi, Santa Maria - RS. Assistência técnica para celulares, notebooks e computadores, além de carregadores, cabos e acessórios para celulares.">
+    <meta
+        name="keywords"
+        content="assistência técnica Camobi, assistência técnica Santa Maria RS, conserto de celular Camobi, acessórios para celular Camobi, carregador celular Santa Maria, cabo USB-C Santa Maria, Chris Tech Santa Maria">
+    <meta name="author" content="Chris Tech">
+    <link
+        rel="canonical"
+        href="https://loja.christech-sm.workers.dev/store">
+    <link
+        rel="icon"
+        href="images/christechlogo.jpg"
+        type="image/jpeg">
+    <!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="Chris Tech | Assistência Técnica em Camobi">
+    <meta
+        property="og:description"
+        content="Assistência técnica e acessórios para celulares em Camobi, Santa Maria - RS.">
+    <meta
+        property="og:url"
+        content="https://loja.christech-sm.workers.dev/store">
+    <meta
+        property="og:type"
+        content="website">
+    <meta
+        property="og:image"
+        content="https://loja.christech-sm.workers.dev/images/adschristech.png">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Chris Tech",
+    "url": "https://loja.christech-sm.workers.dev/store",
+    "telephone": "+55 55 99668-9852",
+    "email": "christech.sm@gmail.com",
+    "description": "Assistência técnica para celulares, notebooks e computadores e venda de acessórios em Camobi, Santa Maria - RS.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Roraima, 1000",
+        "addressLocality": "Santa Maria",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+    },
+    "areaServed": [
+        {
+            "@type": "City",
+            "name": "Santa Maria"
+        },
+        {
+            "@type": "Place",
+            "name": "Camobi"
+        }
+    ]
+}
+</script>
 
 <style>
 * {
@@ -447,7 +507,7 @@ nav {
 <body>
 <header class="top-bar">
     <button class="arrow left-arrow" onclick="previousImage()">&#10094;</button>
-    <img src="images/adschristech.png" alt="Phone Repair">
+    <img id="headerImage" src="images/adschristech.png" alt="Chris Tech assistência técnica e acessórios em Camobi, Santa Maria">
     <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button>
 </header>
 <nav>
@@ -460,9 +520,16 @@ nav {
     </div>
 </nav>
 <main>
-    <section
-        id="products"
-        class="products-grid">
+    <section class="store-header">
+        <h1>Chris Tech — Assistência Técnica e Acessórios em Camobi</h1>
+
+        <p>
+            Assistência técnica e acessórios para celulares, notebooks e computadores
+            em Camobi, Santa Maria - RS.
+        </p>
+    </section>
+
+    <section id="products" class="products-grid">
     </section>
 </main>
 
@@ -520,29 +587,43 @@ nav {
 </div>
 
 <section class="about" id="about">
-    <div class="about-container">
-        <div class="about-text">
-            <h2>Sobre Chris Tech</h2>
+ <div class="about-container">
+    <div class="about-text">
+        <h2> Assistência Técnica em Camobi, Santa Maria </h2>
             <p>
-                A Chris Tech oferece serviços de manutenção para celulares, notebooks e computadores <br><br>
-                Além do desenvolvimento de sites, aplicativos e soluções com Inteligência Artificial.
+                A Chris Tech oferece assistência técnica para celulares,
+                notebooks e computadores em Camobi, Santa Maria - RS.
+            </p>
+
             <p>
-               Trabalhamos para entregar qualidade, praticidade e confiança, com soluções sob medida para cada necessidade garantindo que seus dispositivos funcionem perfeitamente, sem enrolação e com preço acessível.
+                Também trabalhamos com carregadores, cabos e acessórios
+                para celulares, oferecendo soluções práticas, qualidade
+                e atendimento próximo para clientes de Santa Maria.
             </p>
+
+            <p>
+                Estamos localizados na Avenida Roraima, em Camobi,
+                próximo à Universidade Federal de Santa Maria (UFSM).
             </p>
-            
+
             <div class="about-actions">
-                <a href="curriculum.html" class="btn-back">⬅️ Ver o Currículo Principal</a>
+                <a href="curriculum.html" class="btn-back">
+                    ⬅️ Ver o Currículo Principal
+                </a>
             </div>
+
         </div>
+
     </div>
+
 </section>
 <section class="contact" id="contact">
     <div class="contact-box">
-        <h2>Entre em Contato</h2>
+        <h2>Fale com a Chris Tech em Camobi</h2>
         <p><a href="redirect.html" style="color: #0d6efd; text-decoration: none; font-weight: bold;">📞 +55 55 99668-9852</a></p>
         <p>📧 christech.sm@gmail.com</p>
-        <p>📍 Avenida Roraima 1000</p>
+        <p>📍
+    📍 Avenida Roraima, 1000 — Camobi, Santa Maria - RS</p>
     </div>
 </section>
 <footer>
@@ -640,21 +721,23 @@ function displayProducts() {
                         : "Adicionar ao Pedido"}
                 </button>
                 <div class="quantity">
+                
                     <button
-                        onclick="
-                            changeQuantity(
-                                ${product.id},
-                                -1)"> −
+                        type="button"
+                        onclick="changeQuantity(${product.id}, -1)">
+                        −
                     </button>
+                
                     <span>
                         ${quantity}
                     </span>
+                
                     <button
-                        onclick="
-                            changeQuantity(
-                                ${product.id},1)
-                                + 
-                                </button>
+                        type="button"
+                        onclick="changeQuantity(${product.id}, 1)">
+                        +
+                    </button>
+                
                 </div>
             </div>
         `;
