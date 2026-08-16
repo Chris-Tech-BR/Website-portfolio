@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loja.christech-sm.workers.dev/sitemap.xml
