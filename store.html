@@ -192,6 +192,27 @@ nav {
 .store-header p {
     color: #ccc;
 }
+    .search-container {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+}
+
+#productSearch {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+#productSearch:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
 .products-grid {
     max-width: 1200px;
     margin: 40px auto;
@@ -528,6 +549,17 @@ nav {
             em Camobi, Santa Maria - RS.
         </p>
     </section>
+<div class="search-container">
+    <input
+        type="text"
+        id="productSearch"
+        placeholder="🔍 Buscar produto..."
+        oninput="searchProducts()"
+    >
+</div>
+
+<section id="products" class="products-grid">
+</section>
 
     <section id="products" class="products-grid">
     </section>
@@ -627,7 +659,7 @@ nav {
     </div>
 </section>
 <footer>
-    <p>© 2026 Chris Tech Repair • Todos os direitos reservados</p>
+    <p>© 2026 Criado por Chris Tech • Todos os direitos reservados</p>
 </footer>
 <script>
 const WHATSAPP_NUMBER = "5555996689852";
@@ -683,11 +715,14 @@ let cart = {};
 
         showImage();
     }
-function displayProducts() {
+function displayProducts(productList = products) {
     const container =
         document.getElementById("products");
+
     container.innerHTML = "";
-    products.forEach(product => {
+
+    productList.forEach(product => {
+
         const quantity =
             cart[product.id] || 0;
         const card =
@@ -745,6 +780,22 @@ function displayProducts() {
     });
     updateCartCount();
 }
+function searchProducts() {
+    const search =
+        document
+        .getElementById("productSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(search) ||
+        product.description.toLowerCase().includes(search)
+    );
+
+    displayProducts(filteredProducts);
+}
+
 function addProduct(productId) {
     if (!cart[productId]) {
         cart[productId] = 1;
