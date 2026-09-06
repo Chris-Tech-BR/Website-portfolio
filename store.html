@@ -741,6 +741,7 @@ async function loadProducts() {
             .filter(product => product.active);
         console.log("Products loaded:", products);
         displayProducts();
+        generateProductSchema();
     } catch (error) {
         console.error("Error loading products:", error);
         document.getElementById("products").innerHTML = `
@@ -997,6 +998,68 @@ function sendToWhatsApp() {
         "_blank"
     );
 }
+    function generateProductSchema() {
+
+    // Remove previous Product schema if it exists
+    const oldSchema = document.getElementById("product-schema");
+
+    if (oldSchema) {
+        oldSchema.remove();
+    }
+
+    if (!products.length) {
+        return;
+    }
+
+    const productSchema = {
+        "@context": "https://schema.org",
+        "@graph": products.map(product => {
+
+            const schemaProduct = {
+                "@type": "Product",
+
+                "name": product.name,
+
+                "description": product.description,
+
+                "image": product.image,
+
+                "category": product.category || "Acessórios para celular",
+
+                "offers": {
+                    "@type": "Offer",
+
+                    "price": product.price.toFixed(2),
+
+                    "priceCurrency": "BRL",
+
+                    "availability": product.active
+                        ? "https://schema.org/InStock"
+                        : "https://schema.org/OutOfStock",
+
+                    "url": "https://loja.christech-sm.workers.dev/store"
+                }
+            };
+
+            return schemaProduct;
+        })
+    };
+
+    const script = document.createElement("script");
+
+    script.type = "application/ld+json";
+
+    script.id = "product-schema";
+
+    script.textContent = JSON.stringify(
+        productSchema,
+        null,
+        2
+    );
+
+    document.head.appendChild(script);
+}
+
 loadProducts();
 </script>
 </body>
