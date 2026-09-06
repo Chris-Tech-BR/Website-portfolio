@@ -663,32 +663,101 @@ nav {
 </footer>
 <script>
 const WHATSAPP_NUMBER = "5555996689852";
-const products = [
-    {
-        id: 1,
-        name: "Carregador type c",
-        description:
-            "Carregador rápido de 67W Ultra + Cabo Tipo C Turbo",
-        price: 47.90,
-        image:
-            "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2fcy5jpaa9d71.webp"
-    },
-    {
-        id: 2,
-        name: "iPhone 8 ao 14 cabo",
-        description:
-            "iPhone Completo Turbo com Cabo Reforçado de 1M – Compatível com iPhone 8 ao 14.",
-        price: 38.90,
-        image:
-            "https://down-br.img.susercontent.com/file/br-11134201-820lh-mqxik6ugveo71c.webp"
-    },
-];
+const PRODUCTS_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBT6G9F5gMctKLGKoFYXGZpfGvcN2g89zn0fX3zApi5d07Ac4OxKVrt5o669BV5mdyi6vVUWK2j9Uv/pub?gid=0&single=true&output=csv";
+
+let products = [];
 let cart = {};
-    const images = [
-        "images/header1.jpg",
-        "images/header2.jpg",
-        "images/header3.jpg"
-    ];
+function parseCSV(csv) {
+    const rows = [];
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
+    for (let i = 0; i < csv.length; i++) {
+        const char = csv[i];
+        const next = csv[i + 1];
+        if (char === '"' && insideQuotes && next === '"') {
+            value += '"';
+            i++;
+        }
+        else if (char === '"') {
+            insideQuotes = !insideQuotes;
+        }
+        else if (char === "," && !insideQuotes) {
+            row.push(value);
+            value = "";
+        }
+        else if ((char === "\n" || char === "\r") && !insideQuotes) {
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
+            row.push(value);
+            rows.push(row);
+            row = [];
+            value = "";
+        }
+        else {
+            value += char;
+        }
+    }
+    if (value !== "" || row.length > 0) {
+        row.push(value);
+        rows.push(row);
+    }
+    return rows;
+}
+async function loadProducts() {
+    try {
+        const response = await fetch(
+            PRODUCTS_URL + "&cache=" + Date.now()
+        );
+        if (!response.ok) {
+            throw new Error("Could not load Google Sheet");
+        }
+        const csv = await response.text();
+        const rows = parseCSV(csv);
+        if (rows.length < 2) {
+            throw new Error("No products found");
+        }
+        const headers = rows[0].map(header =>
+            header.trim().toLowerCase()
+        );
+        products = rows
+            .slice(1)
+            .filter(row => row.length > 0 && row[0])
+            .map(row => {
+                const product = {};
+                headers.forEach((header, index) => {
+                    product[header] =
+                        row[index] ? row[index].trim() : "";
+                });
+                product.id = Number(product.id);
+                product.price = Number(
+                    product.price.replace(",", ".")
+                );
+                product.active =
+                    String(product.active).toLowerCase() === "true";
+
+                return product;
+            })
+            .filter(product => product.active);
+        console.log("Products loaded:", products);
+        displayProducts();
+    } catch (error) {
+        console.error("Error loading products:", error);
+        document.getElementById("products").innerHTML = `
+            <p style="
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 30px;
+                color: #777;
+            ">
+                Não foi possível carregar os produtos.
+                Tente novamente mais tarde.
+            </p>
+        `;
+    }
+}
 
     let currentImage = 0;
 
@@ -925,7 +994,7 @@ function sendToWhatsApp() {
         "_blank"
     );
 }
-displayProducts();
+loadProducts();
 </script>
 </body>
 </html>
