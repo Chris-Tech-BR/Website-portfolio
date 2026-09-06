@@ -560,9 +560,7 @@ nav {
 
 <section id="products" class="products-grid">
 </section>
-
-    <section id="products" class="products-grid">
-    </section>
+    
 </main>
 
 <button
@@ -758,8 +756,13 @@ async function loadProducts() {
         `;
     }
 }
+const images = [
+    "images/header1.jpg",
+    "images/header2.jpg",
+    "images/header3.jpg"
+];
 
-    let currentImage = 0;
+let currentImage = 0;
 
     function showImage() {
         document.getElementById("headerImage").src = images[currentImage];
