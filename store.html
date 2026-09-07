@@ -522,373 +522,6 @@ nav {
         font-size: 14px;
         padding: 10px;
     }
-    /* ================================
-   PRODUCT MODAL
-================================ */
-
-.product-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;}
-.product-modal.show {
-    display: flex;}
-.product-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 850px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    animation: productModalIn 0.2s ease;
-}
-@keyframes productModalIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-.product-modal-close {
-    position: absolute;
-    right: 15px;
-    top: 12px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.65);
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 10;
-}
-.product-modal-close:hover {
-    background: #000;
-}
-
-.product-modal-image-container {
-/* ================================
-   PRODUCT MODAL
-================================ */
-
-.product-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-.product-modal.show {
-    display: flex;
-}
-.product-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 850px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    animation: productModalIn 0.2s ease;
-}
-@keyframes productModalIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-.product-modal-close {
-    position: absolute;
-    right: 15px;
-    top: 12px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.65);
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 10;
-}
-.product-modal-close:hover {
-    background: #000;
-}
-.product-modal-image-container {
-    background: #f5f5f5;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
-#modalProductImage {
-    width: 100%;
-    height: 100%;
-    max-height: 450px;
-    object-fit: contain;
-}
-.product-modal-info {
-    padding: 45px 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.modal-category {
-    color: #0d6efd;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-#modalProductName {
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #111;
-}
-.modal-color {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #444;
-}
-.modal-description {
-    color: #666;
-    line-height: 1.7;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-.modal-availability {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-.modal-availability.in-stock {
-    color: #16a34a;
-}
-.modal-availability.out-stock {
-    color: #dc2626;
-}
-.modal-price {
-    font-size: 30px;
-    font-weight: bold;
-    color: #111;
-    margin-bottom: 20px;
-}
-.modal-cart-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 15px;
-}
-.modal-cart-controls button {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 10px;
-    background: #eee;
-    font-size: 22px;
-    cursor: pointer;
-}
-.modal-cart-controls button:hover {
-    background: #ddd;
-}
-#modalQuantity {
-    font-size: 20px;
-    font-weight: bold;
-}
-.modal-add-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: #25D366;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.modal-add-button:hover {
-    background: #1ebe5d;
-}
-/* MOBILE */
-@media (max-width: 700px) {
-    .product-modal {
-        padding: 10px;
-    }
-    .product-modal-content {
-        grid-template-columns: 1fr;
-        max-height: 95vh;
-        border-radius: 15px;
-    }
-    .product-modal-image-container {
-        min-height: 280px;
-        max-height: 320px;
-        padding: 20px;}
-    #modalProductImage {
-        max-height: 280px;}
-    .product-modal-info {
-        padding: 25px 20px;}
-    #modalProductName {
-        font-size: 25px;}
-    .modal-price {
-        font-size: 26px;
-    }
-}
-    background: #f5f5f5;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
-#modalProductImage {
-    width: 100%;
-    height: 100%;
-    max-height: 450px;
-    object-fit: contain;
-}
-.product-modal-info {
-    padding: 45px 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.modal-category {
-    color: #0d6efd;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-#modalProductName {
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #111;
-}
-.modal-color {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #444;
-}
-.modal-description {
-    color: #666;
-    line-height: 1.7;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-.modal-availability {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-.modal-availability.in-stock {
-    color: #16a34a;
-}
-.modal-availability.out-stock {
-    color: #dc2626;
-}
-.modal-price {
-    font-size: 30px;
-    font-weight: bold;
-    color: #111;
-    margin-bottom: 20px;
-}
-.modal-cart-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 15px;
-}
-.modal-cart-controls button {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 10px;
-    background: #eee;
-    font-size: 22px;
-    cursor: pointer;
-}
-.modal-cart-controls button:hover {
-    background: #ddd;
-}
-#modalQuantity {
-    font-size: 20px;
-    font-weight: bold;
-}
-.modal-add-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: #25D366;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.modal-add-button:hover {
-    background: #1ebe5d;
-}
-/* MOBILE */
-@media (max-width: 700px) {
-    .product-modal {
-        padding: 10px;
-    }
-    .product-modal-content {
-        grid-template-columns: 1fr;
-        max-height: 95vh;
-        border-radius: 15px;
-    }
-    .product-modal-image-container {
-       min-height: 280px;
-        max-height: 320px;
-        padding: 20px;
-    }
-    #modalProductImage {
-        max-height: 280px;
-    }
-    .product-modal-info {
-        padding: 25px 20px;
-    }
-    #modalProductName {
-        font-size: 25px;
-    }
-    .modal-price {
-        font-size: 26px;
-    }
-}
 }
 </style>
 </head>
@@ -929,70 +562,6 @@ nav {
 </section>
     
 </main>
-</main>
-
-<!-- PRODUCT DETAILS MODAL -->
-<div id="productModal" class="product-modal">
-    <div class="product-modal-content">
-        <button
-            class="product-modal-close"
-            onclick="closeProductModal()">
-            ×
-        </button>
-        <div class="product-modal-image-container">
-            <img
-                id="modalProductImage"
-                src=""
-                alt="">
-        </div>
-        <div class="product-modal-info">
-            <span
-                id="modalProductCategory"
-                class="modal-category">
-            </span>
-            <h2 id="modalProductName"></h2>
-            <div
-                id="modalProductColor"
-                class="modal-color">
-           </div>
-            <p
-                id="modalProductDescription"
-                class="modal-description">
-            </p>
-            <div
-                id="modalProductAvailability"
-                class="modal-availability">
-            </div>
-            <div
-                id="modalProductPrice"
-                class="modal-price">
-            </div>
-            <div class="modal-cart-controls">
-                <button
-                    type="button"
-                    onclick="changeModalQuantity(-1)">
-                    −
-                </button>
-                <span id="modalQuantity">1</span>
-                <button
-                    type="button"
-                    onclick="changeModalQuantity(1)">
-                    +
-                </button>
-            </div>
-            <button
-                class="modal-add-button"
-                onclick="addModalProduct()">
-                🛒 Adicionar ao Pedido
-            </button>
-        </div>
-    </div>
-</div>
-
-<button
-    id="buyButton"
-    class="floating-buy-button"
-    onclick="openOrderForm()">
 
 <button
     id="buyButton"
@@ -1172,7 +741,6 @@ async function loadProducts() {
             .filter(product => product.active);
         console.log("Products loaded:", products);
         displayProducts();
-        generateProductSchema();
     } catch (error) {
         console.error("Error loading products:", error);
         document.getElementById("products").innerHTML = `
@@ -1222,29 +790,20 @@ let currentImage = 0;
 function displayProducts(productList = products) {
     const container =
         document.getElementById("products");
+
     container.innerHTML = "";
+
     productList.forEach(product => {
+
         const quantity =
             cart[product.id] || 0;
         const card =
             document.createElement("div");
-        card.className = "product-card";
+        card.className =
+            "product-card";
         if (quantity > 0) {
             card.classList.add("selected");
         }
-        card.onclick = function(event) {
-            /*
-             * Don't open the product modal when
-             * clicking the quantity controls.
-             */
-            if (
-                event.target.closest(".quantity") ||
-                event.target.closest(".add-button")
-            ) {
-                return;
-            }
-            openProductModal(product.id);
-        };
         card.innerHTML = `
             <img
                 class="product-image"
@@ -1255,70 +814,37 @@ function displayProducts(productList = products) {
                 <h2 class="product-name">
                     ${product.name}
                 </h2>
+                <p class="product-description">
+                    ${product.description}
+                </p>
                 <div class="product-price">
                     R$ ${product.price.toFixed(2)}
                 </div>
-                ${
-                    product.category
-                    ? `
-                    <div style="
-                        color:#777;
-                        font-size:13px;
-                        margin-bottom:10px;
-                    ">
-                        ${product.category}
-                    </div>
-                    `
-                    : ""
-                }
-                ${
-                    product.color
-                    ? `
-                    <div style="
-                        color:#555;
-                        font-size:14px;
-                        margin-bottom:12px;
-                    ">
-                        🎨 ${product.color}
-                    </div>
-                    `
-                    : ""
-                }
                 <button
                     class="add-button"
-                    onclick="
-                        event.stopPropagation();
-                        addProduct(${product.id});
-                    "
-                >
-                    ${
-                        quantity > 0
+                    onclick="addProduct(${product.id})">
+                    ${quantity > 0
                         ? "✓ Adicionado"
-                        : "Adicionar ao Pedido"
-                    }
+                        : "Adicionar ao Pedido"}
                 </button>
                 <div class="quantity">
+                
                     <button
                         type="button"
-                        onclick="
-                            event.stopPropagation();
-                            changeQuantity(${product.id}, -1);
-                        "
-                    >
+                        onclick="changeQuantity(${product.id}, -1)">
                         −
                     </button>
+                
                     <span>
                         ${quantity}
                     </span>
+                
                     <button
                         type="button"
-                        onclick="
-                            event.stopPropagation();
-                            changeQuantity(${product.id}, 1);
-                        "
-                    >
+                        onclick="changeQuantity(${product.id}, 1)">
                         +
                     </button>
+                
                 </div>
             </div>
         `;
@@ -1326,193 +852,6 @@ function displayProducts(productList = products) {
     });
     updateCartCount();
 }
-let selectedProduct = null;
-
-let modalQuantity = 1;
-
-
-function openProductModal(productId) {
-
-    selectedProduct =
-        products.find(
-            product => product.id === productId
-        );
-
-    if (!selectedProduct) {
-        return;
-    }
-
-    modalQuantity = 1;
-
-    document.getElementById(
-        "modalProductImage"
-    ).src =
-        selectedProduct.image;
-
-    document.getElementById(
-        "modalProductImage"
-    ).alt =
-        selectedProduct.name;
-
-    document.getElementById(
-        "modalProductName"
-    ).textContent =
-        selectedProduct.name;
-
-    document.getElementById(
-        "modalProductCategory"
-    ).textContent =
-        selectedProduct.category ||
-        "Acessório";
-
-    document.getElementById(
-        "modalProductDescription"
-    ).textContent =
-        selectedProduct.description ||
-        "Produto disponível em nossa loja.";
-
-    document.getElementById(
-        "modalProductPrice"
-    ).textContent =
-        "R$ " +
-        selectedProduct.price.toFixed(2);
-
-    document.getElementById(
-        "modalQuantity"
-    ).textContent =
-        modalQuantity;
-
-
-    /* COLOR */
-
-    const colorElement =
-        document.getElementById(
-            "modalProductColor"
-        );
-
-    if (selectedProduct.color) {
-
-        colorElement.innerHTML =
-            "🎨 <strong>Cor:</strong> " +
-            selectedProduct.color;
-
-        colorElement.style.display =
-            "block";
-
-    } else {
-
-        colorElement.style.display =
-            "none";
-    }
-
-
-    /* AVAILABILITY */
-
-    const availabilityElement =
-        document.getElementById(
-            "modalProductAvailability"
-        );
-
-    if (selectedProduct.active) {
-
-        availabilityElement.textContent =
-            "✓ Disponível";
-
-        availabilityElement.className =
-            "modal-availability in-stock";
-
-    } else {
-
-        availabilityElement.textContent =
-            "✕ Indisponível";
-
-        availabilityElement.className =
-            "modal-availability out-stock";
-    }
-
-
-    document.getElementById(
-        "productModal"
-    ).classList.add("show");
-
-
-    /*
-     * Prevent page behind modal
-     * from scrolling.
-     */
-
-    document.body.style.overflow =
-        "hidden";
-}
-
-
-function closeProductModal() {
-
-    document.getElementById(
-        "productModal"
-    ).classList.remove("show");
-
-    document.body.style.overflow =
-        "";
-}
-
-
-function changeModalQuantity(amount) {
-
-    modalQuantity += amount;
-
-    if (modalQuantity < 1) {
-        modalQuantity = 1;
-    }
-
-    document.getElementById(
-        "modalQuantity"
-    ).textContent =
-        modalQuantity;
-}
-function addModalProduct() {
-    if (!selectedProduct) {
-        return;
-    }
-    const id =
-        selectedProduct.id;
-    if (!cart[id]) {
-        cart[id] = 0;
-    }
-    cart[id] += modalQuantity;
-    displayProducts();
-    closeProductModal();
-}
-/*
- * Click the dark background
- * to close the modal.
- */
-document.getElementById(
-    "productModal"
-).addEventListener(
-    "click",
-    function(event) {
-        if (
-            event.target === this
-        ) {
-            closeProductModal();
-        }
-    }
-);
-/*
- * ESC key closes modal
- */
-document.addEventListener(
-    "keydown",
-    function(event) {
-        if (
-            event.key === "Escape"
-        ) {
-            closeProductModal();
-        }
-    }
-);
-
 function searchProducts() {
     const search =
         document
@@ -1658,64 +997,6 @@ function sendToWhatsApp() {
         "_blank"
     );
 }
-    function generateProductSchema() {
-
-    // Remove previous Product schema if it exists
-    const oldSchema = document.getElementById("product-schema");
-
-    if (oldSchema) {
-        oldSchema.remove();
-    }
-
-    if (!products.length) {
-        return;
-    }
-
-    const productSchema = {
-        "@context": "https://schema.org",
-        "@graph": products.map(product => {
-
-            const schemaProduct = {
-                "@type": "Product",
-
-                "name": product.name,
-
-                "description": product.description,
-
-                "image": product.image,
-
-                "category": product.category || "Acessórios para celular",
-
-                "offers": {
-                    "@type": "Offer",
-
-                    "price": product.price.toFixed(2),
-
-                    "priceCurrency": "BRL",
-
-                    "availability": product.active
-                        ? "https://schema.org/InStock"
-                        : "https://schema.org/OutOfStock",
-
-                    "url": "https://loja.christech-sm.workers.dev/store"
-                }
-            };
-
-            return schemaProduct;
-        })
-    };
-        const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.id = "product-schema";
-    script.textContent = JSON.stringify(
-        productSchema,
-        null,
-        2
-    );
-
-    document.head.appendChild(script);
-}
-
 loadProducts();
 </script>
 </body>
