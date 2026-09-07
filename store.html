@@ -375,7 +375,7 @@ nav {
     cursor: pointer;
 }
 .modal-content label {
-    display: block
+    display: block;
     margin-top: 15px;
     margin-bottom: 7px;
     font-weight: bold;
@@ -705,7 +705,6 @@ function parseCSV(csv) {
     return rows;
 }
 async function loadProducts() {
-
     const container = document.getElementById("products");
 
     container.innerHTML = `
@@ -720,159 +719,156 @@ async function loadProducts() {
     `;
 
     try {
-
-        const controller = new AbortController();
-
-        const timeout = setTimeout(() => {
-            controller.abort();
-        }, 2000);
-
-        const response = await fetch(
-            PRODUCTS_URL + "&cache=" + Date.now(),
-            {
-                method: "GET",
-                cache: "no-store",
-                signal: controller.signal
-            }
-        );
-
-        clearTimeout(timeout);
+        const response = await fetch(PRODUCTS_URL, {
+            cache: "no-store"
+        });
 
         if (!response.ok) {
             throw new Error(
-                "Erro HTTP: " + response.status
+                "Erro ao acessar Google Sheets: HTTP " + response.status
             );
         }
 
         const csv = await response.text();
 
-        console.log("CSV recebido:");
-        console.log(csv);
+        console.log("CSV recebido:", csv);
 
-        if (!csv || csv.trim() === "") {
-            throw new Error(
-                "A planilha retornou um CSV vazio."
-            );
+        if (!csv.trim()) {
+            throw new Error("O Google Sheets retornou um CSV vazio.");
         }
 
         const rows = parseCSV(csv);
 
-        console.log("Linhas encontradas:", rows);
+        console.log("Linhas:", rows);
 
         if (rows.length < 2) {
             throw new Error(
-                "A planilha não possui produtos."
+                "Nenhum produto encontrado na planilha."
             );
         }
 
         const headers = rows[0].map(header =>
-            header.trim().toLowerCase()
+            header
+                .replace(/^\uFEFF/, "")
+                .trim()
+                .toLowerCase()
         );
 
         console.log("Cabeçalhos:", headers);
 
+        const requiredColumns = [
+            "id",
+            "name",
+            "description",
+            "price",
+            "image",
+            "active"
+        ];
+
+        const missing = requiredColumns.filter(
+            column => !headers.includes(column)
+        );
+
+        if (missing.length > 0) {
+            throw new Error(
+                "Colunas ausentes: " + missing.join(", ")
+            );
+        }
+
         products = rows
             .slice(1)
-            .filter(row =>
-                row.length > 0 &&
-                row[0] &&
-                row[0].trim() !== ""
-            )
+            .filter(row => row.some(value => value.trim() !== ""))
             .map(row => {
-
                 const product = {};
 
                 headers.forEach((header, index) => {
                     product[header] =
-                        row[index]
+                        row[index] !== undefined
                             ? row[index].trim()
                             : "";
                 });
 
                 product.id = Number(product.id);
 
-                product.price = Number(
-                    String(product.price)
-                        .replace("R$", "")
-                        .replace(/\s/g, "")
-                        .replace(",", ".")
-                );
+                let price = product.price
+                    .replace(/R\$/gi, "")
+                    .replace(/\s/g, "");
+
+                if (price.includes(",") && price.includes(".")) {
+                    price = price
+                        .replace(/\./g, "")
+                        .replace(",", ".");
+                } else {
+                    price = price.replace(",", ".");
+                }
+
+                product.price = Number(price);
+
+                const active = product.active
+                    .toLowerCase()
+                    .trim();
 
                 product.active =
-                    String(product.active)
-                        .trim()
-                        .toLowerCase() === "true";
+                    active === "true" ||
+                    active === "1" ||
+                    active === "sim" ||
+                    active === "yes" ||
+                    active === "ativo";
 
                 return product;
             });
 
-        console.log(
-            "Produtos antes do filtro:",
-            products
-        );
+        console.log("Todos os produtos:", products);
 
         products = products.filter(
             product => product.active
         );
 
-        console.log(
-            "Produtos ativos:",
-            products
-        );
+        console.log("Produtos ativos:", products);
 
         if (products.length === 0) {
-
             throw new Error(
-                "Nenhum produto com active=TRUE foi encontrado."
+                "Existem dados na planilha, mas nenhum produto está ativo. Verifique a coluna 'active'."
             );
-
         }
 
         displayProducts();
 
     } catch (error) {
-
-        console.error(
-            "ERRO AO CARREGAR PRODUTOS:",
-            error
-        );
-
-        let errorMessage = error.message;
-
-        if (error.name === "AbortError") {
-            errorMessage =
-                "A conexão com a planilha demorou muito para responder.";
-        }
+        console.error("ERRO:", error);
 
         container.innerHTML = `
             <div style="
                 grid-column: 1 / -1;
                 text-align: center;
-                padding: 40px;
+                padding: 40px 20px;
             ">
 
-                <h2 style="color:#d33;">
-                    Não foi possível carregar os produtos
+                <h2 style="
+                    color: #d33;
+                    margin-bottom: 15px;
+                ">
+                    Erro ao carregar produtos
                 </h2>
 
                 <p style="
-                    margin-top:15px;
-                    color:#777;
+                    color: #777;
+                    line-height: 1.6;
                 ">
-                    ${errorMessage}
+                    ${error.message}
                 </p>
 
                 <button
                     onclick="loadProducts()"
                     style="
-                        margin-top:20px;
-                        padding:12px 20px;
-                        border:none;
-                        border-radius:8px;
-                        background:#0d6efd;
-                        color:white;
-                        cursor:pointer;
-                        font-weight:bold;
+                        margin-top: 20px;
+                        padding: 12px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        background: #0d6efd;
+                        color: white;
+                        cursor: pointer;
+                        font-weight: bold;
                     "
                 >
                     Tentar novamente
@@ -882,6 +878,7 @@ async function loadProducts() {
         `;
     }
 }
+
 
 const images = [
     "images/header1.jpg",
