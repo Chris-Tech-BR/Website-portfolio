@@ -725,7 +725,7 @@ async function loadProducts() {
 
         const timeout = setTimeout(() => {
             controller.abort();
-        }, 10000);
+        }, 2000);
 
         const response = await fetch(
             PRODUCTS_URL + "&cache=" + Date.now(),
