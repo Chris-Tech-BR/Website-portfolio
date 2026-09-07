@@ -705,57 +705,151 @@ function parseCSV(csv) {
     return rows;
 }
 async function loadProducts() {
+
+    const container = document.getElementById("products");
+
+    container.innerHTML = `
+        <p style="
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #777;
+        ">
+            Carregando produtos...
+        </p>
+    `;
+
     try {
-        const response = await fetch(
-            PRODUCTS_URL + "&cache=" + Date.now()
-        );
+
+        const response = await fetch(PRODUCTS_URL);
+
         if (!response.ok) {
-            throw new Error("Could not load Google Sheet");
+            throw new Error(
+                "Google Sheets respondeu com erro HTTP " +
+                response.status
+            );
         }
+
         const csv = await response.text();
+
+        console.log("CSV recebido:", csv);
+
         const rows = parseCSV(csv);
+
+        console.log("Linhas:", rows);
+
         if (rows.length < 2) {
-            throw new Error("No products found");
+            throw new Error(
+                "Nenhum produto encontrado na planilha."
+            );
         }
+
         const headers = rows[0].map(header =>
             header.trim().toLowerCase()
         );
+
+        console.log("Cabeçalhos:", headers);
+
         products = rows
             .slice(1)
-            .filter(row => row.length > 0 && row[0])
+            .filter(row =>
+                row.length > 0 &&
+                row[0] &&
+                row[0].trim()
+            )
             .map(row => {
+
                 const product = {};
+
                 headers.forEach((header, index) => {
                     product[header] =
-                        row[index] ? row[index].trim() : "";
+                        row[index]
+                            ? row[index].trim()
+                            : "";
                 });
+
                 product.id = Number(product.id);
+
                 product.price = Number(
-                    product.price.replace(",", ".")
+                    String(product.price)
+                        .replace("R$", "")
+                        .replace(/\s/g, "")
+                        .replace(/\./g, "")
+                        .replace(",", ".")
                 );
+
                 product.active =
-                    String(product.active).toLowerCase() === "true";
+                    String(product.active)
+                        .trim()
+                        .toLowerCase() === "true";
 
                 return product;
-            })
-            .filter(product => product.active);
-        console.log("Products loaded:", products);
+            });
+
+        console.log(
+            "Todos os produtos:",
+            products
+        );
+
+        products = products.filter(
+            product => product.active
+        );
+
+        console.log(
+            "Produtos ativos:",
+            products
+        );
+
+        if (products.length === 0) {
+
+            container.innerHTML = `
+                <p style="
+                    grid-column: 1 / -1;
+                    text-align: center;
+                    padding: 40px;
+                    color: #777;
+                ">
+                    Nenhum produto ativo encontrado.
+                    <br><br>
+                    Verifique a coluna "active" da planilha.
+                </p>
+            `;
+
+            return;
+        }
+
         displayProducts();
+
     } catch (error) {
-        console.error("Error loading products:", error);
-        document.getElementById("products").innerHTML = `
-            <p style="
+
+        console.error(
+            "Erro ao carregar produtos:",
+            error
+        );
+
+        container.innerHTML = `
+            <div style="
                 grid-column: 1 / -1;
                 text-align: center;
-                padding: 30px;
-                color: #777;
+                padding: 40px;
             ">
-                Não foi possível carregar os produtos.
-                Tente novamente mais tarde.
-            </p>
+
+                <h2>
+                    Erro ao carregar produtos
+                </h2>
+
+                <p style="
+                    margin-top: 15px;
+                    color: #777;
+                ">
+                    ${error.message}
+                </p>
+
+            </div>
         `;
     }
 }
+
 const images = [
     "images/header1.jpg",
     "images/header2.jpg",
