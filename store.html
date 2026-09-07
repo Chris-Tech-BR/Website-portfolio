@@ -201,6 +201,50 @@ nav {
     margin: 30px auto 0;
     padding: 0 20px;
 }
+/* SERVICE QUESTION / CTA */
+.nav_question {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    text-align: center;
+}
+.nav_question a {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #0d6efd, #0056d6);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.25)
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+.nav_question a:hover {
+    background: linear-gradient(135deg, #0b5ed7, #0047b8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.35);
+}
+.nav_question a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.25);
+}
+/* MOBILE */
+@media (max-width: 600px) {
+    .nav_question {
+        margin-top: 15px;
+        padding: 0 12px;
+    }
+    .nav_question a {
+        padding: 14px 16px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+}
 
 #productSearch {
     width: 100%;
@@ -1012,6 +1056,7 @@ textarea:focus-visible {
     <div class="logo">Chris Tech & Acessórios </div>
     <div class="nav-links">
         <a href="#">Home</a>
+        <a href="device_defect_catalog/telas.html">Seu celular está com algum problema?</a>
         <a href="#about">Sobre</a>
         <a href="#contact">Contato</a>
     </div>
@@ -1025,7 +1070,7 @@ textarea:focus-visible {
             em Camobi, Santa Maria - RS.
         </p>
     </section>
-    <div class="nav-links"><a href="device_defect_catalog/telas.html">Seu celular está com algum problema?</a></div>
+    <div class="nav_question"><a href="device_defect_catalog/telas.html">🔧 Seu celular está com algum problema? Clique aqui!</a></div>
 <div class="search-container">
     <input
         type="text"
