@@ -417,20 +417,24 @@ nav {
         flex:1;
         text-align:left;
     }
+
     .about-text h2 {
         font-size:42px;
         margin-bottom:20px;
         color:#ffffff;
     }
+
     .about-text p {
         line-height:1.8;
         font-size:1.1rem;
         margin-bottom:20px;
         color:#e5e7eb;
     }
+
     .about-image {
         flex:1;
     }
+
     .about-image img {
         width:100%;
         border-radius:20px;
@@ -556,7 +560,9 @@ nav {
 
 <section id="products" class="products-grid">
 </section>
-    
+
+    <section id="products" class="products-grid">
+    </section>
 </main>
 
 <button
@@ -737,7 +743,6 @@ async function loadProducts() {
             .filter(product => product.active);
         console.log("Products loaded:", products);
         displayProducts();
-        generateProductSchema();
     } catch (error) {
         console.error("Error loading products:", error);
         document.getElementById("products").innerHTML = `
@@ -753,13 +758,8 @@ async function loadProducts() {
         `;
     }
 }
-const images = [
-    "images/header1.jpg",
-    "images/header2.jpg",
-    "images/header3.jpg"
-];
 
-let currentImage = 0;
+    let currentImage = 0;
 
     function showImage() {
         document.getElementById("headerImage").src = images[currentImage];
@@ -994,68 +994,6 @@ function sendToWhatsApp() {
         "_blank"
     );
 }
-    function generateProductSchema() {
-
-    // Remove previous Product schema if it exists
-    const oldSchema = document.getElementById("product-schema");
-
-    if (oldSchema) {
-        oldSchema.remove();
-    }
-
-    if (!products.length) {
-        return;
-    }
-
-    const productSchema = {
-        "@context": "https://schema.org",
-        "@graph": products.map(product => {
-
-            const schemaProduct = {
-                "@type": "Product",
-
-                "name": product.name,
-
-                "description": product.description,
-
-                "image": product.image,
-
-                "category": product.category || "Acessórios para celular",
-
-                "offers": {
-                    "@type": "Offer",
-
-                    "price": product.price.toFixed(2),
-
-                    "priceCurrency": "BRL",
-
-                    "availability": product.active
-                        ? "https://schema.org/InStock"
-                        : "https://schema.org/OutOfStock",
-
-                    "url": "https://loja.christech-sm.workers.dev/store"
-                }
-            };
-
-            return schemaProduct;
-        })
-    };
-
-    const script = document.createElement("script");
-
-    script.type = "application/ld+json";
-
-    script.id = "product-schema";
-
-    script.textContent = JSON.stringify(
-        productSchema,
-        null,
-        2
-    );
-
-    document.head.appendChild(script);
-}
-
 loadProducts();
 </script>
 </body>
