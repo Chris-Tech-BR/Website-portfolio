@@ -224,6 +224,222 @@ nav {
 
     gap: 25px;
 }
+    /* =========================
+   PRODUCT CARD
+========================= */
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.2s;
+    position: relative;
+    cursor: pointer;
+}
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+}
+.product-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+.product-info {
+    padding: 18px;
+}
+.product-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.add-button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.add-button:hover {
+    background: #333;
+}
+.product-card.selected .add-button {
+    background: #25D366;
+}
+
+/* =========================
+   PRODUCT MODAL
+========================= */
+.product-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.55);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.product-modal.show {
+    display: flex;
+}
+.product-modal-content {
+    width: 100%;
+    max-width: 850px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    animation: productModalOpen 0.2s ease;
+}
+@keyframes productModalOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.product-modal-image-container {
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+.product-modal-image {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+.product-modal-info {
+    padding: 40px;
+}
+.product-modal-name {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #111;
+}
+.product-modal-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0d6efd;
+    margin-bottom: 25px;
+}
+.product-modal-description {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.product-modal-color {
+    margin-bottom: 25px;
+    font-size: 17px;
+}
+.product-modal-color strong {
+    color: #111;
+}
+.product-modal-actions {
+    margin-top: 25px;
+}
+.product-modal-add {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #111;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.product-modal-add:hover {
+    background: #333;
+}
+.product-modal.selected .product-modal-add {
+    background: #25D366;
+}
+.product-modal-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+.product-modal-quantity button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    background: #eee;
+    font-size: 22px;
+    cursor: pointer;
+}
+.product-modal-quantity span {
+    font-size: 20px;
+    font-weight: bold;
+}
+.product-modal-close {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+}
+.product-modal-close:hover {
+    background: #000;}
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .product-modal {
+        padding: 10px;    }
+    .product-modal-content {
+        grid-template-columns: 1fr;
+        max-height: 95vh;    }
+    .product-modal-image-container {
+        min-height: 250px;
+        max-height: 300px;    }
+    .product-modal-info {
+        padding: 25px;}    
+    .product-modal-name {
+        font-size: 24px;    }
+    .product-modal-price {
+        font-size: 24px;    }
+    .product-image {
+        height: 160px}
+}
+.product-card:hover {
+    transform: translateY(-4px);
+}
+.product-card.selected {
+    border: 3px solid #25D366;
+}
+    /*
 .product-card {
     background: white;
     border-radius: 15px;
@@ -232,12 +448,6 @@ nav {
         0 5px 20px rgba(0,0,0,0.08);
     transition: 0.2s;
     position: relative;
-}
-.product-card:hover {
-    transform: translateY(-4px);
-}
-.product-card.selected {
-    border: 3px solid #25D366;
 }
 .product-image {
     width: 100%;
@@ -273,7 +483,7 @@ nav {
     font-size: 16px;
     cursor: pointer;
     transition: 0.2s;
-}
+}*/
 .add-button:hover {
     background: #333;
 }
@@ -298,7 +508,6 @@ nav {
     font-size: 20px;
     cursor: pointer;
 }
-
 .quantity span {
     font-weight: bold;
     font-size: 18px;
@@ -380,6 +589,7 @@ nav {
     margin-bottom: 7px;
     font-weight: bold;
 }
+    
 .modal-content input,
 .modal-content textarea {
     width: 100%;
@@ -393,6 +603,17 @@ nav {
 
     resize: vertical;
 }
+    .product-category {
+    display: inline-block;
+    color: #0d6efd;
+    background: #eef5ff;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
     .contact {
         padding:100px 40px;
         text-align:center;
@@ -522,374 +743,8 @@ nav {
         font-size: 14px;
         padding: 10px;
     }
-    /* ================================
-   PRODUCT MODAL
-================================ */
-
-.product-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;}
-.product-modal.show {
-    display: flex;}
-.product-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 850px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    animation: productModalIn 0.2s ease;
-}
-@keyframes productModalIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-.product-modal-close {
-    position: absolute;
-    right: 15px;
-    top: 12px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.65);
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 10;
-}
-.product-modal-close:hover {
-    background: #000;
 }
 
-.product-modal-image-container {
-/* ================================
-   PRODUCT MODAL
-================================ */
-
-.product-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-.product-modal.show {
-    display: flex;
-}
-.product-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 850px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    animation: productModalIn 0.2s ease;
-}
-@keyframes productModalIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-.product-modal-close {
-    position: absolute;
-    right: 15px;
-    top: 12px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.65);
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 10;
-}
-.product-modal-close:hover {
-    background: #000;
-}
-.product-modal-image-container {
-    background: #f5f5f5;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
-#modalProductImage {
-    width: 100%;
-    height: 100%;
-    max-height: 450px;
-    object-fit: contain;
-}
-.product-modal-info {
-    padding: 45px 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.modal-category {
-    color: #0d6efd;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-#modalProductName {
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #111;
-}
-.modal-color {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #444;
-}
-.modal-description {
-    color: #666;
-    line-height: 1.7;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-.modal-availability {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-.modal-availability.in-stock {
-    color: #16a34a;
-}
-.modal-availability.out-stock {
-    color: #dc2626;
-}
-.modal-price {
-    font-size: 30px;
-    font-weight: bold;
-    color: #111;
-    margin-bottom: 20px;
-}
-.modal-cart-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 15px;
-}
-.modal-cart-controls button {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 10px;
-    background: #eee;
-    font-size: 22px;
-    cursor: pointer;
-}
-.modal-cart-controls button:hover {
-    background: #ddd;
-}
-#modalQuantity {
-    font-size: 20px;
-    font-weight: bold;
-}
-.modal-add-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: #25D366;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.modal-add-button:hover {
-    background: #1ebe5d;
-}
-/* MOBILE */
-@media (max-width: 700px) {
-    .product-modal {
-        padding: 10px;
-    }
-    .product-modal-content {
-        grid-template-columns: 1fr;
-        max-height: 95vh;
-        border-radius: 15px;
-    }
-    .product-modal-image-container {
-        min-height: 280px;
-        max-height: 320px;
-        padding: 20px;}
-    #modalProductImage {
-        max-height: 280px;}
-    .product-modal-info {
-        padding: 25px 20px;}
-    #modalProductName {
-        font-size: 25px;}
-    .modal-price {
-        font-size: 26px;
-    }
-}
-    background: #f5f5f5;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
-#modalProductImage {
-    width: 100%;
-    height: 100%;
-    max-height: 450px;
-    object-fit: contain;
-}
-.product-modal-info {
-    padding: 45px 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.modal-category {
-    color: #0d6efd;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-#modalProductName {
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #111;
-}
-.modal-color {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #444;
-}
-.modal-description {
-    color: #666;
-    line-height: 1.7;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-.modal-availability {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-.modal-availability.in-stock {
-    color: #16a34a;
-}
-.modal-availability.out-stock {
-    color: #dc2626;
-}
-.modal-price {
-    font-size: 30px;
-    font-weight: bold;
-    color: #111;
-    margin-bottom: 20px;
-}
-.modal-cart-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 15px;
-}
-.modal-cart-controls button {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 10px;
-    background: #eee;
-    font-size: 22px;
-    cursor: pointer;
-}
-.modal-cart-controls button:hover {
-    background: #ddd;
-}
-#modalQuantity {
-    font-size: 20px;
-    font-weight: bold;
-}
-.modal-add-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: #25D366;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.modal-add-button:hover {
-    background: #1ebe5d;
-}
-/* MOBILE */
-@media (max-width: 700px) {
-    .product-modal {
-        padding: 10px;
-    }
-    .product-modal-content {
-        grid-template-columns: 1fr;
-        max-height: 95vh;
-        border-radius: 15px;
-    }
-    .product-modal-image-container {
-       min-height: 280px;
-        max-height: 320px;
-        padding: 20px;
-    }
-    #modalProductImage {
-        max-height: 280px;
-    }
-    .product-modal-info {
-        padding: 25px 20px;
-    }
-    #modalProductName {
-        font-size: 25px;
-    }
-    .modal-price {
-        font-size: 26px;
-    }
-}
-}
 </style>
 </head>
 <body>
@@ -929,70 +784,6 @@ nav {
 </section>
     
 </main>
-</main>
-
-<!-- PRODUCT DETAILS MODAL -->
-<div id="productModal" class="product-modal">
-    <div class="product-modal-content">
-        <button
-            class="product-modal-close"
-            onclick="closeProductModal()">
-            ×
-        </button>
-        <div class="product-modal-image-container">
-            <img
-                id="modalProductImage"
-                src=""
-                alt="">
-        </div>
-        <div class="product-modal-info">
-            <span
-                id="modalProductCategory"
-                class="modal-category">
-            </span>
-            <h2 id="modalProductName"></h2>
-            <div
-                id="modalProductColor"
-                class="modal-color">
-           </div>
-            <p
-                id="modalProductDescription"
-                class="modal-description">
-            </p>
-            <div
-                id="modalProductAvailability"
-                class="modal-availability">
-            </div>
-            <div
-                id="modalProductPrice"
-                class="modal-price">
-            </div>
-            <div class="modal-cart-controls">
-                <button
-                    type="button"
-                    onclick="changeModalQuantity(-1)">
-                    −
-                </button>
-                <span id="modalQuantity">1</span>
-                <button
-                    type="button"
-                    onclick="changeModalQuantity(1)">
-                    +
-                </button>
-            </div>
-            <button
-                class="modal-add-button"
-                onclick="addModalProduct()">
-                🛒 Adicionar ao Pedido
-            </button>
-        </div>
-    </div>
-</div>
-
-<button
-    id="buyButton"
-    class="floating-buy-button"
-    onclick="openOrderForm()">
 
 <button
     id="buyButton"
@@ -1045,6 +836,100 @@ nav {
             💬 Continuar para o WhatsApp
         </button>
     </div>
+</div>
+<!-- PRODUCT DETAILS MODAL -->
+
+<div
+    id="productModal"
+    class="product-modal"
+    onclick="closeProductModalOutside(event)"
+>
+
+    <div
+        class="product-modal-content"
+        onclick="event.stopPropagation()"
+    >
+
+        <button
+            class="product-modal-close"
+            onclick="closeProductModal()"
+            aria-label="Fechar"
+        >
+            ×
+        </button>
+
+        <img
+            id="modalProductImage"
+            class="product-modal-image"
+            src=""
+            alt=""
+        >
+
+        <div class="product-modal-info">
+
+            <span
+                id="modalProductCategory"
+                class="product-modal-category"
+            ></span>
+
+            <h2
+                id="modalProductName"
+                class="product-modal-title"
+            ></h2>
+
+            <div
+                id="modalProductPrice"
+                class="product-modal-price"
+            ></div>
+
+            <div
+                id="modalProductColor"
+                class="product-modal-color"
+            ></div>
+
+            <p
+                id="modalProductDescription"
+                class="product-modal-description"
+            ></p>
+
+            <div class="product-modal-actions">
+
+                <div class="product-modal-quantity">
+
+                    <button
+                        type="button"
+                        onclick="changeModalQuantity(-1)"
+                    >
+                        −
+                    </button>
+
+                    <span id="modalProductQuantity">
+                        1
+                    </span>
+
+                    <button
+                        type="button"
+                        onclick="changeModalQuantity(1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="product-modal-add"
+                    onclick="addModalProductToCart()"
+                >
+                    🛒 Adicionar ao Pedido
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 <section class="about" id="about">
@@ -1220,76 +1105,54 @@ let currentImage = 0;
         showImage();
     }
 function displayProducts(productList = products) {
-    const container =
-        document.getElementById("products");
+
+    const container = document.getElementById("products");
+
     container.innerHTML = "";
+
     productList.forEach(product => {
-        const quantity =
-            cart[product.id] || 0;
-        const card =
-            document.createElement("div");
+
+        const quantity = cart[product.id] || 0;
+
+        const card = document.createElement("div");
         card.className = "product-card";
+
         if (quantity > 0) {
             card.classList.add("selected");
         }
-        card.onclick = function(event) {
-            /*
-             * Don't open the product modal when
-             * clicking the quantity controls.
-             */
-            if (
-                event.target.closest(".quantity") ||
-                event.target.closest(".add-button")
-            ) {
-                return;
-            }
-            openProductModal(product.id);
-        };
+
         card.innerHTML = `
             <img
                 class="product-image"
                 src="${product.image}"
                 alt="${product.name}"
+                loading="lazy"
             >
+
             <div class="product-info">
+
                 <h2 class="product-name">
                     ${product.name}
                 </h2>
-                <div class="product-price">
-                    R$ ${product.price.toFixed(2)}
-                </div>
+
                 ${
                     product.category
                     ? `
-                    <div style="
-                        color:#777;
-                        font-size:13px;
-                        margin-bottom:10px;
-                    ">
-                        ${product.category}
-                    </div>
+                        <div class="product-category">
+                            ${product.category}
+                        </div>
                     `
                     : ""
                 }
-                ${
-                    product.color
-                    ? `
-                    <div style="
-                        color:#555;
-                        font-size:14px;
-                        margin-bottom:12px;
-                    ">
-                        🎨 ${product.color}
-                    </div>
-                    `
-                    : ""
-                }
+
+                <div class="product-price">
+                    R$ ${product.price.toFixed(2)}
+                </div>
+
                 <button
                     class="add-button"
-                    onclick="
-                        event.stopPropagation();
-                        addProduct(${product.id});
-                    "
+                    type="button"
+                    onclick="event.stopPropagation(); addProduct(${product.id})"
                 >
                     ${
                         quantity > 0
@@ -1297,166 +1160,116 @@ function displayProducts(productList = products) {
                         : "Adicionar ao Pedido"
                     }
                 </button>
-                <div class="quantity">
-                    <button
-                        type="button"
-                        onclick="
-                            event.stopPropagation();
-                            changeQuantity(${product.id}, -1);
-                        "
-                    >
-                        −
-                    </button>
-                    <span>
-                        ${quantity}
-                    </span>
-                    <button
-                        type="button"
-                        onclick="
-                            event.stopPropagation();
-                            changeQuantity(${product.id}, 1);
-                        "
-                    >
-                        +
-                    </button>
-                </div>
+
             </div>
         `;
+
+        /*
+         * Clicking anywhere on the product opens
+         * the detailed product popup.
+         */
+        card.addEventListener("click", function() {
+            openProductModal(product.id);
+        });
+
         container.appendChild(card);
     });
+
     updateCartCount();
 }
-let selectedProduct = null;
 
+/* =========================================
+   PRODUCT DETAILS MODAL
+========================================= */
+
+let selectedProductId = null;
 let modalQuantity = 1;
 
 
+/*
+ * Open product popup
+ */
 function openProductModal(productId) {
 
-    selectedProduct =
-        products.find(
-            product => product.id === productId
-        );
+    const product = products.find(
+        p => p.id === productId
+    );
 
-    if (!selectedProduct) {
+    if (!product) {
         return;
     }
 
-    modalQuantity = 1;
+    selectedProductId = productId;
 
-    document.getElementById(
-        "modalProductImage"
-    ).src =
-        selectedProduct.image;
+    /*
+     * If the product is already in the cart,
+     * start the popup with its current quantity.
+     */
+    modalQuantity = cart[productId] || 1;
 
-    document.getElementById(
-        "modalProductImage"
-    ).alt =
-        selectedProduct.name;
+    document.getElementById("modalProductImage").src =
+        product.image;
 
-    document.getElementById(
-        "modalProductName"
-    ).textContent =
-        selectedProduct.name;
+    document.getElementById("modalProductImage").alt =
+        product.name;
 
-    document.getElementById(
-        "modalProductCategory"
-    ).textContent =
-        selectedProduct.category ||
-        "Acessório";
+    document.getElementById("modalProductName").textContent =
+        product.name;
 
-    document.getElementById(
-        "modalProductDescription"
-    ).textContent =
-        selectedProduct.description ||
-        "Produto disponível em nossa loja.";
+    document.getElementById("modalProductPrice").textContent =
+        "R$ " + product.price.toFixed(2);
 
-    document.getElementById(
-        "modalProductPrice"
-    ).textContent =
-        "R$ " +
-        selectedProduct.price.toFixed(2);
+    document.getElementById("modalProductDescription").textContent =
+        product.description || "Sem descrição disponível.";
 
-    document.getElementById(
-        "modalQuantity"
-    ).textContent =
-        modalQuantity;
-
-
-    /* COLOR */
-
-    const colorElement =
-        document.getElementById(
-            "modalProductColor"
-        );
-
-    if (selectedProduct.color) {
-
-        colorElement.innerHTML =
-            "🎨 <strong>Cor:</strong> " +
-            selectedProduct.color;
-
-        colorElement.style.display =
-            "block";
-
-    } else {
-
-        colorElement.style.display =
-            "none";
-    }
-
-
-    /* AVAILABILITY */
-
-    const availabilityElement =
-        document.getElementById(
-            "modalProductAvailability"
-        );
-
-    if (selectedProduct.active) {
-
-        availabilityElement.textContent =
-            "✓ Disponível";
-
-        availabilityElement.className =
-            "modal-availability in-stock";
-
-    } else {
-
-        availabilityElement.textContent =
-            "✕ Indisponível";
-
-        availabilityElement.className =
-            "modal-availability out-stock";
-    }
-
-
-    document.getElementById(
-        "productModal"
-    ).classList.add("show");
+    document.getElementById("modalProductCategory").textContent =
+        product.category || "Produto";
 
 
     /*
-     * Prevent page behind modal
-     * from scrolling.
+     * COLOR
+     *
+     * This expects your Google Sheet to have a column
+     * called "color".
+     *
+     * Example:
+     *
+     * name | description | price | color
+     * Cabo USB-C | Cabo rápido | 29.90 | Preto
      */
+    const colorElement =
+        document.getElementById("modalProductColor");
 
-    document.body.style.overflow =
-        "hidden";
+    if (product.color) {
+
+        colorElement.innerHTML =
+            "<strong>Cor:</strong> " +
+            escapeHTML(product.color);
+
+        colorElement.style.display = "block";
+
+    } else {
+
+        colorElement.style.display = "none";
+    }
+
+
+    updateModalQuantity();
+
+    document
+        .getElementById("productModal")
+        .classList.add("show");
+
+    /*
+     * Prevent the page behind the popup from scrolling.
+     */
+    document.body.style.overflow = "hidden";
 }
 
 
-function closeProductModal() {
-
-    document.getElementById(
-        "productModal"
-    ).classList.remove("show");
-
-    document.body.style.overflow =
-        "";
-}
-
-
+/*
+ * Change quantity inside popup
+ */
 function changeModalQuantity(amount) {
 
     modalQuantity += amount;
@@ -1465,54 +1278,96 @@ function changeModalQuantity(amount) {
         modalQuantity = 1;
     }
 
-    document.getElementById(
-        "modalQuantity"
-    ).textContent =
-        modalQuantity;
+    updateModalQuantity();
 }
-function addModalProduct() {
-    if (!selectedProduct) {
+
+
+/*
+ * Update quantity displayed in popup
+ */
+function updateModalQuantity() {
+
+    document.getElementById(
+        "modalProductQuantity"
+    ).textContent = modalQuantity;
+}
+
+
+/*
+ * Add product from popup to cart
+ */
+function addModalProductToCart() {
+
+    if (!selectedProductId) {
         return;
     }
-    const id =
-        selectedProduct.id;
-    if (!cart[id]) {
-        cart[id] = 0;
-    }
-    cart[id] += modalQuantity;
+
+    cart[selectedProductId] = modalQuantity;
+
+    /*
+     * Update product cards and cart counter.
+     */
     displayProducts();
+
     closeProductModal();
 }
-/*
- * Click the dark background
- * to close the modal.
- */
-document.getElementById(
-    "productModal"
-).addEventListener(
-    "click",
-    function(event) {
-        if (
-            event.target === this
-        ) {
-            closeProductModal();
-        }
-    }
-);
-/*
- * ESC key closes modal
- */
-document.addEventListener(
-    "keydown",
-    function(event) {
-        if (
-            event.key === "Escape"
-        ) {
-            closeProductModal();
-        }
-    }
-);
 
+
+/*
+ * Close popup
+ */
+function closeProductModal() {
+
+    document
+        .getElementById("productModal")
+        .classList.remove("show");
+
+    document.body.style.overflow = "";
+}
+
+
+/*
+ * Close when clicking outside popup
+ */
+function closeProductModalOutside(event) {
+
+    if (event.target.id === "productModal") {
+        closeProductModal();
+    }
+}
+
+
+/*
+ * Close with ESC key
+ */
+document.addEventListener("keydown", function(event) {
+
+    if (
+        event.key === "Escape" &&
+        document
+            .getElementById("productModal")
+            .classList
+            .contains("show")
+    ) {
+
+        closeProductModal();
+    }
+
+});
+
+
+/*
+ * Basic HTML escaping for product color.
+ */
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 function searchProducts() {
     const search =
         document
@@ -1704,9 +1559,13 @@ function sendToWhatsApp() {
             return schemaProduct;
         })
     };
-        const script = document.createElement("script");
+
+    const script = document.createElement("script");
+
     script.type = "application/ld+json";
+
     script.id = "product-schema";
+
     script.textContent = JSON.stringify(
         productSchema,
         null,
