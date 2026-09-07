@@ -4,2791 +4,925 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Chris Tech | Assistência Técnica e Acessórios em Camobi, Santa Maria RS</title>
-
+    <title>
+        Chris Tech | Assistência Técnica e Acessórios em Camobi, Santa Maria RS
+    </title>
     <meta
         name="description"
-        content="Chris Tech em Camobi, Santa Maria - RS. Assistência técnica para celulares, notebooks e computadores, além de carregadores, cabos e acessórios para celulares."
-    >
-
+        content="Chris Tech em Camobi, Santa Maria - RS. Assistência técnica para celulares, notebooks e computadores, além de carregadores, cabos e acessórios para celulares.">
     <meta
         name="keywords"
-        content="assistência técnica Camobi, assistência técnica Santa Maria RS, conserto de celular Camobi, acessórios para celular Camobi, carregador celular Santa Maria, cabo USB-C Santa Maria, Chris Tech Santa Maria"
-    >
-
+        content="assistência técnica Camobi, assistência técnica Santa Maria RS, conserto de celular Camobi, acessórios para celular Camobi, carregador celular Santa Maria, cabo USB-C Santa Maria, Chris Tech Santa Maria">
     <meta name="author" content="Chris Tech">
-    <meta name="theme-color" content="#111827">
-
     <link
         rel="canonical"
-        href="https://loja.christech-sm.workers.dev/store"
-    >
-
+        href="https://loja.christech-sm.workers.dev/store">
     <link
         rel="icon"
         href="images/christechlogo.jpg"
-        type="image/jpeg"
-    >
-
+        type="image/jpeg">
     <!-- Open Graph -->
     <meta
         property="og:title"
-        content="Chris Tech | Assistência Técnica em Camobi"
-    >
-
+        content="Chris Tech | Assistência Técnica em Camobi">
     <meta
         property="og:description"
-        content="Assistência técnica e acessórios para celulares em Camobi, Santa Maria - RS."
-    >
-
+        content="Assistência técnica e acessórios para celulares em Camobi, Santa Maria - RS.">
     <meta
         property="og:url"
-        content="https://loja.christech-sm.workers.dev/store"
-    >
-
+        content="https://loja.christech-sm.workers.dev/store">
     <meta
         property="og:type"
-        content="website"
-    >
-
+        content="website">
     <meta
         property="og:image"
-        content="https://loja.christech-sm.workers.dev/images/adschristech.png"
-    >
-
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Chris Tech",
-        "url": "https://loja.christech-sm.workers.dev/store",
-        "telephone": "+55 55 99668-9852",
-        "email": "christech.sm@gmail.com",
-        "description": "Assistência técnica para celulares, notebooks e computadores e venda de acessórios em Camobi, Santa Maria - RS.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Avenida Roraima, 1000",
-            "addressLocality": "Santa Maria",
-            "addressRegion": "RS",
-            "addressCountry": "BR"
+        content="https://loja.christech-sm.workers.dev/images/adschristech.png">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Chris Tech",
+    "url": "https://loja.christech-sm.workers.dev/store",
+    "telephone": "+55 55 99668-9852",
+    "email": "christech.sm@gmail.com",
+    "description": "Assistência técnica para celulares, notebooks e computadores e venda de acessórios em Camobi, Santa Maria - RS.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Roraima, 1000",
+        "addressLocality": "Santa Maria",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+    },
+    "areaServed": [
+        {
+            "@type": "City",
+            "name": "Santa Maria"
         },
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "Santa Maria"
-            },
-            {
-                "@type": "Place",
-                "name": "Camobi"
-            }
-        ]
+        {
+            "@type": "Place",
+            "name": "Camobi"
+        }
+    ]
+}
+</script>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+.top-bar {
+    width: 100%;
+    position: relative;
+    max-width: 1200px;
+    height: 150px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.top-bar img {
+    max-height: 150px;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Arrow buttons */
+.top-bar .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-bar .arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.top-bar .left-arrow {
+    left: 15px;
+}
+
+.top-bar .right-arrow {
+    right: 15px;
+}    /* NAVBAR */
+nav {
+    background:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding: 12px 5%;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color:#0d6efd;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    width: 100%;
+    gap: 12px
+}
+
+.nav-links a {
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    color:#333;
+    font-weight:bold;
+    transition:0.3s;
+}
+    
+    .nav-links a:hover {
+        color:#0d6efd;
     }
-    </script>
-
-    <style>
-        /* =========================================================
-           RESET
-        ========================================================= */
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f5f5;
-            color: #222;
-            line-height: 1.5;
-        }
-
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        button,
-        input,
-        textarea {
-            font: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        /* =========================================================
-           HEADER / BANNER
-        ========================================================= */
-
-        .top-bar {
-            width: 100%;
-            max-width: 1200px;
-            height: 150px;
-            margin: 0 auto;
-            position: relative;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            overflow: hidden;
-            background: #111;
-        }
-
-        .top-bar img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .top-bar .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-
-            width: 42px;
-            height: 42px;
-
-            border: none;
-            border-radius: 50%;
-
-            background: rgba(0, 0, 0, 0.55);
-            color: #fff;
-
-            font-size: 24px;
-            line-height: 1;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            z-index: 10;
-
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease;
-        }
-
-        .top-bar .arrow:hover {
-            background: rgba(0, 0, 0, 0.85);
-        }
-
-        .top-bar .arrow:focus-visible {
-            outline: 3px solid #0d6efd;
-            outline-offset: 2px;
-        }
-
-        .top-bar .left-arrow {
-            left: 15px;
-        }
-
-        .top-bar .right-arrow {
-            right: 15px;
-        }
-
-        /* =========================================================
-           NAVBAR
-        ========================================================= */
-
-        nav {
-            background: #fff;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 1000;
-
-            padding: 12px 5%;
-
-            width: 100%;
-
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .logo {
-            font-size: 27px;
-            font-weight: bold;
-            color: #0d6efd;
-            white-space: nowrap;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 18px;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            text-decoration: none;
-            white-space: nowrap;
-            color: #333;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #0d6efd;
-        }
-
-        .nav-links a:focus-visible {
-            outline: 2px solid #0d6efd;
-            outline-offset: 4px;
-            border-radius: 3px;
-        }
-
-        /* =========================================================
-           STORE HEADER
-        ========================================================= */
-
-        .store-header {
-            background: #111827;
-            color: #fff;
-            text-align: center;
-            padding: 38px 20px;
-        }
-
-        .store-header h1 {
-            max-width: 1000px;
-            margin: 0 auto 10px;
-            font-size: 32px;
-            line-height: 1.2;
-        }
-
-        .store-header p {
-            max-width: 850px;
-            margin: auto;
-            color: #d1d5db;
-            font-size: 16px;
-        }
-
-        /* =========================================================
-           SEARCH
-        ========================================================= */
-
-        .search-container {
-            max-width: 1200px;
-            margin: 30px auto 0;
-            padding: 0 20px;
-        }
-
-        #productSearch {
-            width: 100%;
-
-            padding: 15px 20px;
-
-            border: 1px solid #ddd;
-            border-radius: 12px;
-
-            font-size: 16px;
-
-            outline: none;
-            background: #fff;
-
-            transition:
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        #productSearch:focus {
-            border-color: #0d6efd;
-            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.12);
-        }
-
-        /* =========================================================
-           PRODUCTS GRID
-        ========================================================= */
-
-        .products-grid {
-            max-width: 1200px;
-
-            margin: 40px auto;
-
-            padding: 0 20px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-
-            gap: 25px;
-        }
-
-        .loading-message,
-        .empty-message {
-            grid-column: 1 / -1;
-
-            text-align: center;
-
-            padding: 40px 20px;
-
-            color: #777;
-
-            background: #fff;
-
-            border-radius: 15px;
-        }
-
-        /* =========================================================
-           PRODUCT CARD
-        ========================================================= */
-
-        .product-card {
-            background: #fff;
-
-            border-radius: 15px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.08);
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease,
-                border-color 0.2s ease;
-
-            position: relative;
-
-            cursor: pointer;
-
-            border: 3px solid transparent;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.14);
-        }
-
-        .product-card.selected {
-            border-color: #25d366;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-
-            object-fit: cover;
-
-            display: block;
-
-            background: #f5f5f5;
-        }
-
-        .product-info {
-            padding: 18px;
-        }
-
-        .product-category {
-            display: inline-block;
-
-            color: #0d6efd;
-
-            background: #eef5ff;
-
-            padding: 5px 9px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            margin-bottom: 10px;
-        }
-
-        .product-name {
-            font-size: 20px;
-
-            line-height: 1.3;
-
-            margin-bottom: 10px;
-
-            color: #111;
-        }
-
-        .product-description {
-            color: #777;
-
-            font-size: 14px;
-
-            line-height: 1.5;
-
-            margin-bottom: 12px;
-        }
-
-        .product-price {
-            font-size: 20px;
-
-            font-weight: bold;
-
-            margin-bottom: 15px;
-        }
-
-        .add-button {
-            width: 100%;
-
-            border: none;
-
-            border-radius: 10px;
-
-            padding: 13px;
-
-            background: #111;
-
-            color: #fff;
-
-            font-size: 16px;
-
-            cursor: pointer;
-
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease;
-        }
-
-        .add-button:hover {
-            background: #333;
-        }
-
-        .add-button:focus-visible {
-            outline: 3px solid rgba(13, 110, 253, 0.35);
-            outline-offset: 2px;
-        }
-
-        .product-card.selected .add-button {
-            background: #25d366;
-        }
-
-        /* =========================================================
-           PRODUCT CARD QUANTITY
-        ========================================================= */
-
-        .quantity {
-            display: none;
-
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 10px;
-
-            margin-top: 10px;
-        }
-
-        .product-card.selected .quantity {
-            display: flex;
-        }
-
-        .quantity button {
-            width: 38px;
-            height: 38px;
-
-            border: none;
-
-            border-radius: 8px;
-
-            background: #eee;
-
-            font-size: 20px;
-
-            cursor: pointer;
-        }
-
-        .quantity button:hover {
-            background: #ddd;
-        }
-
-        .quantity span {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        /* =========================================================
-           PRODUCT MODAL
-        ========================================================= */
-
-        .product-modal {
-            display: none;
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 3000;
-
-            background: rgba(0, 0, 0, 0.65);
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        .product-modal.show {
-            display: flex;
-        }
-
-        .product-modal-content {
-            width: 100%;
-            max-width: 850px;
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            background: #fff;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.35);
-
-            position: relative;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            animation:
-                productModalOpen 0.2s ease;
-        }
-
-        @keyframes productModalOpen {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .product-modal-image-container {
-            background: #f5f5f5;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-height: 400px;
-        }
-
-        .product-modal-image {
-            width: 100%;
-            height: 100%;
-
-            max-height: 500px;
-
-            object-fit: contain;
-
-            background: #f5f5f5;
-        }
-
-        .product-modal-info {
-            padding: 40px;
-        }
-
-        .product-modal-category {
-            display: inline-block;
-
-            color: #0d6efd;
-
-            background: #eef5ff;
-
-            padding: 5px 10px;
-
-            border-radius: 20px;
-
-            font-size: 13px;
-
-            font-weight: bold;
-
-            margin-bottom: 12px;
-        }
-
-        .product-modal-title {
-            font-size: 30px;
-
-            line-height: 1.25;
-
-            margin-bottom: 15px;
-
-            color: #111;
-        }
-
-        .product-modal-price {
-            font-size: 28px;
-
-            font-weight: bold;
-
-            color: #0d6efd;
-
-            margin-bottom: 25px;
-        }
-
-        .product-modal-description {
-            color: #666;
-
-            font-size: 16px;
-
-            line-height: 1.7;
-
-            margin-bottom: 20px;
-        }
-
-        .product-modal-color {
-            margin-bottom: 25px;
-
-            font-size: 17px;
-        }
-
-        .product-modal-color strong {
-            color: #111;
-        }
-
-        .product-modal-actions {
-            margin-top: 25px;
-        }
-
-        .product-modal-quantity {
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 15px;
-
-            margin-bottom: 15px;
-        }
-
-        .product-modal-quantity button {
-            width: 45px;
-            height: 45px;
-
-            border: none;
-
-            border-radius: 8px;
-
-            background: #eee;
-
-            font-size: 22px;
-
-            cursor: pointer;
-        }
-
-        .product-modal-quantity button:hover {
-            background: #ddd;
-        }
-
-        .product-modal-quantity span {
-            font-size: 20px;
-
-            font-weight: bold;
-        }
-
-        .product-modal-add {
-            width: 100%;
-
-            border: none;
-
-            border-radius: 10px;
-
-            padding: 15px;
-
-            background: #111;
-
-            color: #fff;
-
-            font-size: 17px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition: background 0.2s ease;
-        }
-
-        .product-modal-add:hover {
-            background: #333;
-        }
-
-        .product-modal-close {
-            position: absolute;
-
-            right: 15px;
-            top: 12px;
-
-            width: 40px;
-            height: 40px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: rgba(0, 0, 0, 0.75);
-
-            color: #fff;
-
-            font-size: 28px;
-
-            cursor: pointer;
-
-            z-index: 10;
-
-            line-height: 1;
-        }
-
-        .product-modal-close:hover {
-            background: #000;
-        }
-
-        /* =========================================================
-           ORDER MODAL
-        ========================================================= */
-
-        .modal {
-            display: none;
-
-            position: fixed;
-
-            z-index: 4000;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background: rgba(0, 0, 0, 0.65);
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #fff;
-
-            width: 100%;
-            max-width: 500px;
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            border-radius: 15px;
-
-            padding: 30px;
-
-            position: relative;
-
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-content h2 {
-            margin-bottom: 10px;
-            padding-right: 30px;
-        }
-
-        .modal-content > p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .close-button {
-            position: absolute;
-
-            right: 15px;
-            top: 10px;
-
-            width: 40px;
-            height: 40px;
-
-            border: none;
-
-            background: transparent;
-
-            font-size: 30px;
-
-            cursor: pointer;
-
-            border-radius: 50%;
-        }
-
-        .close-button:hover {
-            background: #f0f0f0;
-        }
-
-        .modal-content label {
-            display: block;
-
-            margin-top: 15px;
-
-            margin-bottom: 7px;
-
-            font-weight: bold;
-        }
-
-        .modal-content input,
-        .modal-content textarea {
-            width: 100%;
-
-            border: 1px solid #ddd;
-
-            border-radius: 8px;
-
-            padding: 13px;
-
-            font-size: 16px;
-
-            outline: none;
-        }
-
-        .modal-content input:focus,
-        .modal-content textarea:focus {
-            border-color: #0d6efd;
-
-            box-shadow:
-                0 0 0 3px rgba(13, 110, 253, 0.1);
-        }
-
-        .modal-content textarea {
-            min-height: 100px;
-
-            resize: vertical;
-        }
-
-        .whatsapp-button {
-            width: 100%;
-
-            margin-top: 20px;
-
-            padding: 15px;
-
-            border: none;
-
-            border-radius: 10px;
-
-            background: #25d366;
-
-            color: #fff;
-
-            font-size: 17px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition: background 0.2s ease;
-        }
-
-        .whatsapp-button:hover {
-            background: #1ebe5d;
-        }
-
-        /* =========================================================
-           FLOATING BUY BUTTON
-        ========================================================= */
-
-        .floating-buy-button {
-            position: fixed;
-
-            right: 25px;
-            bottom: 25px;
-
-            z-index: 2000;
-
-            border: none;
-
-            border-radius: 50px;
-
-            padding: 16px 22px;
-
-            background: #25d366;
-
-            color: #fff;
-
-            font-size: 17px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.25);
-
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease;
-        }
-
-        .floating-buy-button:hover {
-            transform: scale(1.05);
-            background: #1ebe5d;
-        }
-
-        #cartCount {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-width: 24px;
-            height: 24px;
-
-            background: #fff;
-
-            color: #111;
-
-            border-radius: 50%;
-
-            padding: 2px 7px;
-
-            margin-left: 5px;
-
-            font-size: 13px;
-        }
-
-        /* =========================================================
-           ABOUT
-        ========================================================= */
-
-        .about {
-            padding: 100px 40px;
-
-            background: #111827;
-
-            color: #fff;
-        }
-
-        .about-container {
-            max-width: 1200px;
-
-            margin: auto;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 50px;
-
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1 1 500px;
-
-            text-align: left;
-        }
-
-        .about-text h2 {
-            font-size: 42px;
-
-            line-height: 1.2;
-
-            margin-bottom: 20px;
-
-            color: #fff;
-        }
-
-        .about-text p {
-            line-height: 1.8;
-
-            font-size: 1.1rem;
-
-            margin-bottom: 20px;
-
-            color: #e5e7eb;
-        }
-
-        .about-image {
-            flex: 1;
-        }
-
-        .about-image img {
-            width: 100%;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.5);
-        }
-
-        .about-actions {
-            margin-top: 30px;
-
-            text-align: left;
-        }
-
-        .btn-back {
-            display: inline-block;
-
-            background: #0d6efd;
-
-            color: #fff;
-
-            padding: 14px 28px;
-
-            border-radius: 40px;
-
-            font-weight: bold;
-
-            text-decoration: none;
-
-            transition: all 0.3s ease;
-
-            box-shadow:
-                0 4px 10px rgba(13, 110, 253, 0.3);
-        }
-
-        .btn-back:hover {
-            background: #0b5ed7;
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 6px 15px rgba(13, 110, 253, 0.5);
-        }
-
-        /* =========================================================
-           CONTACT
-        ========================================================= */
-
-        .contact {
-            padding: 100px 40px;
-
-            text-align: center;
-
-            background: #f5f5f5;
-        }
-
-        .contact-box {
-            max-width: 700px;
-
-            margin: auto;
-
-            background: #fff;
-
-            padding: 50px;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact-box h2 {
-            margin-bottom: 25px;
-
-            font-size: 38px;
-
-            line-height: 1.2;
-        }
-
-        .contact-box p {
-            margin: 15px 0;
-
-            font-size: 18px;
-        }
-
-        .phone-link {
-            color: #0d6efd;
-
-            text-decoration: none;
-
-            font-weight: bold;
-        }
-
-        .phone-link:hover {
-            text-decoration: underline;
-        }
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            padding: 25px 20px;
-
-            background: #0b1120;
-
-            color: #aaa;
-
-            text-align: center;
-
-            font-size: 14px;
-        }
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                flex-direction: column;
-
-                justify-content: center;
-
-                gap: 10px;
-
-                padding: 12px 20px;
-            }
-
-            .nav-links {
-                width: 100%;
-
-                justify-content: center;
-
-                gap: 14px;
-
-                flex-wrap: wrap;
-            }
-
-            .store-header h1 {
-                font-size: 26px;
-            }
-
-            .product-modal-content {
-                grid-template-columns: 1fr;
-
-                max-height: 95vh;
-            }
-
-            .product-modal-image-container {
-                min-height: 250px;
-
-                max-height: 300px;
-            }
-
-            .product-modal-info {
-                padding: 25px;
-            }
-
-            .product-modal-title {
-                font-size: 24px;
-            }
-
-            .product-modal-price {
-                font-size: 24px;
-            }
-
-            .about {
-                padding: 70px 25px;
-            }
-
-            .about-text h2 {
-                font-size: 34px;
-            }
-
-            .contact {
-                padding: 70px 20px;
-            }
-
-            .contact-box {
-                padding: 35px 25px;
-            }
-
-            .contact-box h2 {
-                font-size: 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .top-bar,
-            .top-bar img {
-                height: 120px;
-            }
-
-            .top-bar .arrow {
-                width: 36px;
-                height: 36px;
-
-                font-size: 20px;
-            }
-
-            .top-bar .left-arrow {
-                left: 8px;
-            }
-
-            .top-bar .right-arrow {
-                right: 8px;
-            }
-
-            .logo {
-                font-size: 23px;
-
-                text-align: center;
-            }
-
-            .nav-links {
-                gap: 10px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-            }
-
-            .store-header {
-                padding: 30px 15px;
-            }
-
-            .store-header h1 {
-                font-size: 23px;
-            }
-
-            .store-header p {
-                font-size: 14px;
-            }
-
-            .search-container {
-                margin-top: 20px;
-
-                padding: 0 10px;
-            }
-
-            .products-grid {
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-
-                gap: 12px;
-
-                padding: 10px;
-
-                margin-top: 25px;
-            }
-
-            .product-image {
-                height: 160px;
-            }
-
-            .product-info {
-                padding: 12px;
-            }
-
-            .product-name {
-                font-size: 16px;
-            }
-
-            .product-description {
-                font-size: 13px;
-            }
-
-            .product-price {
-                font-size: 17px;
-            }
-
-            .product-category {
-                font-size: 10px;
-            }
-
-            .add-button {
-                font-size: 13px;
-
-                padding: 10px 7px;
-            }
-
-            .floating-buy-button {
-                right: 15px;
-
-                bottom: 15px;
-
-                padding: 13px 17px;
-
-                font-size: 15px;
-            }
-
-            .product-modal {
-                padding: 10px;
-            }
-
-            .product-modal-info {
-                padding: 20px;
-            }
-
-            .modal-content {
-                padding: 25px 20px;
-            }
-
-            .about {
-                padding: 60px 20px;
-            }
-
-            .about-text h2 {
-                font-size: 30px;
-            }
-
-            .about-text p {
-                font-size: 1rem;
-            }
-
-            .btn-back {
-                width: 100%;
-
-                text-align: center;
-            }
-
-            .contact {
-                padding: 60px 15px;
-            }
-
-            .contact-box {
-                padding: 30px 20px;
-            }
-
-            .contact-box h2 {
-                font-size: 27px;
-            }
-
-            .contact-box p {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 380px) {
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .product-image {
-                height: 220px;
-            }
-
-            .nav-links {
-                gap: 8px;
-            }
-        }
-
-        /* =========================================================
-           REDUCED MOTION
-        ========================================================= */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+   
+.store-header {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    justify-content: center; /* horizontal */
+    align-items: center;  
+}
+.store-header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+.store-header p {
+    color: #ccc;
+}
+    .search-container {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+}
+
+#productSearch {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+#productSearch:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+.products-grid {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.2s;
+    position: relative;
+}
+.product-card:hover {
+    transform: translateY(-4px);
+}
+.product-card.selected {
+    border: 3px solid #25D366;
+}
+.product-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+.product-info {
+    padding: 18px;
+}
+.product-name {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.product-description {
+    font-size: 14px;
+    color: #777;
+    min-height: 40px;
+    margin-bottom: 12px;
+}
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.add-button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.add-button:hover {
+    background: #333;
+}
+.product-card.selected .add-button {
+    background: #25D366;
+}
+.quantity {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.product-card.selected .quantity {
+    display: flex;
+}
+.quantity button {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: #eee;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.quantity span {
+    font-weight: bold;
+    font-size: 18px;
+}
+.floating-buy-button {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+    z-index: 1000;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 22px;
+    background: #25D366;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.25);
+    transition: 0.2s;
+}
+.floating-buy-button:hover {
+    transform: scale(1.05);
+}
+
+#cartCount {
+    background: white;
+    color: #111;
+    border-radius: 50%;
+    padding: 3px 8px;
+    margin-left: 5px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        rgba(0,0,0,0.65);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+   .modal-content {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+}
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+.modal-content p {
+    color: #666;
+    margin-bottom: 20px;
+}
+.close-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+.modal-content label {
+    display: block
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 16px;
+}
+.modal-content textarea {
+    height: 100px;
+
+    resize: vertical;
+}
+    .contact {
+        padding:100px 40px;
+        text-align:center;
+    }
+
+    .about {
+        padding:100px 40px;
+        background:#111827;
+        color:white;
+    }
+
+    .about-container {
+        max-width:1200px;
+        margin:auto;
+        display:flex;
+        align-items:center;
+        gap:50px;
+        flex-wrap:wrap;
+    }
+
+    .about-text {
+        flex:1;
+        text-align:left;
+    }
+    .about-text h2 {
+        font-size:42px;
+        margin-bottom:20px;
+        color:#ffffff;
+    }
+    .about-text p {
+        line-height:1.8;
+        font-size:1.1rem;
+        margin-bottom:20px;
+        color:#e5e7eb;
+    }
+    .about-image {
+        flex:1;
+    }
+    .about-image img {
+        width:100%;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    
+    .contact-box {
+        max-width:700px;
+        margin:auto;
+        background:white;
+        padding:50px;
+        border-radius:20px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-box h2 {
+        margin-bottom:25px;
+        font-size:38px;
+    }
+
+    .contact-box p {
+        margin:15px 0;
+        font-size:18px;
+    }
+    /* ACTIONS & BACK BUTTON */
+    .about-actions {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .btn-back {
+        display: inline-block;
+        background: #0d6efd;
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 40px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+    }
+
+    .btn-back:hover {
+        background: #0b5ed7;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(13, 110, 253, 0.5);
+    }
+        
+.whatsapp-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #25D366;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.whatsapp-button:hover {
+    background: #1ebe5d;
+}
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+        gap: 12px;
+       padding: 10px;
+    }
+    .product-image {
+        height: 160px;
+    }
+    .product-info {
+        padding: 12px;
+    }
+    .product-name {
+        font-size: 16px;
+    }
+    .product-price {
+        font-size: 17px;
+    }
+    .add-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+</style>
 </head>
-
 <body>
+<header class="top-bar">
+    <button class="arrow left-arrow" onclick="previousImage()">&#10094;</button>
+    <img id="headerImage" src="images/adschristech.png" alt="Chris Tech assistência técnica e acessórios em Camobi, Santa Maria">
+    <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button>
+</header>
+<nav>
+    <div class="logo">Chris Tech & Acessórios </div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="device_defect_catalog/telas.html">Serviços</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contato</a>
+    </div>
+</nav>
+<main>
+    <section class="store-header">
+        <h1>Assistência Técnica e Acessórios em Camobi - Entregar ao mesmo dia</h1>
 
-    <!-- =========================================================
-         HEADER
-    ========================================================= -->
+        <p>
+            Assistência técnica e acessórios para celulares, notebooks e computadores
+            em Camobi, Santa Maria - RS.
+        </p>
+    </section>
+<div class="search-container">
+    <input
+        type="text"
+        id="productSearch"
+        placeholder="🔍 Buscar produto..."
+        oninput="searchProducts()"
+    >
+</div>
 
-    <header class="top-bar">
+<section id="products" class="products-grid">
+</section>
+    
+</main>
 
+<button
+    id="buyButton"
+    class="floating-buy-button"
+    onclick="openOrderForm()">
+
+    🛒 Comprar
+
+    <span id="cartCount">
+        0
+    </span>
+
+</button>
+
+<div
+    id="orderModal"
+    class="modal">
+    <div class="modal-content">
         <button
-            type="button"
-            class="arrow left-arrow"
-            onclick="previousImage()"
-            aria-label="Imagem anterior"
-        >
-            &#10094;
+            class="close-button"
+            onclick="closeOrderForm()">
+            ×
         </button>
 
-        <img
-            id="headerImage"
-            src="images/header1.jpg"
-            alt="Chris Tech assistência técnica e acessórios em Camobi, Santa Maria"
-        >
+        <h2>
+           Informações de Entrega
 
+        </h2>
+        <p>
+            Insira suas informações e enviaremos seu pedido pelo WhatsApp.
+        </p>
+        <label for="customerName">
+            Nome
+        </label>
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Seu nome"
+        >
+        <label for="customerAddress">
+            Endereço
+        </label>
+        <textarea
+            id="customerAddress"
+            placeholder="Seu endereço de entrega"
+        ></textarea>
         <button
-            type="button"
-            class="arrow right-arrow"
-            onclick="nextImage()"
-            aria-label="Próxima imagem"
-        >
-            &#10095;
+            class="whatsapp-button"
+            onclick="sendToWhatsApp()">
+            💬 Continuar para o WhatsApp
         </button>
+    </div>
+</div>
 
-    </header>
-
-    <!-- =========================================================
-         NAVIGATION
-    ========================================================= -->
-
-    <nav aria-label="Navegação principal">
-
-        <div class="logo">
-            Chris Tech &amp; Acessórios
-        </div>
-
-        <div class="nav-links">
-
-            <a href="#">
-                Home
-            </a>
-
-            <a href="device_defect_catalog/telas.html">
-                Serviços
-            </a>
-
-            <a href="#about">
-                Sobre
-            </a>
-
-            <a href="#contact">
-                Contato
-            </a>
-
-        </div>
-
-    </nav>
-
-    <main>
-
-        <!-- =====================================================
-             STORE HEADER
-        ===================================================== -->
-
-        <section class="store-header">
-
-            <h1>
-                Assistência Técnica e Acessórios em Camobi —
-                Entrega no mesmo dia
-            </h1>
-
+<section class="about" id="about">
+ <div class="about-container">
+    <div class="about-text">
+        <h2> Assistência Técnica em Camobi, Santa Maria </h2>
             <p>
-                Assistência técnica e acessórios para celulares,
+                A Chris Tech oferece assistência técnica para celulares,
                 notebooks e computadores em Camobi, Santa Maria - RS.
             </p>
 
-        </section>
-
-        <!-- =====================================================
-             SEARCH
-        ===================================================== -->
-
-        <div class="search-container">
-
-            <label
-                for="productSearch"
-                class="sr-only"
-                style="position:absolute;left:-9999px;"
-            >
-                Buscar produto
-            </label>
-
-            <input
-                type="search"
-                id="productSearch"
-                placeholder="🔍 Buscar produto..."
-                autocomplete="off"
-                aria-label="Buscar produto"
-            >
-
-        </div>
-
-        <!-- =====================================================
-             PRODUCTS
-        ===================================================== -->
-
-        <section
-            id="products"
-            class="products-grid"
-            aria-label="Produtos"
-        >
-
-            <div class="loading-message">
-                Carregando produtos...
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- =========================================================
-         FLOATING CART BUTTON
-    ========================================================= -->
-
-    <button
-        id="buyButton"
-        class="floating-buy-button"
-        type="button"
-        onclick="openOrderForm()"
-        aria-label="Abrir pedido"
-    >
-        🛒 Comprar
-
-        <span id="cartCount">
-            0
-        </span>
-    </button>
-
-    <!-- =========================================================
-         ORDER MODAL
-    ========================================================= -->
-
-    <div
-        id="orderModal"
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="orderModalTitle"
-        onclick="closeOrderFormOutside(event)"
-    >
-
-        <div
-            class="modal-content"
-            onclick="event.stopPropagation()"
-        >
-
-            <button
-                type="button"
-                class="close-button"
-                onclick="closeOrderForm()"
-                aria-label="Fechar formulário"
-            >
-                ×
-            </button>
-
-            <h2 id="orderModalTitle">
-                Informações de Entrega
-            </h2>
-
             <p>
-                Insira suas informações e enviaremos seu pedido pelo WhatsApp.
+                Também trabalhamos com carregadores, cabos e acessórios
+                para celulares, oferecendo soluções práticas, qualidade
+                e atendimento próximo para clientes de Santa Maria.
             </p>
 
-            <label for="customerName">
-                Nome
-            </label>
+            <p>
+                Estamos localizados na Avenida Roraima, em Camobi,
+                próximo à Universidade Federal de Santa Maria (UFSM).
+            </p>
 
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Seu nome"
-                autocomplete="name"
-                maxlength="100"
-            >
-
-            <label for="customerAddress">
-                Endereço
-            </label>
-
-            <textarea
-                id="customerAddress"
-                placeholder="Seu endereço de entrega"
-                autocomplete="street-address"
-                maxlength="500"
-            ></textarea>
-
-            <button
-                type="button"
-                class="whatsapp-button"
-                onclick="sendToWhatsApp()"
-            >
-                💬 Continuar para o WhatsApp
-            </button>
+            <div class="about-actions">
+                <a href="curriculum.html" class="btn-back">
+                    ⬅️ Ver o Currículo Principal
+                </a>
+            </div>
 
         </div>
 
     </div>
 
-    <!-- =========================================================
-         PRODUCT DETAILS MODAL
-    ========================================================= -->
+</section>
+<section class="contact" id="contact">
+    <div class="contact-box">
+        <h2>Fale com a Chris Tech em Camobi</h2>
+        <p><a href="redirect.html" style="color: #0d6efd; text-decoration: none; font-weight: bold;">📞 +55 55 99668-9852</a></p>
+        <p>📧 christech.sm@gmail.com</p>
+        <p>📍
+    📍 Avenida Roraima, 1000 — Camobi, Santa Maria - RS</p>
+    </div>
+</section>
+<footer>
+    <p>© 2026 Criado por Chris Tech • Todos os direitos reservados</p>
+</footer>
+<script>
+const WHATSAPP_NUMBER = "5555996689852";
+const PRODUCTS_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBT6G9F5gMctKLGKoFYXGZpfGvcN2g89zn0fX3zApi5d07Ac4OxKVrt5o669BV5mdyi6vVUWK2j9Uv/pub?gid=0&single=true&output=csv";
 
-    <div
-        id="productModal"
-        class="product-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalProductName"
-        onclick="closeProductModalOutside(event)"
-    >
+let products = [];
+let cart = {};
+function parseCSV(csv) {
+    const rows = [];
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
+    for (let i = 0; i < csv.length; i++) {
+        const char = csv[i];
+        const next = csv[i + 1];
+        if (char === '"' && insideQuotes && next === '"') {
+            value += '"';
+            i++;
+        }
+        else if (char === '"') {
+            insideQuotes = !insideQuotes;
+        }
+        else if (char === "," && !insideQuotes) {
+            row.push(value);
+            value = "";
+        }
+        else if ((char === "\n" || char === "\r") && !insideQuotes) {
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
+            row.push(value);
+            rows.push(row);
+            row = [];
+            value = "";
+        }
+        else {
+            value += char;
+        }
+    }
+    if (value !== "" || row.length > 0) {
+        row.push(value);
+        rows.push(row);
+    }
+    return rows;
+}
+async function loadProducts() {
+    try {
+        const response = await fetch(
+            PRODUCTS_URL + "&cache=" + Date.now()
+        );
+        if (!response.ok) {
+            throw new Error("Could not load Google Sheet");
+        }
+        const csv = await response.text();
+        const rows = parseCSV(csv);
+        if (rows.length < 2) {
+            throw new Error("No products found");
+        }
+        const headers = rows[0].map(header =>
+            header.trim().toLowerCase()
+        );
+        products = rows
+            .slice(1)
+            .filter(row => row.length > 0 && row[0])
+            .map(row => {
+                const product = {};
+                headers.forEach((header, index) => {
+                    product[header] =
+                        row[index] ? row[index].trim() : "";
+                });
+                product.id = Number(product.id);
+                product.price = Number(
+                    product.price.replace(",", ".")
+                );
+                product.active =
+                    String(product.active).toLowerCase() === "true";
 
-        <div
-            class="product-modal-content"
-            onclick="event.stopPropagation()"
-        >
+                return product;
+            })
+            .filter(product => product.active);
+        console.log("Products loaded:", products);
+        displayProducts();
+        generateProductSchema();
+    } catch (error) {
+        console.error("Error loading products:", error);
+        document.getElementById("products").innerHTML = `
+            <p style="
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 30px;
+                color: #777;
+            ">
+                Não foi possível carregar os produtos.
+                Tente novamente mais tarde.
+            </p>
+        `;
+    }
+}
+const images = [
+    "images/header1.jpg",
+    "images/header2.jpg",
+    "images/header3.jpg"
+];
 
-            <button
-                type="button"
-                class="product-modal-close"
-                onclick="closeProductModal()"
-                aria-label="Fechar detalhes do produto"
+let currentImage = 0;
+
+    function showImage() {
+        document.getElementById("headerImage").src = images[currentImage];
+    }
+
+    function nextImage() {
+        currentImage++;
+
+        if (currentImage >= images.length) {
+            currentImage = 0;
+        }
+
+        showImage();
+    }
+
+    function previousImage() {
+        currentImage--;
+
+        if (currentImage < 0) {
+            currentImage = images.length - 1;
+        }
+
+        showImage();
+    }
+function displayProducts(productList = products) {
+    const container =
+        document.getElementById("products");
+
+    container.innerHTML = "";
+
+    productList.forEach(product => {
+
+        const quantity =
+            cart[product.id] || 0;
+        const card =
+            document.createElement("div");
+        card.className =
+            "product-card";
+        if (quantity > 0) {
+            card.classList.add("selected");
+        }
+        card.innerHTML = `
+            <img
+                class="product-image"
+                src="${product.image}"
+                alt="${product.name}"
             >
-                ×
-            </button>
-
-            <div class="product-modal-image-container">
-
-                <img
-                    id="modalProductImage"
-                    class="product-modal-image"
-                    src=""
-                    alt=""
-                >
-
-            </div>
-
-            <div class="product-modal-info">
-
-                <span
-                    id="modalProductCategory"
-                    class="product-modal-category"
-                ></span>
-
-                <h2
-                    id="modalProductName"
-                    class="product-modal-title"
-                ></h2>
-
-                <div
-                    id="modalProductPrice"
-                    class="product-modal-price"
-                ></div>
-
-                <div
-                    id="modalProductColor"
-                    class="product-modal-color"
-                ></div>
-
-                <p
-                    id="modalProductDescription"
-                    class="product-modal-description"
-                ></p>
-
-                <div class="product-modal-actions">
-
-                    <div class="product-modal-quantity">
-
-                        <button
-                            type="button"
-                            onclick="changeModalQuantity(-1)"
-                            aria-label="Diminuir quantidade"
-                        >
-                            −
-                        </button>
-
-                        <span id="modalProductQuantity">
-                            1
-                        </span>
-
-                        <button
-                            type="button"
-                            onclick="changeModalQuantity(1)"
-                            aria-label="Aumentar quantidade"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
+            <div class="product-info">
+                <h2 class="product-name">
+                    ${product.name}
+                </h2>
+                <p class="product-description">
+                    ${product.description}
+                </p>
+                <div class="product-price">
+                    R$ ${product.price.toFixed(2)}
+                </div>
+                <button
+                    class="add-button"
+                    onclick="addProduct(${product.id})">
+                    ${quantity > 0
+                        ? "✓ Adicionado"
+                        : "Adicionar ao Pedido"}
+                </button>
+                <div class="quantity">
+                
                     <button
                         type="button"
-                        class="product-modal-add"
-                        onclick="addModalProductToCart()"
-                    >
-                        🛒 Adicionar ao Pedido
+                        onclick="changeQuantity(${product.id}, -1)">
+                        −
                     </button>
-
+                
+                    <span>
+                        ${quantity}
+                    </span>
+                
+                    <button
+                        type="button"
+                        onclick="changeQuantity(${product.id}, 1)">
+                        +
+                    </button>
+                
                 </div>
-
             </div>
-
-        </div>
-
-    </div>
-
-    <!-- =========================================================
-         ABOUT
-    ========================================================= -->
-
-    <section
-        class="about"
-        id="about"
-    >
-
-        <div class="about-container">
-
-            <div class="about-text">
-
-                <h2>
-                    Assistência Técnica em Camobi, Santa Maria
-                </h2>
-
-                <p>
-                    A Chris Tech oferece assistência técnica para celulares,
-                    notebooks e computadores em Camobi, Santa Maria - RS.
-                </p>
-
-                <p>
-                    Também trabalhamos com carregadores, cabos e acessórios
-                    para celulares, oferecendo soluções práticas, qualidade
-                    e atendimento próximo para clientes de Santa Maria.
-                </p>
-
-                <p>
-                    Estamos localizados na Avenida Roraima, em Camobi,
-                    próximo à Universidade Federal de Santa Maria (UFSM).
-                </p>
-
-                <div class="about-actions">
-
-                    <a
-                        href="curriculum.html"
-                        class="btn-back"
-                    >
-                        ⬅️ Ver o Currículo Principal
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- =========================================================
-         CONTACT
-    ========================================================= -->
-
-    <section
-        class="contact"
-        id="contact"
-    >
-
-        <div class="contact-box">
-
-            <h2>
-                Fale com a Chris Tech em Camobi
-            </h2>
-
-            <p>
-                <a
-                    href="redirect.html"
-                    class="phone-link"
-                >
-                    📞 +55 55 99668-9852
-                </a>
-            </p>
-
-            <p>
-                📧
-                <a href="mailto:christech.sm@gmail.com">
-                    christech.sm@gmail.com
-                </a>
-            </p>
-
-            <p>
-                📍 Avenida Roraima, 1000 —
-                Camobi, Santa Maria - RS
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
-
-    <footer>
-
-        <p>
-            © 2026 Chris Tech • Todos os direitos reservados
-        </p>
-
-    </footer>
-
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
-
-    <script>
-
-        "use strict";
-
-        /* ========================================================
-           CONFIGURATION
-        ======================================================== */
-
-        const WHATSAPP_NUMBER = "5555996689852";
-
-        const PRODUCTS_URL =
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBT6G9F5gMctKLGKoFYXGZpfGvcN2g89zn0fX3zApi5d07Ac4OxKVrt5o669BV5mdyi6vVUWK2j9Uv/pub?gid=0&single=true&output=csv";
-
-        const HEADER_IMAGES = [
-            "images/header1.jpg",
-            "images/header2.jpg",
-            "images/header3.jpg"
-        ];
-
-        /* ========================================================
-           STATE
-        ======================================================== */
-
-        let products = [];
-
-        let cart = {};
-
-        let currentImage = 0;
-
-        let selectedProductId = null;
-
-        let modalQuantity = 1;
-
-        /* ========================================================
-           ELEMENTS
-        ======================================================== */
-
-        const productsContainer =
-            document.getElementById("products");
-
-        const productSearch =
-            document.getElementById("productSearch");
-
-        const productModal =
-            document.getElementById("productModal");
-
-        const orderModal =
-            document.getElementById("orderModal");
-
-        /* ========================================================
-           CSV PARSER
-        ======================================================== */
-
-        function parseCSV(csv) {
-
-            const rows = [];
-
-            let row = [];
-
-            let value = "";
-
-            let insideQuotes = false;
-
-            for (let i = 0; i < csv.length; i++) {
-
-                const char = csv[i];
-
-                const next = csv[i + 1];
-
-                if (
-                    char === '"' &&
-                    insideQuotes &&
-                    next === '"'
-                ) {
-
-                    value += '"';
-
-                    i++;
-
-                } else if (char === '"') {
-
-                    insideQuotes = !insideQuotes;
-
-                } else if (
-                    char === "," &&
-                    !insideQuotes
-                ) {
-
-                    row.push(value);
-
-                    value = "";
-
-                } else if (
-                    (char === "\n" || char === "\r") &&
-                    !insideQuotes
-                ) {
-
-                    if (
-                        char === "\r" &&
-                        next === "\n"
-                    ) {
-                        i++;
-                    }
-
-                    row.push(value);
-
-                    if (
-                        row.some(
-                            item => item.trim() !== ""
-                        )
-                    ) {
-                        rows.push(row);
-                    }
-
-                    row = [];
-
-                    value = "";
-
-                } else {
-
-                    value += char;
-                }
-            }
-
-            if (
-                value !== "" ||
-                row.length > 0
-            ) {
-
-                row.push(value);
-
-                if (
-                    row.some(
-                        item => item.trim() !== ""
-                    )
-                ) {
-                    rows.push(row);
-                }
-            }
-
-            return rows;
+        `;
+        container.appendChild(card);
+    });
+    updateCartCount();
+}
+function searchProducts() {
+    const search =
+        document
+        .getElementById("productSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(search) ||
+        product.description.toLowerCase().includes(search)
+    );
+
+    displayProducts(filteredProducts);
+}
+
+function addProduct(productId) {
+    if (!cart[productId]) {
+        cart[productId] = 1;
+    }
+    else {
+        cart[productId]++;
+    }
+    displayProducts();
+}
+function changeQuantity(
+    productId,
+    amount
+) {
+    if (!cart[productId]) {
+        cart[productId] = 0;
+    }
+    cart[productId] += amount;
+    if (cart[productId] <= 0) {
+        delete cart[productId];
+    }
+    displayProducts();
+}
+function updateCartCount() {
+    let total = 0;
+    Object.values(cart).forEach(
+        quantity => {
+            total += quantity;
         }
-
-        /* ========================================================
-           LOAD PRODUCTS
-        ======================================================== */
-
-        async function loadProducts() {
-
-            try {
-
-                productsContainer.innerHTML = `
-                    <div class="loading-message">
-                        Carregando produtos...
-                    </div>
-                `;
-
-                const response = await fetch(
-                    PRODUCTS_URL +
-                    "&cache=" +
-                    Date.now()
-                );
-
-                if (!response.ok) {
-                    throw new Error(
-                        "Não foi possível carregar a planilha."
-                    );
-                }
-
-                const csv = await response.text();
-
-                const rows = parseCSV(csv);
-
-                if (rows.length < 2) {
-                    throw new Error(
-                        "Nenhum produto encontrado."
-                    );
-                }
-
-                const headers =
-                    rows[0].map(header =>
-                        header
-                            .trim()
-                            .toLowerCase()
-                    );
-
-                products = rows
-                    .slice(1)
-                    .filter(row =>
-                        row.length > 0 &&
-                        String(row[0]).trim() !== ""
-                    )
-                    .map(row => {
-
-                        const product = {};
-
-                        headers.forEach(
-                            (header, index) => {
-
-                                product[header] =
-                                    row[index]
-                                        ? row[index].trim()
-                                        : "";
-                            }
-                        );
-
-                        product.id =
-                            Number(product.id);
-
-                        const normalizedPrice =
-                            String(
-                                product.price || "0"
-                            )
-                            .replace(/\s/g, "")
-                            .replace("R$", "")
-                            .replace(/\./g, "")
-                            .replace(",", ".");
-
-                        product.price =
-                            Number(
-                                normalizedPrice
-                            );
-
-                        product.active =
-                            String(
-                                product.active
-                            )
-                            .trim()
-                            .toLowerCase() === "true";
-
-                        return product;
-
-                    })
-                    .filter(product =>
-                        product.active &&
-                        Number.isFinite(product.id) &&
-                        Number.isFinite(product.price)
-                    );
-
-                /*
-                 * Remove products that no longer exist
-                 * from the local cart.
-                 */
-                cleanCart();
-
-                displayProducts();
-
-                generateProductSchema();
-
-            } catch (error) {
-
-                console.error(
-                    "Erro ao carregar produtos:",
-                    error
-                );
-
-                productsContainer.innerHTML = `
-                    <div class="empty-message">
-                        Não foi possível carregar os produtos.
-                        <br>
-                        Tente novamente mais tarde.
-                    </div>
-                `;
-            }
-        }
-
-        /* ========================================================
-           ESCAPE HTML
-        ======================================================== */
-
-        function escapeHTML(value) {
-
-            return String(value ?? "")
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        /* ========================================================
-           HEADER SLIDER
-        ======================================================== */
-
-        function showImage() {
-
-            const headerImage =
-                document.getElementById(
-                    "headerImage"
-                );
-
-            headerImage.src =
-                HEADER_IMAGES[currentImage];
-        }
-
-        function nextImage() {
-
-            currentImage++;
-
-            if (
-                currentImage >=
-                HEADER_IMAGES.length
-            ) {
-                currentImage = 0;
-            }
-
-            showImage();
-        }
-
-        function previousImage() {
-
-            currentImage--;
-
-            if (currentImage < 0) {
-
-                currentImage =
-                    HEADER_IMAGES.length - 1;
-            }
-
-            showImage();
-        }
-
-        /* ========================================================
-           DISPLAY PRODUCTS
-        ======================================================== */
-
-        function displayProducts(
-            productList = products
-        ) {
-
-            productsContainer.innerHTML = "";
-
-            if (!productList.length) {
-
-                productsContainer.innerHTML = `
-                    <div class="empty-message">
-                        Nenhum produto encontrado.
-                    </div>
-                `;
-
-                updateCartCount();
-
-                return;
-            }
-
-            productList.forEach(product => {
-
-                const quantity =
-                    cart[product.id] || 0;
-
-                const card =
-                    document.createElement("article");
-
-                card.className =
-                    "product-card";
-
-                if (quantity > 0) {
-                    card.classList.add("selected");
-                }
-
-                /*
-                 * Use DOM properties instead of injecting
-                 * product data through innerHTML.
-                 */
-                const image =
-                    document.createElement("img");
-
-                image.className =
-                    "product-image";
-
-                image.src =
-                    product.image ||
-                    "images/christechlogo.jpg";
-
-                image.alt =
-                    product.name ||
-                    "Produto Chris Tech";
-
-                image.loading = "lazy";
-
-                image.onerror = function() {
-
-                    this.onerror = null;
-
-                    this.src =
-                        "images/christechlogo.jpg";
-                };
-
-                const info =
-                    document.createElement("div");
-
-                info.className =
-                    "product-info";
-
-                if (product.category) {
-
-                    const category =
-                        document.createElement("div");
-
-                    category.className =
-                        "product-category";
-
-                    category.textContent =
-                        product.category;
-
-                    info.appendChild(category);
-                }
-
-                const name =
-                    document.createElement("h2");
-
-                name.className =
-                    "product-name";
-
-                name.textContent =
-                    product.name ||
-                    "Produto";
-
-                info.appendChild(name);
-
-                if (product.description) {
-
-                    const description =
-                        document.createElement("p");
-
-                    description.className =
-                        "product-description";
-
-                    description.textContent =
-                        product.description;
-
-                    info.appendChild(description);
-                }
-
-                const price =
-                    document.createElement("div");
-
-                price.className =
-                    "product-price";
-
-                price.textContent =
-                    formatCurrency(product.price);
-
-                info.appendChild(price);
-
-                const addButton =
-                    document.createElement("button");
-
-                addButton.type =
-                    "button";
-
-                addButton.className =
-                    "add-button";
-
-                addButton.textContent =
-                    quantity > 0
-                        ? "✓ Adicionado"
-                        : "Adicionar ao Pedido";
-
-                addButton.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        addProduct(product.id);
-                    }
-                );
-
-                info.appendChild(addButton);
-
-                /*
-                 * Quantity controls are displayed only
-                 * when the product is selected.
-                 */
-                const quantityBox =
-                    document.createElement("div");
-
-                quantityBox.className =
-                    "quantity";
-
-                const minusButton =
-                    document.createElement("button");
-
-                minusButton.type =
-                    "button";
-
-                minusButton.textContent =
-                    "−";
-
-                minusButton.setAttribute(
-                    "aria-label",
-                    "Diminuir quantidade"
-                );
-
-                minusButton.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        changeQuantity(
-                            product.id,
-                            -1
-                        );
-                    }
-                );
-
-                const quantityText =
-                    document.createElement("span");
-
-                quantityText.textContent =
-                    quantity;
-
-                const plusButton =
-                    document.createElement("button");
-
-                plusButton.type =
-                    "button";
-
-                plusButton.textContent =
-                    "+";
-
-                plusButton.setAttribute(
-                    "aria-label",
-                    "Aumentar quantidade"
-                );
-
-                plusButton.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        changeQuantity(
-                            product.id,
-                            1
-                        );
-                    }
-                );
-
-                quantityBox.appendChild(
-                    minusButton
-                );
-
-                quantityBox.appendChild(
-                    quantityText
-                );
-
-                quantityBox.appendChild(
-                    plusButton
-                );
-
-                info.appendChild(quantityBox);
-
-                card.appendChild(image);
-
-                card.appendChild(info);
-
-                card.addEventListener(
-                    "click",
-                    function() {
-
-                        openProductModal(
-                            product.id
-                        );
-                    }
-                );
-
-                productsContainer.appendChild(card);
-            });
-
-            updateCartCount();
-        }
-
-        /* ========================================================
-           SEARCH
-        ======================================================== */
-
-        function searchProducts() {
-
-            const search =
-                productSearch.value
-                    .toLowerCase()
-                    .trim();
-
-            if (!search) {
-
-                displayProducts();
-
-                return;
-            }
-
-            const filteredProducts =
-                products.filter(product => {
-
-                    const name =
-                        String(
-                            product.name || ""
-                        ).toLowerCase();
-
-                    const description =
-                        String(
-                            product.description || ""
-                        ).toLowerCase();
-
-                    const category =
-                        String(
-                            product.category || ""
-                        ).toLowerCase();
-
-                    return (
-                        name.includes(search) ||
-                        description.includes(search) ||
-                        category.includes(search)
-                    );
-                });
-
-            displayProducts(
-                filteredProducts
-            );
-        }
-
-        /* ========================================================
-           PRODUCT MODAL
-        ======================================================== */
-
-        function openProductModal(productId) {
-
-            const product =
-                products.find(
-                    p => p.id === productId
-                );
-
-            if (!product) {
-                return;
-            }
-
-            selectedProductId =
-                productId;
-
-            modalQuantity =
-                cart[productId] || 1;
-
-            const image =
-                document.getElementById(
-                    "modalProductImage"
-                );
-
-            image.src =
-                product.image ||
-                "images/christechlogo.jpg";
-
-            image.alt =
-                product.name || "Produto";
-
-            image.onerror =
-                function() {
-
-                    this.onerror = null;
-
-                    this.src =
-                        "images/christechlogo.jpg";
-                };
-
-            document.getElementById(
-                "modalProductName"
-            ).textContent =
-                product.name || "Produto";
-
-            document.getElementById(
-                "modalProductPrice"
-            ).textContent =
-                formatCurrency(
-                    product.price
-                );
-
-            document.getElementById(
-                "modalProductDescription"
-            ).textContent =
-                product.description ||
-                "Sem descrição disponível.";
-
-            document.getElementById(
-                "modalProductCategory"
-            ).textContent =
-                product.category ||
-                "Produto";
-
-            const colorElement =
-                document.getElementById(
-                    "modalProductColor"
-                );
-
-            if (product.color) {
-
-                colorElement.innerHTML =
-                    "<strong>Cor:</strong> " +
-                    escapeHTML(
-                        product.color
-                    );
-
-                colorElement.style.display =
-                    "block";
-
-            } else {
-
-                colorElement.innerHTML = "";
-
-                colorElement.style.display =
-                    "none";
-            }
-
-            updateModalQuantity();
-
-            productModal.classList.add("show");
-
-            document.body.classList.add(
-                "modal-open"
-            );
-
-            setTimeout(() => {
-
-                document
-                    .querySelector(
-                        ".product-modal-close"
-                    )
-                    ?.focus();
-
-            }, 50);
-        }
-
-        function changeModalQuantity(amount) {
-
-            modalQuantity += amount;
-
-            if (modalQuantity < 1) {
-                modalQuantity = 1;
-            }
-
-            if (modalQuantity > 99) {
-                modalQuantity = 99;
-            }
-
-            updateModalQuantity();
-        }
-
-        function updateModalQuantity() {
-
-            document.getElementById(
-                "modalProductQuantity"
-            ).textContent =
-                modalQuantity;
-        }
-
-        function addModalProductToCart() {
-
-            if (!selectedProductId) {
-                return;
-            }
-
-            cart[selectedProductId] =
-                modalQuantity;
-
-            displayProducts();
-
-            closeProductModal();
-        }
-
-        function closeProductModal() {
-
-            productModal.classList.remove(
-                "show"
-            );
-
-            if (!orderModal.classList.contains("show")) {
-                document.body.classList.remove(
-                    "modal-open"
-                );
-            }
-
-            selectedProductId = null;
-        }
-
-        function closeProductModalOutside(event) {
-
-            if (
-                event.target === productModal
-            ) {
-                closeProductModal();
-            }
-        }
-
-        /* ========================================================
-           CART
-        ======================================================== */
-
-        function addProduct(productId) {
-
-            if (!cart[productId]) {
-                cart[productId] = 1;
-            } else {
-                cart[productId]++;
-            }
-
-            if (cart[productId] > 99) {
-                cart[productId] = 99;
-            }
-
-            displayProducts();
-        }
-
-        function changeQuantity(
-            productId,
-            amount
-        ) {
-
-            if (!cart[productId]) {
-                cart[productId] = 0;
-            }
-
-            cart[productId] += amount;
-
-            if (cart[productId] <= 0) {
-                delete cart[productId];
-            }
-
-            if (cart[productId] > 99) {
-                cart[productId] = 99;
-            }
-
-            displayProducts();
-        }
-
-        function cleanCart() {
-
-            const validIds =
-                new Set(
-                    products.map(
-                        product => product.id
-                    )
-                );
-
-            Object.keys(cart).forEach(
-                id => {
-
-                    if (
-                        !validIds.has(
-                            Number(id)
-                        )
-                    ) {
-                        delete cart[id];
-                    }
-                }
-            );
-        }
-
-        function updateCartCount() {
-
-            let total = 0;
-
-            Object.values(cart).forEach(
-                quantity => {
-
-                    total += Number(
-                        quantity
-                    ) || 0;
-                }
-            );
-
-            document.getElementById(
-                "cartCount"
-            ).textContent =
-                total;
-        }
-
-        /* ========================================================
-           ORDER MODAL
-        ======================================================== */
-
-        function openOrderForm() {
-
-            const totalItems =
-                Object.values(cart)
-                    .reduce(
-                        (sum, quantity) =>
-                            sum +
-                            Number(quantity || 0),
-                        0
-                    );
-
-            if (totalItems === 0) {
-
-                alert(
-                    "Selecione pelo menos um produto."
-                );
-
-                return;
-            }
-
-            orderModal.classList.add(
-                "show"
-            );
-
-            document.body.classList.add(
-                "modal-open"
-            );
-
-            setTimeout(() => {
-
-                document
-                    .getElementById(
-                        "customerName"
-                    )
-                    ?.focus();
-
-            }, 50);
-        }
-
-        function closeOrderForm() {
-
-            orderModal.classList.remove(
-                "show"
-            );
-
-            if (!productModal.classList.contains("show")) {
-                document.body.classList.remove(
-                    "modal-open"
-                );
-            }
-        }
-
-        function closeOrderFormOutside(event) {
-
-            if (
-                event.target === orderModal
-            ) {
-                closeOrderForm();
-            }
-        }
-
+    );
+    document
+        .getElementById("cartCount")
+        .textContent = total;
+}
+function openOrderForm() {
+    const totalItems =
+        Object.values(cart)
+        .reduce(
+            (sum, quantity) =>
+                sum + quantity,
+            0
+        );
+    if (totalItems === 0) {
+        alert(
+            "Please select at least one product."
+        );
+        return;
+    }
+    document
+        .getElementById("orderModal")
+        .classList
+        .add("show");
+}
+function closeOrderForm() {
+    document
+        .getElementById("orderModal")
+        .classList
+        .remove("show");
+}
 function sendToWhatsApp() {
     const customerName =
         document
