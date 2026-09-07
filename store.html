@@ -664,7 +664,8 @@ const WHATSAPP_NUMBER = "5555996689852";
 const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBT6G9F5gMctKLGKoFYXGZpfGvcN2g89zn0fX3zApi5d07Ac4OxKVrt5o669BV5mdyi6vVUWK2j9Uv/pub?gid=0&single=true&output=csv";
 
 // Wrap the request in a CORS proxy
-const PRODUCTS_URL = "https://corsproxy.io/?" + encodeURIComponent(SPREADSHEET_URL);
+const PRODUCTS_URL = SPREADSHEET_URL;
+
 let products = [];
 let cart = {};
 function parseCSV(csv) {
@@ -720,31 +721,36 @@ async function loadProducts() {
     `;
 
     try {
-        const response = await fetch(PRODUCTS_URL, {
-            cache: "no-store"
-        });
+        console.log("1. Iniciando carregamento...");
+        console.log("2. URL:", PRODUCTS_URL);
+
+        const response = await fetch(PRODUCTS_URL);
+
+        console.log("3. Response:", response);
+        console.log("4. Status:", response.status);
 
         if (!response.ok) {
             throw new Error(
-                "Erro ao acessar Google Sheets: HTTP " + response.status
+                "HTTP " + response.status
             );
         }
 
         const csv = await response.text();
 
-        console.log("CSV recebido:", csv);
+        console.log("5. CSV:");
+        console.log(csv);
 
         if (!csv.trim()) {
-            throw new Error("O Google Sheets retornou um CSV vazio.");
+            throw new Error("CSV vazio");
         }
 
         const rows = parseCSV(csv);
 
-        console.log("Linhas:", rows);
+        console.log("6. Rows:", rows);
 
         if (rows.length < 2) {
             throw new Error(
-                "Nenhum produto encontrado na planilha."
+                "CSV não possui produtos"
             );
         }
 
@@ -755,37 +761,23 @@ async function loadProducts() {
                 .toLowerCase()
         );
 
-        console.log("Cabeçalhos:", headers);
-
-        const requiredColumns = [
-            "id",
-            "name",
-            "description",
-            "price",
-            "image",
-            "active"
-        ];
-
-        const missing = requiredColumns.filter(
-            column => !headers.includes(column)
-        );
-
-        if (missing.length > 0) {
-            throw new Error(
-                "Colunas ausentes: " + missing.join(", ")
-            );
-        }
+        console.log("7. Headers:", headers);
 
         products = rows
             .slice(1)
-            .filter(row => row.some(value => value.trim() !== ""))
+            .filter(row =>
+                row.some(value =>
+                    String(value || "").trim() !== ""
+                )
+            )
             .map(row => {
+
                 const product = {};
 
                 headers.forEach((header, index) => {
                     product[header] =
                         row[index] !== undefined
-                            ? row[index].trim()
+                            ? String(row[index]).trim()
                             : "";
                 });
 
@@ -795,7 +787,10 @@ async function loadProducts() {
                     .replace(/R\$/gi, "")
                     .replace(/\s/g, "");
 
-                if (price.includes(",") && price.includes(".")) {
+                if (
+                    price.includes(",") &&
+                    price.includes(".")
+                ) {
                     price = price
                         .replace(/\./g, "")
                         .replace(",", ".");
@@ -805,9 +800,10 @@ async function loadProducts() {
 
                 product.price = Number(price);
 
-                const active = product.active
-                    .toLowerCase()
-                    .trim();
+                const active =
+                    product.active
+                        .toLowerCase()
+                        .trim();
 
                 product.active =
                     active === "true" ||
@@ -819,62 +815,46 @@ async function loadProducts() {
                 return product;
             });
 
-        console.log("Todos os produtos:", products);
+        console.log("8. Produtos:", products);
 
         products = products.filter(
             product => product.active
         );
 
-        console.log("Produtos ativos:", products);
-
-        if (products.length === 0) {
-            throw new Error(
-                "Existem dados na planilha, mas nenhum produto está ativo. Verifique a coluna 'active'."
-            );
-        }
+        console.log(
+            "9. Produtos ativos:",
+            products
+        );
 
         displayProducts();
 
+        console.log(
+            "10. displayProducts executado!"
+        );
+
     } catch (error) {
-        console.error("ERRO:", error);
+
+        console.error(
+            "ERRO NO LOADPRODUCTS:",
+            error
+        );
 
         container.innerHTML = `
             <div style="
                 grid-column: 1 / -1;
                 text-align: center;
-                padding: 40px 20px;
+                padding: 40px;
             ">
-
-                <h2 style="
-                    color: #d33;
-                    margin-bottom: 15px;
-                ">
+                <h2 style="color:red;">
                     Erro ao carregar produtos
                 </h2>
 
                 <p style="
-                    color: #777;
-                    line-height: 1.6;
+                    margin-top:15px;
+                    color:#666;
                 ">
                     ${error.message}
                 </p>
-
-                <button
-                    onclick="loadProducts()"
-                    style="
-                        margin-top: 20px;
-                        padding: 12px 20px;
-                        border: none;
-                        border-radius: 8px;
-                        background: #0d6efd;
-                        color: white;
-                        cursor: pointer;
-                        font-weight: bold;
-                    "
-                >
-                    Tentar novamente
-                </button>
-
             </div>
         `;
     }
