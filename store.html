@@ -664,7 +664,10 @@ const WHATSAPP_NUMBER = "5555996689852";
 const SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRBT6G9F5gMctKLGKoFYXGZpfGvcN2g89zn0fX3zApi5d07Ac4OxKVrt5o669BV5mdyi6vVUWK2j9Uv/pub?gid=0&single=true&output=csv";
 
 // Wrap the request in a CORS proxy
-const PRODUCTS_URL = SPREADSHEET_URL;
+const PRODUCTS_URL =
+    "https://corsproxy.io/?" +
+    encodeURIComponent(SPREADSHEET_URL);
+
 
 let products = [];
 let cart = {};
