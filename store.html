@@ -721,26 +721,47 @@ async function loadProducts() {
 
     try {
 
-        const response = await fetch(PRODUCTS_URL);
+        const controller = new AbortController();
+
+        const timeout = setTimeout(() => {
+            controller.abort();
+        }, 10000);
+
+        const response = await fetch(
+            PRODUCTS_URL + "&cache=" + Date.now(),
+            {
+                method: "GET",
+                cache: "no-store",
+                signal: controller.signal
+            }
+        );
+
+        clearTimeout(timeout);
 
         if (!response.ok) {
             throw new Error(
-                "Google Sheets respondeu com erro HTTP " +
-                response.status
+                "Erro HTTP: " + response.status
             );
         }
 
         const csv = await response.text();
 
-        console.log("CSV recebido:", csv);
+        console.log("CSV recebido:");
+        console.log(csv);
+
+        if (!csv || csv.trim() === "") {
+            throw new Error(
+                "A planilha retornou um CSV vazio."
+            );
+        }
 
         const rows = parseCSV(csv);
 
-        console.log("Linhas:", rows);
+        console.log("Linhas encontradas:", rows);
 
         if (rows.length < 2) {
             throw new Error(
-                "Nenhum produto encontrado na planilha."
+                "A planilha não possui produtos."
             );
         }
 
@@ -755,7 +776,7 @@ async function loadProducts() {
             .filter(row =>
                 row.length > 0 &&
                 row[0] &&
-                row[0].trim()
+                row[0].trim() !== ""
             )
             .map(row => {
 
@@ -774,7 +795,6 @@ async function loadProducts() {
                     String(product.price)
                         .replace("R$", "")
                         .replace(/\s/g, "")
-                        .replace(/\./g, "")
                         .replace(",", ".")
                 );
 
@@ -787,7 +807,7 @@ async function loadProducts() {
             });
 
         console.log(
-            "Todos os produtos:",
+            "Produtos antes do filtro:",
             products
         );
 
@@ -802,20 +822,10 @@ async function loadProducts() {
 
         if (products.length === 0) {
 
-            container.innerHTML = `
-                <p style="
-                    grid-column: 1 / -1;
-                    text-align: center;
-                    padding: 40px;
-                    color: #777;
-                ">
-                    Nenhum produto ativo encontrado.
-                    <br><br>
-                    Verifique a coluna "active" da planilha.
-                </p>
-            `;
+            throw new Error(
+                "Nenhum produto com active=TRUE foi encontrado."
+            );
 
-            return;
         }
 
         displayProducts();
@@ -823,9 +833,16 @@ async function loadProducts() {
     } catch (error) {
 
         console.error(
-            "Erro ao carregar produtos:",
+            "ERRO AO CARREGAR PRODUTOS:",
             error
         );
+
+        let errorMessage = error.message;
+
+        if (error.name === "AbortError") {
+            errorMessage =
+                "A conexão com a planilha demorou muito para responder.";
+        }
 
         container.innerHTML = `
             <div style="
@@ -834,16 +851,32 @@ async function loadProducts() {
                 padding: 40px;
             ">
 
-                <h2>
-                    Erro ao carregar produtos
+                <h2 style="color:#d33;">
+                    Não foi possível carregar os produtos
                 </h2>
 
                 <p style="
-                    margin-top: 15px;
-                    color: #777;
+                    margin-top:15px;
+                    color:#777;
                 ">
-                    ${error.message}
+                    ${errorMessage}
                 </p>
+
+                <button
+                    onclick="loadProducts()"
+                    style="
+                        margin-top:20px;
+                        padding:12px 20px;
+                        border:none;
+                        border-radius:8px;
+                        background:#0d6efd;
+                        color:white;
+                        cursor:pointer;
+                        font-weight:bold;
+                    "
+                >
+                    Tentar novamente
+                </button>
 
             </div>
         `;
