@@ -14,6 +14,7 @@
         name="keywords"
         content="assistência técnica Camobi, assistência técnica Santa Maria RS, conserto de celular Camobi, acessórios para celular Camobi, carregador celular Santa Maria, cabo USB-C Santa Maria, Chris Tech Santa Maria">
     <meta name="author" content="Chris Tech">
+    
     <link
         rel="canonical"
         href="https://loja.christech-sm.workers.dev/store">
@@ -1264,6 +1265,14 @@ textarea:focus-visible {
 <footer>
     <p>© 2026 Criado por Chris Tech • Todos os direitos reservados</p>
 </footer>
+
+<script src="products.js"></script>
+
+<script>
+    // Your existing JavaScript here
+</script>
+
+    
 <script>
 const WHATSAPP_NUMBER = "5555996689852";
 const PRODUCTS_URL =
@@ -1310,58 +1319,110 @@ function parseCSV(csv) {
     return rows;
 }
 async function loadProducts() {
+
+    // Start with the 8 products from products.js.
+    // This gives us an immediate fallback.
+    products = [...SEO_PRODUCTS];
+
+    // Display them immediately.
+    displayProducts();
+
     try {
+
         const response = await fetch(
             PRODUCTS_URL + "&cache=" + Date.now()
         );
+
         if (!response.ok) {
             throw new Error("Could not load Google Sheet");
         }
+
         const csv = await response.text();
+
         const rows = parseCSV(csv);
+
         if (rows.length < 2) {
             throw new Error("No products found");
         }
+
         const headers = rows[0].map(header =>
             header.trim().toLowerCase()
         );
-        products = rows
+
+        const sheetProducts = rows
             .slice(1)
             .filter(row => row.length > 0 && row[0])
             .map(row => {
+
                 const product = {};
+
                 headers.forEach((header, index) => {
                     product[header] =
-                        row[index] ? row[index].trim() : "";
+                        row[index]
+                            ? row[index].trim()
+                            : "";
                 });
+
                 product.id = Number(product.id);
+
                 product.price = Number(
                     product.price.replace(",", ".")
                 );
+
                 product.active =
                     String(product.active).toLowerCase() === "true";
 
                 return product;
             })
             .filter(product => product.active);
-        console.log("Products loaded:", products);
-        displayProducts();
+
+        // Only replace the SEO fallback if
+        // the Google Sheet actually returned products.
+        if (sheetProducts.length > 0) {
+
+            products = sheetProducts;
+
+            console.log(
+                "Products loaded from Google Sheet:",
+                products
+            );
+
+            displayProducts();
+
+        } else {
+
+            console.warn(
+                "Google Sheet returned no active products. Using SEO products."
+            );
+
+        }
+
+        // Generate Product schema from the
+        // products currently being displayed.
         generateProductSchema();
+
     } catch (error) {
-        console.error("Error loading products:", error);
-        document.getElementById("products").innerHTML = `
-            <p style="
-                grid-column: 1 / -1;
-                text-align: center;
-                padding: 30px;
-                color: #777;
-            ">
-                Não foi possível carregar os produtos.
-                Tente novamente mais tarde.
-            </p>
-        `;
+
+        console.error(
+            "Error loading Google Sheet:",
+            error
+        );
+
+        // Keep the 8 products from products.js.
+        products = [...SEO_PRODUCTS];
+
+        displayProducts();
+
+        // Generate schema for the fallback products.
+        generateProductSchema();
+
+        console.log(
+            "Using SEO fallback products."
+        );
     }
 }
+
+
 const images = [
     "images/header1.jpg",
     "images/header2.jpg",
