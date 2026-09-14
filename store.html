@@ -1538,7 +1538,15 @@ function parseCSV(csv) {
     return rows;
 }
 async function loadProducts() {
+
+    // These are your SEO/fallback products.
+    // The HTML product section is already visible
+    // in index.html, so DON'T call displayProducts()
+    // yet.
+    products = [...SEO_PRODUCTS];
+
     try {
+
         const response = await fetch(
             PRODUCTS_URL + "&cache=" + Date.now()
         );
@@ -1548,35 +1556,97 @@ async function loadProducts() {
         }
 
         const csv = await response.text();
+
         const rows = parseCSV(csv);
 
         if (rows.length < 2) {
             throw new Error("No products found");
         }
 
-        // Mapeia os dados do CSV ignorando a primeira linha (cabeçalho)
-        const sheetProducts = rows.slice(1).map((row, index) => {
-            return {
-                id: index + 1,
-                name: row[0] || "",
-                price: parseFloat(row[1]?.replace(",", ".")) || 0,
-                category: row[2] || "",
-                color: row[3] || "",
-                image: row[4] || "",
-                description: row[5] || "",
-                active: row[6] ? row[6].toLowerCase() === "true" || row[6] === "1" : true
-            };
-        }).filter(product => product.name !== ""); // Remove linhas vazias
+        const headers = rows[0].map(header =>
+            header.trim().toLowerCase()
+        );
+
+        const sheetProducts = rows
+            .slice(1)
+            .filter(row => row.length > 0 && row[0])
+            .map(row => {
+
+                const product = {};
+
+                headers.forEach((header, index) => {
+                    product[header] =
+                        row[index]
+                            ? row[index].trim()
+                            : "";
+                });
+
+                product.id = Number(product.id);
+
+                product.price = Number(
+                    product.price.replace(",", ".")
+                );
+
+                product.active =
+                    String(product.active).toLowerCase() === "true";
+
+                return product;
+            })
+            .filter(product => product.active);
+
+
+        // ==========================================
+        // GOOGLE SHEET SUCCESSFULLY RETURNED PRODUCTS
+        // ==========================================
 
         if (sheetProducts.length > 0) {
+
+            // Replace the fallback products
+            // with Google Sheet products.
             products = sheetProducts;
+
+            console.log(
+                "Products loaded from Google Sheet:",
+                products
+            );
+
+            // NOW clear the HTML product section
+            // and replace it with Google Sheet products.
             displayProducts();
+
+            // Generate schema for the current products.
             generateProductSchema();
+
+        } else {
+
+            // Google Sheet returned no active products.
+            // DO NOT delete the HTML products.
+            console.warn(
+                "Google Sheet returned no active products. Keeping SEO HTML products."
+            );
+
         }
 
     } catch (error) {
-        console.error("Google Sheet failed:", error);
-        // Em caso de erro, os produtos fixos do HTML permanecem visíveis.
+
+        console.error(
+            "Error loading Google Sheet:",
+            error
+        );
+
+        // Keep SEO/fallback products in JavaScript
+        // for functions such as the modal/cart.
+        products = [...SEO_PRODUCTS];
+
+        // IMPORTANT:
+        // Do NOT call displayProducts().
+        //
+        // This means your original HTML products
+        // remain on the page.
+
+        console.log(
+            "Google Sheet unavailable. Keeping SEO HTML products."
+        );
     }
 }
 
