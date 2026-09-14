@@ -1539,11 +1539,11 @@ function parseCSV(csv) {
 }
 async function loadProducts() {
 
-    // These are your SEO/fallback products.
-    // The HTML product section is already visible
-    // in index.html, so DON'T call displayProducts()
-    // yet.
-    products = [...SEO_PRODUCTS];
+    /*
+     * IMPORTANT:
+     * Keep the products already written in the HTML visible
+     * until Google Sheets successfully loads.
+     */
 
     try {
 
@@ -1595,14 +1595,13 @@ async function loadProducts() {
             .filter(product => product.active);
 
 
-        // ==========================================
-        // GOOGLE SHEET SUCCESSFULLY RETURNED PRODUCTS
-        // ==========================================
+        /*
+         * ONLY replace the products section
+         * if Google Sheets actually returned products.
+         */
 
         if (sheetProducts.length > 0) {
 
-            // Replace the fallback products
-            // with Google Sheet products.
             products = sheetProducts;
 
             console.log(
@@ -1610,20 +1609,29 @@ async function loadProducts() {
                 products
             );
 
-            // NOW clear the HTML product section
-            // and replace it with Google Sheet products.
+            /*
+             * This clears ONLY #products and
+             * displays the Google Sheet products.
+             */
             displayProducts();
 
-            // Generate schema for the current products.
+            /*
+             * Generate SEO Product schema
+             * for the products currently displayed.
+             */
             generateProductSchema();
 
         } else {
 
-            // Google Sheet returned no active products.
-            // DO NOT delete the HTML products.
             console.warn(
-                "Google Sheet returned no active products. Keeping SEO HTML products."
+                "Google Sheet returned no active products."
             );
+
+            /*
+             * Do nothing.
+             *
+             * The original HTML product cards remain visible.
+             */
 
         }
 
@@ -1634,22 +1642,14 @@ async function loadProducts() {
             error
         );
 
-        // Keep SEO/fallback products in JavaScript
-        // for functions such as the modal/cart.
-        products = [...SEO_PRODUCTS];
+        /*
+         * Do nothing.
+         *
+         * The original HTML product cards remain visible.
+         */
 
-        // IMPORTANT:
-        // Do NOT call displayProducts().
-        //
-        // This means your original HTML products
-        // remain on the page.
-
-        console.log(
-            "Google Sheet unavailable. Keeping SEO HTML products."
-        );
     }
 }
-
 
 
 const images = [
